@@ -8,11 +8,17 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.ProgressBar;
 
 public class SplashScreenActivity extends Activity {
 
-    // Set the duration of the splash screen
-    private static final long SPLASH_SCREEN_DELAY = 3000;
+    //Duracion del splash
+    private long splashDuration = 3000;
+    //Parametros configuracion progress bar
+    private boolean splashActive = true;
+    private boolean paused = false;
+    private long ms = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,27 +28,25 @@ public class SplashScreenActivity extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // Hide title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         setContentView(R.layout.splash_sceen);
 
-        TimerTask task = new TimerTask() {
-            @Override
+        Thread mythread = new Thread() {
             public void run() {
-
-                // Start the next activity
-                Intent mainIntent = new Intent().setClass(
-                        SplashScreenActivity.this, MainActivity.class);
-                startActivity(mainIntent);
-
-                // Close the activity so the user won't able to go back this
-                // activity pressing Back button
-                finish();
+                try {
+                    while (splashActive && ms < splashDuration) {
+                        if (!paused)
+                            ms = ms + 100;
+                        sleep(100);
+                    }
+                } catch (Exception e) {
+                } finally {
+                    Intent intent = new Intent(SplashScreenActivity.this,
+                            MainActivity.class);
+                    startActivity(intent);
+                }
             }
         };
-
-        // Simulate a long loading process on application startup.
-        Timer timer = new Timer();
-        timer.schedule(task, SPLASH_SCREEN_DELAY);
+        mythread.start();
     }
 
 }
