@@ -51,7 +51,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/txtUsuario"
         android:layout_centerVertical="true"
         android:layout_alignRight="@+id/textView"
         android:layout_alignEnd="@+id/textView"
@@ -63,22 +63,23 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/txtPassword"
         android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText" />
+        android:layout_alignLeft="@+id/txtUsuario"
+        android:layout_alignStart="@+id/txtUsuario"
+        android:layout_alignRight="@+id/txtUsuario"
+        android:layout_alignEnd="@+id/txtUsuario" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Iniciar Sesión"
         android:id="@+id/button"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/txtPassword"
         android:layout_toRightOf="@+id/imageView"
         android:layout_toEndOf="@+id/imageView"
-        android:layout_marginTop="58dp" />
+        android:layout_marginTop="58dp"
+        android:onClick="Login" />
 
     <TextView
         android:layout_width="wrap_content"
