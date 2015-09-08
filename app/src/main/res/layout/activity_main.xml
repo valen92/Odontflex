@@ -79,4 +79,16 @@
         android:layout_toRightOf="@+id/imageView"
         android:layout_toEndOf="@+id/imageView"
         android:layout_marginTop="58dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Desarrollado por Mustflex"
+        android:textSize="13dp"
+        android:id="@+id/textView4"
+        android:layout_marginLeft="1dp"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
 </RelativeLayout>
