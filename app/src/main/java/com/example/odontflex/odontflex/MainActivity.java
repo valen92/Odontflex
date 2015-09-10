@@ -130,6 +130,8 @@ public class MainActivity extends ActionBarActivity {
         protected void onPostExecute(String feed) {
             if (usuarios.length>0){
                 Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_LONG).show();
+                Intent intMenuPpl = new Intent(getApplicationContext(), Menu_principal.class);
+                startActivity(intMenuPpl);
             } else {
                 Toast.makeText(getApplicationContext(), "Usuario y/o Password incorrecta, " +
                         "intentelo de nuevo", Toast.LENGTH_LONG).show();
