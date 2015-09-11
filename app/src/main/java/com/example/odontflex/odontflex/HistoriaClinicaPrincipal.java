@@ -43,7 +43,7 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
         ListView list = (ListView)findViewById(R.id.animalList);
         adapter = new ListViewAdapter(this,opciones,imgOpciones);
         list.setAdapter(adapter);
-        list.setBackgroundColor(Color.RED);
+        list.setBackgroundColor(Color.rgb(178, 223, 219));
 
     }
 
