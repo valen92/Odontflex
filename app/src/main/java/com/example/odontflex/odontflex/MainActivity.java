@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,9 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
+
+
+
     String SERVER_URL = "http://www.mustflex.com/Odontflex/login.php";
     static String json;
     JSONArray jsonO;
@@ -48,6 +52,8 @@ public class MainActivity extends ActionBarActivity {
     private static final String TAG_SUCCESS = "OK";
     private static final String TAG_MESSAGE = "estado";
 
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,17 +62,26 @@ public class MainActivity extends ActionBarActivity {
         txtUsuario = (TextView)findViewById(R.id.txtUsuario);
         txtPassword = (TextView)findViewById(R.id.txtPassword);
 
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+
     }
 
     public void Login(View v){
         usuario = txtUsuario.getText().toString();
         password = txtPassword.getText().toString();
+
         new validar().execute();
+
     }
 
     class validar extends AsyncTask<String, String, String> {
 
         private Exception exception;
+
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+        }
 
         protected String doInBackground(String... urls) {
             HttpClient peticion = new DefaultHttpClient();
@@ -128,15 +143,23 @@ public class MainActivity extends ActionBarActivity {
         }
 
         protected void onPostExecute(String feed) {
+            progressBar.setVisibility(View.GONE);
             if (usuarios.length>0){
                 Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_LONG).show();
-                Intent intMenuPpl = new Intent(getApplicationContext(), Menu_principal.class);
-                startActivity(intMenuPpl);
+
+                Intent inicio = new Intent(getApplicationContext(),
+                        Menu_principal.class);
+                startActivity(inicio);
+                finish();
+
             } else {
                 Toast.makeText(getApplicationContext(), "Usuario y/o Password incorrecta, " +
                         "intentelo de nuevo", Toast.LENGTH_LONG).show();
             }
         }
     }
+    public void onBackPressed(){
+    }
+
 
 }

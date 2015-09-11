@@ -1,16 +1,38 @@
 package com.example.odontflex.odontflex;
 
+import android.graphics.Color;
+import android.support.v4.widget.SlidingPaneLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-public class HistoriaClinicaPrincipal extends AppCompatActivity {
+public class HistoriaClinicaPrincipal extends ActionBarActivity {
+
+    private SlidingPaneLayout mPanes;
+    private static final int PARALLAX_SIZE = 30;
+    private String[] mListItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historia_clinica_principal);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.show();
+
+        actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+        mPanes = (SlidingPaneLayout)findViewById(R.id.slidingPane);
+        mPanes.setParallaxDistance(PARALLAX_SIZE);
+        mListItems = getResources().getStringArray(R.array.animals);
+        ListView list = (ListView)findViewById(R.id.animalList);
+        list.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, mListItems));
+        list.setBackgroundColor(Color.RED);
+
     }
 
     @Override
@@ -28,10 +50,24 @@ public class HistoriaClinicaPrincipal extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.opciones) {
+            if (mPanes.closePane()){
+                closePane();
+            } else {
+                openPane();
+            }
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openPane(){
+        mPanes.openPane();
+        getSupportActionBar().setTitle("Odontflex");
+    }
+
+    private void closePane(){
+        mPanes.closePane();
+        getSupportActionBar().setTitle("Odontflex");
     }
 }

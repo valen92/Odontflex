@@ -6,4 +6,9 @@
     <string name="title_activity_dsdsdsds">dsdsdsds</string>
     <string name="title_activity_menu_principal">Menu_principal</string>
     <string name="title_activity_historia_clinica_principal">HistoriaClinicaPrincipal</string>
+    <string-array name="animals">
+        <item>animal 1</item>
+        <item>animal 2</item>
+    </string-array>
+    <string name="title_activity_historia_clinica_inicio">HistoriaClinicaInicio</string>
 </resources>

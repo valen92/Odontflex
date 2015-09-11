@@ -28,6 +28,11 @@
             android:name=".Menu_principal"
             android:label="@string/title_activity_menu_principal" >
         </activity>
+        <activity
+            android:name=".HistoriaClinicaPrincipal"
+            android:label="Historia Clinica"
+            android:windowSoftInputMode="adjustPan|adjustResize" >
+        </activity>
     </application>
 
 </manifest>
