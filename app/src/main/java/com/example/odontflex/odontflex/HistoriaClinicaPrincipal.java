@@ -63,11 +63,12 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
 
     private void openPane(){
         mPanes.openPane();
-        getSupportActionBar().setTitle("Odontflex");
     }
 
     private void closePane(){
         mPanes.closePane();
-        getSupportActionBar().setTitle("Odontflex");
+    }
+
+    public void onBackPressed(){
     }
 }

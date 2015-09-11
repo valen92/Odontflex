@@ -22,11 +22,11 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="Bienvenido" >
         </activity>
         <activity
             android:name=".Menu_principal"
-            android:label="@string/title_activity_menu_principal" >
+            android:label="Menu principal" >
         </activity>
         <activity
             android:name=".HistoriaClinicaPrincipal"

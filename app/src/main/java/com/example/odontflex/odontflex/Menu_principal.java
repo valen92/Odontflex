@@ -51,4 +51,7 @@ public class Menu_principal extends AppCompatActivity {
         });
     }
 
+    public void onBackPressed(){
+    }
+
 }
