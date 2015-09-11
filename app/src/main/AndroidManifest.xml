@@ -28,6 +28,10 @@
             android:name=".Menu_principal"
             android:label="@string/title_activity_menu_principal" >
         </activity>
+        <activity
+            android:name=".HistoriaClinicaPrincipal"
+            android:label="@string/title_activity_historia_clinica_principal" >
+        </activity>
     </application>
 
 </manifest>
