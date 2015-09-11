@@ -56,7 +56,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="33dp" />
+            android:layout_marginBottom="33dp"
+            android:onClick="Inicio" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,10 +74,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Obtener Historia"
+            android:textColor="#ffffff"
             android:id="@+id/button2"
             android:layout_marginBottom="67dp"
             android:layout_above="@+id/imageView3"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -84,7 +87,7 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/txtCedulaPaciente"
-            android:layout_marginBottom="81dp"
+            android:layout_marginBottom="80dp"
             android:layout_above="@+id/button2"
             android:layout_alignRight="@+id/textView"
             android:layout_alignEnd="@+id/textView" />

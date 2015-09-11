@@ -1,5 +1,6 @@
 package com.example.odontflex.odontflex;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBar;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -82,5 +84,12 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
     }
 
     public void onBackPressed(){
+    }
+
+    public void Inicio (View v){
+        Intent inicio = new Intent(getApplicationContext(),
+               Menu_principal.class);
+        startActivity(inicio);
+        finish();
     }
 }
