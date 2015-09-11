@@ -17,6 +17,17 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
     private SlidingPaneLayout mPanes;
     private static final int PARALLAX_SIZE = 30;
     private String[] mListItems;
+    ListViewAdapter adapter;
+    String[] opciones = new  String[]{
+            "",
+            "",
+    };
+
+    int[] imgOpciones={
+            R.drawable.iconoconsultorio,
+            R.drawable.glyphicons_195_circle_info,
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +41,8 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
         mPanes.setParallaxDistance(PARALLAX_SIZE);
         mListItems = getResources().getStringArray(R.array.animals);
         ListView list = (ListView)findViewById(R.id.animalList);
-        list.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, mListItems));
+        adapter = new ListViewAdapter(this,opciones,imgOpciones);
+        list.setAdapter(adapter);
         list.setBackgroundColor(Color.RED);
 
     }
