@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class Acercade extends AppCompatActivity {
@@ -41,6 +42,25 @@ public class Acercade extends AppCompatActivity {
         adapter = new ListViewAdapter(this,opciones,imgOpciones);
         list.setAdapter(adapter);
         list.setBackgroundColor(Color.rgb(178, 223, 219));
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        Intent historiaclinica = new Intent(getApplicationContext(),
+                                HistoriaClinicaPrincipal.class);
+                        startActivity(historiaclinica);
+                        finish();
+                        break;
+                    case 1:
+
+                        break;
+                }
+
+            }
+
+
+        });
     }
 
     @Override

@@ -78,6 +78,25 @@ public class InfoGeneral extends ActionBarActivity {
 
 
         });
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        Intent historiaclinica = new Intent(getApplicationContext(),
+                                HistoriaClinicaPrincipal.class);
+                        startActivity(historiaclinica);
+                        finish();
+                        break;
+                    case 1:
+
+                        break;
+                }
+
+            }
+
+
+        });
 
     }
 
