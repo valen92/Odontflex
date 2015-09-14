@@ -41,6 +41,14 @@
             android:name=".Acercade"
             android:label="Informacion General" >
         </activity>
+        <activity
+            android:name=".CUPS"
+            android:label="Informacion General" >
+        </activity>
+        <activity
+            android:name=".ListaCUPS"
+            android:label="Informacion General" >
+        </activity>
     </application>
 
 </manifest>

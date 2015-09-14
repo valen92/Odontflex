@@ -5,8 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/ColorPrimary</item> <!--ActionBar-->
         <item name="colorPrimaryDark">@color/ColorPrimaryDark</item> <!--Parte superior-->
-        <item name="android:logo">@drawable/loading</item>
+        <item name="colorAccent">#80cbc4</item> <!--Sombra-->
     </style>
-
+    <style name="etiqueta">
+        <item name="android:typeface">normal</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">18dp</item>
+    </style>
 
 </resources>

@@ -10,7 +10,24 @@
         <item>Cups</item>
         <item>Acerca de Odontflex</item>
     </string-array>
+    <string-array name="cups">
+        <item>Endodoncia</item>
+        <item>Ortopedia, Ortodoncia, y otros procedimientos oclusales no restauradores</item>
+        <item>Periodoncia, Cirugía Oral y Maxilofacial (1)</item>
+        <item>Periodoncia, Cirugía Oral y Maxilofacial (2)</item>
+        <item>Periodoncia, Cirugía Oral y Maxilofacial (3)</item>
+        <item>Promoción de salud y Prevención de enfermedades</item>
+        <item>Prótesis</item>
+        <item>Radiología</item>
+        <item>Consultas</item>
+        <item>Laboratorios - Examenes y Análisis (1)</item>
+        <item>Laboratorios - Examenes y Análisis (2)</item>
+        <item>Urgencias</item>
+        <item>Otros Códigos</item>
+    </string-array>
     <string name="title_activity_historia_clinica_inicio">HistoriaClinicaInicio</string>
     <string name="title_activity_info_general">InfoGeneral</string>
     <string name="title_activity_acercade">Acercade</string>
+    <string name="title_activity_cups">CUPS</string>
+    <string name="title_activity_lista_cups">ListaCUPS</string>
 </resources>
