@@ -2,10 +2,12 @@ package com.example.odontflex.odontflex;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,9 +19,28 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
 public class ListaCUPS extends AppCompatActivity {
 
-    String tipoCup;
+    String[] codigoCup, nomCup;
     private SlidingPaneLayout mPanes;
     private static final int PARALLAX_SIZE = 30;
     private String[] mListItems;
@@ -41,15 +62,16 @@ public class ListaCUPS extends AppCompatActivity {
     TableRow.LayoutParams layoutId;
     TableRow.LayoutParams layoutTexto;
 
-    private int MAX_FILAS = 20;
+    private int MAX_FILAS = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_cups);
         Intent dato = getIntent();
-        tipoCup = dato.getStringExtra("tipoCup");
-        Toast.makeText(ListaCUPS.this, ""+tipoCup, Toast.LENGTH_SHORT).show();
+        codigoCup = dato.getStringArrayExtra("codigoCups");
+        nomCup = dato.getStringArrayExtra("nomCups");
+        MAX_FILAS = codigoCup.length;
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -82,7 +104,7 @@ public class ListaCUPS extends AppCompatActivity {
         layoutFila = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                 TableRow.LayoutParams.WRAP_CONTENT);
         layoutId = new TableRow.LayoutParams(120,50);
-        layoutTexto = new TableRow.LayoutParams(460,50);
+        layoutTexto = new TableRow.LayoutParams(480, TableRow.LayoutParams.WRAP_CONTENT);
         agregarCabecera();
         agregarFilasTabla();
     }
@@ -190,13 +212,13 @@ public class ListaCUPS extends AppCompatActivity {
             txtId = new TextView(this);
             txtNombre = new TextView(this);
 
-            txtId.setText(String.valueOf(posicion));
-            txtId.setGravity(Gravity.CENTER_HORIZONTAL);
+            txtId.setText(codigoCup[i]);
+            txtId.setGravity(Gravity.CENTER_VERTICAL);
             txtId.setTextAppearance(this, R.style.etiqueta);
             txtId.setLayoutParams(layoutId);
 
-            txtNombre.setText("Texto " + posicion);
-            txtNombre.setGravity(Gravity.CENTER_HORIZONTAL);
+            txtNombre.setText(nomCup[i]);
+            txtId.setGravity(Gravity.CENTER_HORIZONTAL);
             txtNombre.setTextAppearance(this, R.style.etiqueta);
             txtNombre.setLayoutParams(layoutTexto);
 

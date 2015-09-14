@@ -77,7 +77,8 @@
                     <TableLayout android:id="@+id/tabla"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal">
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="10dp">
                     </TableLayout>
                 </LinearLayout>
             </ScrollView>

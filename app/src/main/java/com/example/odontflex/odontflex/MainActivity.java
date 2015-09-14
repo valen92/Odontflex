@@ -39,9 +39,6 @@ import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
-
-
-
     String SERVER_URL = "http://www.mustflex.com/Odontflex/login.php";
     static String json;
     JSONArray jsonO;
