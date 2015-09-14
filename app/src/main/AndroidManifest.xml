@@ -33,6 +33,10 @@
             android:label="Historia Clinica"
             android:windowSoftInputMode="adjustPan|adjustResize" >
         </activity>
+        <activity
+            android:name=".InfoGeneral"
+            android:label="Informacion General" >
+        </activity>
     </application>
 
 </manifest>

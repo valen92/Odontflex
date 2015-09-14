@@ -42,8 +42,12 @@ public class Menu_principal extends AppCompatActivity {
                         startActivity(inicio);
                         finish();
                         break;
+                    case 2: Intent infoGeneral = new Intent(getApplicationContext(),
+                            InfoGeneral.class);
+                        startActivity(infoGeneral);
+                        finish();
+                        break;
                 }
-                Toast.makeText(getApplicationContext(), "" + position, Toast.LENGTH_SHORT).show();
 
             }
 

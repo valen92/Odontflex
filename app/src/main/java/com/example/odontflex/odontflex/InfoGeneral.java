@@ -5,8 +5,6 @@ import android.graphics.Color;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,45 +12,59 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class HistoriaClinicaPrincipal extends ActionBarActivity {
+
+public class InfoGeneral extends ActionBarActivity {
 
     private SlidingPaneLayout mPanes;
     private static final int PARALLAX_SIZE = 30;
-    private String[] mListItems;
-    ListViewAdapter adapter;
+    ListViewAdapter adapter, adaptador;
+    ListView lvInfoGeneral;
     String[] opciones = new  String[]{
             "",
             "",
     };
 
+    int[] imgOInfo={
+            10,
+            10,
+    };
+
+    String[] info = new  String[]{
+            "CUPS",
+            "Acerca de Odontflex",
+    };
+
     int[] imgOpciones={
             R.drawable.glyphicons_029_notes_2,
             R.drawable.iconoconsultorio,
-
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historia_clinica_principal);
+        setContentView(R.layout.activity_info_general);
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
         mPanes = (SlidingPaneLayout)findViewById(R.id.slidingPane);
+        mPanes.setParallaxDistance(PARALLAX_SIZE);
         ListView list = (ListView)findViewById(R.id.animalList);
         adapter = new ListViewAdapter(this,opciones,imgOpciones);
         list.setAdapter(adapter);
         list.setBackgroundColor(Color.rgb(178, 223, 219));
 
 
+        lvInfoGeneral = (ListView)findViewById(R.id.listViewInfoGeneral);
+        adaptador = new ListViewAdapter(this,info,imgOInfo);
+        lvInfoGeneral.setAdapter(adaptador);
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_historia_clinica_principal, menu);
+        getMenuInflater().inflate(R.menu.menu_info_general, menu);
         return true;
     }
 
@@ -88,7 +100,7 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
 
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
-               Menu_principal.class);
+                Menu_principal.class);
         startActivity(inicio);
         finish();
     }

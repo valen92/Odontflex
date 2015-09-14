@@ -145,8 +145,6 @@ public class MainActivity extends ActionBarActivity {
         protected void onPostExecute(String feed) {
             progressBar.setVisibility(View.GONE);
             if (usuarios.length>0){
-                Toast.makeText(getApplicationContext(), "Login Exitoso", Toast.LENGTH_LONG).show();
-
                 Intent inicio = new Intent(getApplicationContext(),
                         Menu_principal.class);
                 startActivity(inicio);
