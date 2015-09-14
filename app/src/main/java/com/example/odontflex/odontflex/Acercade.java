@@ -4,17 +4,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class HistoriaClinicaPrincipal extends ActionBarActivity {
+public class Acercade extends AppCompatActivity {
 
     private SlidingPaneLayout mPanes;
     private static final int PARALLAX_SIZE = 30;
@@ -34,7 +31,7 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historia_clinica_principal);
+        setContentView(R.layout.activity_acercade);
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -44,15 +41,12 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
         adapter = new ListViewAdapter(this,opciones,imgOpciones);
         list.setAdapter(adapter);
         list.setBackgroundColor(Color.rgb(178, 223, 219));
-
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_historia_clinica_principal, menu);
+        getMenuInflater().inflate(R.menu.menu_acercade, menu);
         return true;
     }
 
@@ -93,7 +87,7 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
 
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
-               Menu_principal.class);
+                Menu_principal.class);
         startActivity(inicio);
         finish();
     }
@@ -102,6 +96,13 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
         Intent salir = new Intent(getApplicationContext(),
                 MainActivity.class);
         startActivity(salir);
+        finish();
+    }
+
+    public void Atras (View v){
+        Intent atras = new Intent(getApplicationContext(),
+                InfoGeneral.class);
+        startActivity(atras);
         finish();
     }
 }

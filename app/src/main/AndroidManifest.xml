@@ -37,6 +37,10 @@
             android:name=".InfoGeneral"
             android:label="Informacion General" >
         </activity>
+        <activity
+            android:name=".Acercade"
+            android:label="Informacion General" >
+        </activity>
     </application>
 
 </manifest>

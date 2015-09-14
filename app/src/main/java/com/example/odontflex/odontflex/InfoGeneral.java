@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -58,6 +59,25 @@ public class InfoGeneral extends ActionBarActivity {
         lvInfoGeneral = (ListView)findViewById(R.id.listViewInfoGeneral);
         adaptador = new ListViewAdapter(this,info,imgOInfo);
         lvInfoGeneral.setAdapter(adaptador);
+        lvInfoGeneral.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+
+                        break;
+                    case 1:
+                        Intent acercade = new Intent(getApplicationContext(),
+                                Acercade.class);
+                        startActivity(acercade);
+                        finish();
+                        break;
+                }
+
+            }
+
+
+        });
 
     }
 
@@ -76,12 +96,17 @@ public class InfoGeneral extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.opciones) {
-            if (mPanes.closePane()){
-                closePane();
-            } else {
-                openPane();
-            }
+        switch (id){
+            case R.id.opciones:
+                if (mPanes.closePane()){
+                    closePane();
+                } else {
+                    openPane();
+                }
+                break;
+            case  R.id.salir:
+                Salir();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -102,6 +127,13 @@ public class InfoGeneral extends ActionBarActivity {
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
         startActivity(inicio);
+        finish();
+    }
+
+    public void Salir (){
+        Intent salir = new Intent(getApplicationContext(),
+                MainActivity.class);
+        startActivity(salir);
         finish();
     }
 }

@@ -12,4 +12,5 @@
     </string-array>
     <string name="title_activity_historia_clinica_inicio">HistoriaClinicaInicio</string>
     <string name="title_activity_info_general">InfoGeneral</string>
+    <string name="title_activity_acercade">Acercade</string>
 </resources>

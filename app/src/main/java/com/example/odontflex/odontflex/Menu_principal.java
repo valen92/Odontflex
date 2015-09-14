@@ -58,4 +58,11 @@ public class Menu_principal extends AppCompatActivity {
     public void onBackPressed(){
     }
 
+    public void Salir (View v){
+        Intent salir = new Intent(getApplicationContext(),
+                MainActivity.class);
+        startActivity(salir);
+        finish();
+    }
+
 }
