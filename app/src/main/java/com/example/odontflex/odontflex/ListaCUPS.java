@@ -213,7 +213,7 @@ public class ListaCUPS extends AppCompatActivity {
             txtNombre = new TextView(this);
 
             txtId.setText(codigoCup[i]);
-            txtId.setGravity(Gravity.CENTER_VERTICAL);
+            txtId.setGravity(Gravity.CENTER_HORIZONTAL);
             txtId.setTextAppearance(this, R.style.etiqueta);
             txtId.setLayoutParams(layoutId);
 
