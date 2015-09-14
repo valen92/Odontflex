@@ -103,7 +103,7 @@ public class ListaCUPS extends AppCompatActivity {
         cabecera = (TableLayout)findViewById(R.id.cabecera);
         layoutFila = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                 TableRow.LayoutParams.WRAP_CONTENT);
-        layoutId = new TableRow.LayoutParams(120,50);
+        layoutId = new TableRow.LayoutParams(160,TableRow.LayoutParams.WRAP_CONTENT);
         layoutTexto = new TableRow.LayoutParams(480, TableRow.LayoutParams.WRAP_CONTENT);
         agregarCabecera();
         agregarFilasTabla();
@@ -184,12 +184,12 @@ public class ListaCUPS extends AppCompatActivity {
         txtNombre = new TextView(this);
 
         txtId.setText("Codigo");
-        txtId.setGravity(Gravity.CENTER_HORIZONTAL);
+        txtId.setGravity(Gravity.CENTER_VERTICAL);
         txtId.setTextAppearance(this, R.style.etiqueta);
         txtId.setLayoutParams(layoutId);
 
         txtNombre.setText("Nombre");
-        txtNombre.setGravity(Gravity.CENTER_HORIZONTAL);
+        txtNombre.setGravity(Gravity.CENTER_VERTICAL);
         txtNombre.setTextAppearance(this, R.style.etiqueta);
         txtNombre.setLayoutParams(layoutTexto);
 
