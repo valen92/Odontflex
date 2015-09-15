@@ -30,4 +30,7 @@
     <string name="title_activity_acercade">Acercade</string>
     <string name="title_activity_cups">CUPS</string>
     <string name="title_activity_lista_cups">ListaCUPS</string>
+    <string name="title_activity_historia_clinica_info_personal">HistoriaClinicaInfoPersonal
+    </string>
+    <string name="title_activity_historia_clinica_anamnesis">HistoriaClinicaAnamnesis</string>
 </resources>

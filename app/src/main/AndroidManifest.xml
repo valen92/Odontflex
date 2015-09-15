@@ -49,6 +49,14 @@
             android:name=".ListaCUPS"
             android:label="Informacion General" >
         </activity>
+        <activity
+            android:name=".HistoriaClinicaInfoPersonal"
+            android:label="@string/title_activity_historia_clinica_info_personal" >
+        </activity>
+        <activity
+            android:name=".HistoriaClinicaAnamnesis"
+            android:label="@string/title_activity_historia_clinica_anamnesis" >
+        </activity>
     </application>
 
 </manifest>
