@@ -33,4 +33,14 @@
     <string name="title_activity_historia_clinica_info_personal">HistoriaClinicaInfoPersonal
     </string>
     <string name="title_activity_historia_clinica_anamnesis">HistoriaClinicaAnamnesis</string>
+    <string name="title_activity_historia_clinica_alergias_habitos">HistoriaClinicaAlergiasHabitos
+    </string>
+    <string name="title_activity_historia_clinica_examen_estoma">HistoriaClinicaExamenEstoma
+    </string>
+    <string name="title_activity_historia_clinica_examen_perio_dent">
+        HistoriaClinicaExamenPerioDent
+    </string>
+    <string name="title_activity_historia_clinica_odontograma">HistoriaClinicaOdontograma</string>
+    <string name="title_activity_historia_clinica_observaciones">HistoriaClinicaObservaciones
+    </string>
 </resources>

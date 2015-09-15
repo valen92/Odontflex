@@ -57,6 +57,26 @@
             android:name=".HistoriaClinicaAnamnesis"
             android:label="@string/title_activity_historia_clinica_anamnesis" >
         </activity>
+        <activity
+            android:name=".HistoriaClinicaAlergiasHabitos"
+            android:label="@string/title_activity_historia_clinica_alergias_habitos" >
+        </activity>
+        <activity
+            android:name=".HistoriaClinicaExamenEstoma"
+            android:label="@string/title_activity_historia_clinica_examen_estoma" >
+        </activity>
+        <activity
+            android:name=".HistoriaClinicaExamenPerioDent"
+            android:label="@string/title_activity_historia_clinica_examen_perio_dent" >
+        </activity>
+        <activity
+            android:name=".HistoriaClinicaOdontograma"
+            android:label="@string/title_activity_historia_clinica_odontograma" >
+        </activity>
+        <activity
+            android:name=".HistoriaClinicaObservaciones"
+            android:label="@string/title_activity_historia_clinica_observaciones" >
+        </activity>
     </application>
 
 </manifest>
