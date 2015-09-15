@@ -185,12 +185,12 @@ public class CUPS extends AppCompatActivity {
                     HttpEntity resEntity = respuesta.getEntity();
 
                     InputStream is = resEntity.getContent();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"),8);
                     String dato = null;
                     StringBuilder sb = new StringBuilder();
 
                     while((dato = br.readLine()) != null){
-                        sb.append(dato);
+                        sb.append(dato + "\n");
                     }
 
                     is.close();
@@ -240,8 +240,8 @@ public class CUPS extends AppCompatActivity {
                 finish();
 
             } else {
-                Toast.makeText(getApplicationContext(), "Usuario y/o Password incorrecta, " +
-                        "intentelo de nuevo", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "No se han encontrado resultados, " +
+                        "para la consulta", Toast.LENGTH_LONG).show();
             }
         }
     }
