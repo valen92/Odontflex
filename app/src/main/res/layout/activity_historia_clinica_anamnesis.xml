@@ -205,21 +205,19 @@
         android:textColor="#ffffff"
         android:id="@+id/button1"
         android:background="@drawable/button"
-        android:layout_below="@+id/checkBox19"
-        android:layout_marginTop="8dp"
-        android:layout_alignRight="@+id/checkBox14"
-        android:layout_alignEnd="@+id/checkBox14"
-        android:layout_toEndOf="@+id/checkBox5"
-        android:layout_toRightOf="@+id/checkBox5" />
+        android:layout_above="@+id/imageView3"
+        android:layout_alignRight="@+id/checkBox5"
+        android:layout_alignEnd="@+id/checkBox5" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:text="Siguiente"
         android:textColor="#ffffff"
         android:id="@+id/button2"
-        android:layout_marginTop="398dp"
         android:background="@drawable/button"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/checkBox19"
+        android:layout_toStartOf="@+id/checkBox19" />
     <ImageView
         android:layout_width="35dp"
         android:layout_height="35dp"

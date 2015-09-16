@@ -51,11 +51,11 @@
         </activity>
         <activity
             android:name=".HistoriaClinicaInfoPersonal"
-            android:label="@string/title_activity_historia_clinica_info_personal" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".HistoriaClinicaAnamnesis"
-            android:label="@string/title_activity_historia_clinica_anamnesis" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".HistoriaClinicaAlergiasHabitos"
