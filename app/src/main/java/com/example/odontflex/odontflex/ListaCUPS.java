@@ -46,6 +46,7 @@ public class ListaCUPS extends AppCompatActivity {
     private String[] mListItems;
     ListViewAdapter adapter;
     ListView lvCups;
+    String tipoCup;
     String[] opciones = new  String[]{
             "",
             "",
@@ -55,6 +56,23 @@ public class ListaCUPS extends AppCompatActivity {
             R.drawable.glyphicons_029_notes_2,
             R.drawable.iconoconsultorio,
 
+    };
+    
+    String[] CUPS = new  String[]{
+            "Endodoncia",
+            "Operatoria",
+            "Ortopedia, Ortodoncia, y otros procedimientos oclusales no restauradores",
+            "Periodoncia, Cirugía Oral y Maxilofacial (1)",
+            "Periodoncia, Cirugía Oral y Maxilofacial (2)",
+            "Periodoncia, Cirugía Oral y Maxilofacial (3)",
+            "Promoción de salud y Prevención de enfermedades",
+            "Prótesis",
+            "Radiología",
+            "Consultas",
+            "Laboratorios - Examenes y Análisis (1)",
+            "Laboratorios - Examenes y Análisis (2)",
+            "Urgencias",
+            "Otros Códigos"
     };
     TableLayout tabla;
     TableLayout cabecera;
@@ -71,9 +89,13 @@ public class ListaCUPS extends AppCompatActivity {
         Intent dato = getIntent();
         codigoCup = dato.getStringArrayExtra("codigoCups");
         nomCup = dato.getStringArrayExtra("nomCups");
+        tipoCup = dato.getStringExtra("opcion");
         MAX_FILAS = codigoCup.length;
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
+
+        TextView txtTipoCup = (TextView)findViewById(R.id.txtTipoCup);
+        txtTipoCup.setText(""+CUPS[Integer.parseInt(tipoCup)]);
 
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
         mPanes = (SlidingPaneLayout)findViewById(R.id.slidingPane);
@@ -184,12 +206,12 @@ public class ListaCUPS extends AppCompatActivity {
         txtNombre = new TextView(this);
 
         txtId.setText("Codigo");
-        txtId.setGravity(Gravity.CENTER_VERTICAL);
+        txtId.setGravity(Gravity.CENTER_HORIZONTAL);
         txtId.setTextAppearance(this, R.style.etiqueta);
         txtId.setLayoutParams(layoutId);
 
         txtNombre.setText("Nombre");
-        txtNombre.setGravity(Gravity.CENTER_VERTICAL);
+        txtNombre.setGravity(Gravity.CENTER_HORIZONTAL);
         txtNombre.setTextAppearance(this, R.style.etiqueta);
         txtNombre.setLayoutParams(layoutTexto);
 
@@ -213,12 +235,12 @@ public class ListaCUPS extends AppCompatActivity {
             txtNombre = new TextView(this);
 
             txtId.setText(codigoCup[i]);
-            txtId.setGravity(Gravity.CENTER_HORIZONTAL);
+            txtId.setGravity(Gravity.CENTER_VERTICAL);
             txtId.setTextAppearance(this, R.style.etiqueta);
             txtId.setLayoutParams(layoutId);
 
             txtNombre.setText(nomCup[i]);
-            txtId.setGravity(Gravity.CENTER_HORIZONTAL);
+            txtId.setGravity(Gravity.CENTER_VERTICAL);
             txtNombre.setTextAppearance(this, R.style.etiqueta);
             txtNombre.setLayoutParams(layoutTexto);
 

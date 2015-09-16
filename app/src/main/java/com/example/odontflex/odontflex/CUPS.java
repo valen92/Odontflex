@@ -236,6 +236,7 @@ public class CUPS extends AppCompatActivity {
                         ListaCUPS.class);
                 listaCups.putExtra("codigoCups", codigoCups);
                 listaCups.putExtra("nomCups", nomCups);
+                listaCups.putExtra("opcion", Integer.toString(tipoCup-1));
                 startActivity(listaCups);
                 finish();
 
