@@ -77,6 +77,22 @@
             android:name=".HistoriaClinicaObservaciones"
             android:label="@string/title_activity_historia_clinica_observaciones" >
         </activity>
+        <activity
+            android:name=".HistoriaPacienteExisteMenuPrincipal"
+            android:label="@string/title_activity_historia_paciente_existe_menu_principal" >
+        </activity>
+        <activity
+            android:name=".HistoriaPacienteExisteOdontogramaResumen"
+            android:label="@string/title_activity_historia_paciente_existe_odontograma_resumen" >
+        </activity>
+        <activity
+            android:name=".HistoriaClinicaNotasEvo"
+            android:label="@string/title_activity_historia_clinica_notas_evo" >
+        </activity>
+        <activity
+            android:name=".HistoriaPacienteExisteNotasEvoResumen"
+            android:label="@string/title_activity_historia_paciente_existe_notas_evo_resumen" >
+        </activity>
     </application>
 
 </manifest>

@@ -44,4 +44,14 @@
     <string name="title_activity_historia_clinica_odontograma">HistoriaClinicaOdontograma</string>
     <string name="title_activity_historia_clinica_observaciones">HistoriaClinicaObservaciones
     </string>
+    <string name="title_activity_historia_paciente_existe_menu_principal">
+        HistoriaPacienteExisteMenuPrincipal
+    </string>
+    <string name="title_activity_historia_paciente_existe_odontograma_resumen">
+        HistoriaPacienteExisteOdontogramaResumen
+    </string>
+    <string name="title_activity_historia_clinica_notas_evo">HistoriaClinicaNotasEvo</string>
+    <string name="title_activity_historia_paciente_existe_notas_evo_resumen">
+        HistoriaPacienteExisteNotasEvoResumen
+    </string>
 </resources>
