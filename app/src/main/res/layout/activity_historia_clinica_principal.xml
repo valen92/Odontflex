@@ -79,7 +79,8 @@
             android:layout_marginBottom="67dp"
             android:layout_above="@+id/imageView3"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/button" />
+            android:background="@drawable/button"
+            android:onClick="Consultar" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -91,6 +92,15 @@
             android:layout_above="@+id/button2"
             android:layout_alignRight="@+id/textView"
             android:layout_alignEnd="@+id/textView" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_alignBottom="@+id/imageView3"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="false" />
     </RelativeLayout>
 
 

@@ -144,6 +144,7 @@ public class MainActivity extends ActionBarActivity {
             if (usuarios.length>0){
                 Intent inicio = new Intent(getApplicationContext(),
                         Menu_principal.class);
+                inicio.putExtra("idOdontologo", usuarios[0]);
                 startActivity(inicio);
                 finish();
 

@@ -1,5 +1,6 @@
 package com.example.odontflex.odontflex;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,10 +8,16 @@ import android.view.MenuItem;
 
 public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
 
+    String idPaciente, idOdontologo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historia_clinica_info_personal);
+        Intent dato = getIntent();
+        idOdontologo = dato.getStringExtra("idOdontologo");
+        idPaciente = dato.getStringExtra("idPaciente");
+
     }
 
     @Override

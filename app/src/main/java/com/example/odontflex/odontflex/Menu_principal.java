@@ -26,10 +26,14 @@ public class Menu_principal extends AppCompatActivity {
 
     };
 
+    String idOdontologo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+        Intent dato = getIntent();
+        idOdontologo = dato.getStringExtra("idOdontologo");
         final ListView listaFr = (ListView) findViewById(R.id.listViewMenuPrincipal);
         adapter = new ListViewAdapter(this,tituloMenuPpl,imagenesMenuPpl);
         listaFr.setAdapter(adapter);
@@ -39,6 +43,7 @@ public class Menu_principal extends AppCompatActivity {
                 switch (position){
                     case 0: Intent inicio = new Intent(getApplicationContext(),
                              HistoriaClinicaPrincipal.class);
+                        inicio.putExtra("idOdontologo", idOdontologo);
                         startActivity(inicio);
                         finish();
                         break;
