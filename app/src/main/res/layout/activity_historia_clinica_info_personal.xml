@@ -47,7 +47,8 @@
             android:id="@+id/button"
             android:background="@drawable/button"
             android:layout_alignBottom="@+id/imageView3"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:onClick="Siguiente" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,7 +67,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Nombre:"
             android:id="@+id/textView10"
-            android:layout_below="@+id/editText"
+            android:layout_below="@+id/txtIdPaciente"
             android:layout_alignLeft="@+id/textView9"
             android:layout_alignStart="@+id/textView9"
             android:layout_marginTop="10dp"/>
@@ -121,7 +122,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Ocupación:"
             android:id="@+id/textView15"
-            android:layout_below="@+id/editText6"
+            android:layout_below="@+id/txtDirPaciente"
             android:layout_alignLeft="@+id/textView14"
             android:layout_alignStart="@+id/textView14"
             android:layout_marginTop="10dp"/>
@@ -140,7 +141,7 @@
         <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/txtIdPaciente"
             android:layout_alignBottom="@+id/textView9"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -151,80 +152,83 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText2"
+            android:id="@+id/txtNomPaciente"
             android:layout_above="@+id/textView11"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/editText"
-            android:layout_alignStart="@+id/editText" />
+            android:layout_alignLeft="@+id/txtIdPaciente"
+            android:layout_alignStart="@+id/txtIdPaciente" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/txtApePaciente"
             android:layout_above="@+id/textView12"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/editText2"
-            android:layout_alignStart="@+id/editText2" />
+            android:layout_alignLeft="@+id/txtNomPaciente"
+            android:layout_alignStart="@+id/txtNomPaciente" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="date"
             android:ems="10"
-            android:id="@+id/editText4"
-            android:layout_above="@+id/editText5"
-            android:layout_alignLeft="@+id/editText3"
-            android:layout_alignStart="@+id/editText3" />
+            android:id="@+id/txtFechaNacimiento"
+            android:layout_above="@+id/txtEdadPaciente"
+            android:layout_alignLeft="@+id/txtApePaciente"
+            android:layout_alignStart="@+id/txtApePaciente"
+            android:layout_toStartOf="@+id/imageView3"
+            android:layout_alignRight="@+id/imageView3"
+            android:layout_alignEnd="@+id/imageView3" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText5"
+            android:id="@+id/txtEdadPaciente"
             android:layout_above="@+id/textView14"
-            android:layout_alignRight="@+id/editText4"
-            android:layout_alignEnd="@+id/editText4"
-            android:layout_alignLeft="@+id/editText4"
-            android:layout_alignStart="@+id/editText4" />
+            android:layout_alignLeft="@+id/txtFechaNacimiento"
+            android:layout_alignStart="@+id/txtFechaNacimiento"
+            android:layout_alignRight="@+id/btnCalendario"
+            android:layout_alignEnd="@+id/btnCalendario" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:id="@+id/editText6"
+            android:id="@+id/txtDirPaciente"
             android:layout_alignBottom="@+id/textView14"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/editText5"
-            android:layout_alignStart="@+id/editText5" />
+            android:layout_alignLeft="@+id/txtEdadPaciente"
+            android:layout_alignStart="@+id/txtEdadPaciente" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText7"
+            android:id="@+id/txtOcupacionPaciente"
             android:layout_alignBottom="@+id/textView15"
-            android:layout_alignRight="@+id/editText6"
-            android:layout_alignEnd="@+id/editText6"
-            android:layout_alignLeft="@+id/editText6"
-            android:layout_alignStart="@+id/editText6" />
+            android:layout_alignRight="@+id/txtDirPaciente"
+            android:layout_alignEnd="@+id/txtDirPaciente"
+            android:layout_alignLeft="@+id/txtDirPaciente"
+            android:layout_alignStart="@+id/txtDirPaciente" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText8"
+            android:id="@+id/txtTelPaciente"
             android:layout_alignBottom="@+id/textView16"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/editText7"
-            android:layout_alignStart="@+id/editText7" />
+            android:layout_alignLeft="@+id/txtOcupacionPaciente"
+            android:layout_alignStart="@+id/txtOcupacionPaciente" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -235,6 +239,15 @@
             android:layout_below="@+id/textView12"
             android:layout_alignLeft="@+id/textView12"
             android:layout_alignStart="@+id/textView12" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCalendario"
+            android:src="@drawable/calendario"
+            android:layout_alignBottom="@+id/txtFechaNacimiento"
+            android:layout_alignRight="@+id/txtApePaciente"
+            android:layout_alignEnd="@+id/txtApePaciente" />
     </RelativeLayout>
 
 

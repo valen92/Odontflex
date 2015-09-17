@@ -228,7 +228,7 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
 
             for(int i = 0; i < jsonO.length(); i++){
                 try {
-                    paciente[i] = jsonO.getJSONObject(i).getString("idOdontologo");
+                    paciente[i] = jsonO.getJSONObject(i).getString("idPaciente");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
