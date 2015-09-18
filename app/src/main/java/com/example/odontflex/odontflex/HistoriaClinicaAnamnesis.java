@@ -184,7 +184,8 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
     public void mostrarDialogo(View v){
         FragmentManager manager = getFragmentManager();
         DialogoObservaciones dialogo = new DialogoObservaciones();
-        dialogo.show(manager,"Observaciones:");
+        dialogo.show(manager,"Observaciones");
+        //dialogo.guardarObservacion
 
     }
 
