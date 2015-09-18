@@ -176,6 +176,13 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
     public void onBackPressed(){
     }
 
+    public void Inicio (View v){
+        Intent inicio = new Intent(getApplicationContext(),
+                Menu_principal.class);
+        startActivity(inicio);
+        finish();
+    }
+
     public void Salir (){
         Intent salir = new Intent(getApplicationContext(),
                 MainActivity.class);
@@ -277,7 +284,7 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Insertado con exito", Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
                     HistoriaClinicaAnamnesis.class);
-            //inicio.putExtra("idOdontologo", usuarios[0]);
+            inicio.putExtra("idPaciente", idPaciente);
             startActivity(inicio);
             finish();
         }

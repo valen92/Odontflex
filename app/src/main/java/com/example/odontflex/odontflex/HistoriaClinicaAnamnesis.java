@@ -46,12 +46,12 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
     private static final int PARALLAX_SIZE = 30;
     private String[] mListItems;
     ListViewAdapter adapter;
-    String[] opciones = new  String[]{
+    String[] opciones = new String[]{
             "",
             ""
     };
 
-    int[] imgOpciones={
+    int[] imgOpciones = {
             R.drawable.iconoconsultorio,
             R.drawable.glyphicons_195_circle_info
 
@@ -76,31 +76,30 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
-        CheckTratamientoMed = (CheckBox)findViewById(R.id.CheckTratamientoMed);
-        CheckIngesMedicamentos = (CheckBox)findViewById(R.id.CheckIngesMedicamentos);
-        CheckEnfRespiratorias = (CheckBox)findViewById(R.id.CheckEnfRespiratorias);
-        CheckEnfCardiacas = (CheckBox)findViewById(R.id.CheckEnfCardiacas);
-        CheckEnfGastrointestinales = (CheckBox)findViewById(R.id.CheckEnfGastrointestinales);
-        CheckDiabetes = (CheckBox)findViewById(R.id.CheckDiabetes);
-        CheckHipertension = (CheckBox)findViewById(R.id.CheckHipertension);
-        CheckHipotension = (CheckBox)findViewById(R.id.CheckHipotension);
-        CheckFiebreReumatica = (CheckBox)findViewById(R.id.CheckFiebreReumatica);
-        CheckArtritis = (CheckBox)findViewById(R.id.CheckArtritis);
-        CheckInfecciones = (CheckBox)findViewById(R.id.CheckInfecciones);
-        CheckIrradiaciones = (CheckBox)findViewById(R.id.CheckIrradiaciones);
-        CheckHemorragias = (CheckBox)findViewById(R.id.CheckHemorragias);
-        CheckSinusitis = (CheckBox)findViewById(R.id.CheckSinusitis);
-        CheckAccidentes = (CheckBox)findViewById(R.id.CheckAccidentes);
-        CheckEmbarazo = (CheckBox)findViewById(R.id.CheckEmbarazo);
-        CheckHepatitis = (CheckBox)findViewById(R.id.CheckHepatitis);
-        CheckVih = (CheckBox)findViewById(R.id.CheckVih);
-
+        CheckTratamientoMed = (CheckBox) findViewById(R.id.CheckTratamientoMed);
+        CheckIngesMedicamentos = (CheckBox) findViewById(R.id.CheckIngesMedicamentos);
+        CheckEnfRespiratorias = (CheckBox) findViewById(R.id.CheckEnfRespiratorias);
+        CheckEnfCardiacas = (CheckBox) findViewById(R.id.CheckEnfCardiacas);
+        CheckEnfGastrointestinales = (CheckBox) findViewById(R.id.CheckEnfGastrointestinales);
+        CheckDiabetes = (CheckBox) findViewById(R.id.CheckDiabetes);
+        CheckHipertension = (CheckBox) findViewById(R.id.CheckHipertension);
+        CheckHipotension = (CheckBox) findViewById(R.id.CheckHipotension);
+        CheckFiebreReumatica = (CheckBox) findViewById(R.id.CheckFiebreReumatica);
+        CheckArtritis = (CheckBox) findViewById(R.id.CheckArtritis);
+        CheckInfecciones = (CheckBox) findViewById(R.id.CheckInfecciones);
+        CheckIrradiaciones = (CheckBox) findViewById(R.id.CheckIrradiaciones);
+        CheckHemorragias = (CheckBox) findViewById(R.id.CheckHemorragias);
+        CheckSinusitis = (CheckBox) findViewById(R.id.CheckSinusitis);
+        CheckAccidentes = (CheckBox) findViewById(R.id.CheckAccidentes);
+        CheckEmbarazo = (CheckBox) findViewById(R.id.CheckEmbarazo);
+        CheckHepatitis = (CheckBox) findViewById(R.id.CheckHepatitis);
+        CheckVih = (CheckBox) findViewById(R.id.CheckVih);
 
 
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
-        mPanes = (SlidingPaneLayout)findViewById(R.id.slidingPane);
-        ListView list = (ListView)findViewById(R.id.animalList);
-        adapter = new ListViewAdapter(this,opciones,imgOpciones);
+        mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPane);
+        ListView list = (ListView) findViewById(R.id.animalList);
+        adapter = new ListViewAdapter(this, opciones, imgOpciones);
         list.setAdapter(adapter);
         list.setBackgroundColor(Color.rgb(178, 223, 219));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -139,15 +138,15 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        switch (id){
+        switch (id) {
             case R.id.opciones:
-                if (mPanes.closePane()){
+                if (mPanes.closePane()) {
                     closePane();
                 } else {
                     openPane();
                 }
                 break;
-            case  R.id.salir:
+            case R.id.salir:
                 Salir();
                 break;
         }
@@ -155,18 +154,25 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void openPane(){
+    private void openPane() {
         mPanes.openPane();
     }
 
-    private void closePane(){
+    private void closePane() {
         mPanes.closePane();
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
     }
 
-    public void Salir (){
+    public void Inicio(View v) {
+        Intent inicio = new Intent(getApplicationContext(),
+                Menu_principal.class);
+        startActivity(inicio);
+        finish();
+    }
+
+    public void Salir() {
         Intent salir = new Intent(getApplicationContext(),
                 MainActivity.class);
         startActivity(salir);
@@ -174,167 +180,136 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
     }
 
 
-    public void Siguiente (View v){
-
-
+    public void Siguiente(View v) {
         onCheckboxClicked();
         new insertar().execute();
 
     }
 
 
-
     private void onCheckboxClicked() {
+        if (CheckTratamientoMed.isChecked()) {
+            TratamientoMed = "1";
+
+        } else {
+            TratamientoMed = "0";
+        }
 
 
-                        if (CheckTratamientoMed.isChecked()) {
-                            TratamientoMed = "1";
+        if (CheckIngesMedicamentos.isChecked()) {
+            IngesMedicamentos = "1";
 
-                        }
-                        else {
-                            TratamientoMed = "0";
-                        }
-
+        } else {
+            IngesMedicamentos = "0";
+        }
 
 
-                        if (CheckIngesMedicamentos.isChecked()) {
-                            IngesMedicamentos = "1";
-
-                        }
-                        else {
-                            IngesMedicamentos = "0";
-                        }
+        if (CheckEnfRespiratorias.isChecked()) {
+            EnfRespiratorias = "1";
+        } else {
+            EnfRespiratorias = "0";
+        }
 
 
-                        if (CheckEnfRespiratorias.isChecked()) {
-                            EnfRespiratorias = "1";
-                        }
-                        else {
-                            EnfRespiratorias = "0";
-                        }
+        if (CheckEnfCardiacas.isChecked()) {
+            EnfCardiacas = "1";
+        } else {
+            EnfCardiacas = "0";
+        }
 
 
-
-                        if (CheckEnfCardiacas.isChecked()) {
-                            EnfCardiacas = "1";
-                        }
-                        else {
-                            EnfCardiacas = "0";
-                        }
+        if (CheckEnfGastrointestinales.isChecked()) {
+            EnfGastrointestinales = "1";
+        } else {
+            EnfGastrointestinales = "0";
+        }
 
 
-                        if (CheckEnfGastrointestinales.isChecked()) {
-                            EnfGastrointestinales = "1";
-                        }
-                        else {
-                            EnfGastrointestinales = "0";
-                        }
+        if (CheckDiabetes.isChecked()) {
+            Diabetes = "1";
+        } else {
+            Diabetes = "0";
+        }
 
 
-                        if (CheckDiabetes.isChecked()) {
-                            Diabetes = "1";
-                        }
-                        else {
-                            Diabetes = "0";
-                        }
+        if (CheckHipertension.isChecked()) {
+            Hipertension = "1";
+        } else {
+            Hipertension = "0";
+        }
 
 
+        if (CheckHipotension.isChecked()) {
+            Hipotension = "1";
+        } else {
+            Hipotension = "0";
+        }
 
 
-                        if (CheckHipertension.isChecked()) {
-                            Hipertension = "1";
-                        }
-                        else {
-                            Hipertension = "0";
-                        }
+        if (CheckFiebreReumatica.isChecked()) {
+            FiebreReumatica = "1";
+        } else {
+            FiebreReumatica = "0";
+        }
 
 
+        if (CheckArtritis.isChecked()) {
+            Artritis = "1";
+        } else {
+            Artritis = "0";
+        }
+
+        if (CheckInfecciones.isChecked()) {
+            Infecciones = "1";
+        } else {
+            Infecciones = "0";
+        }
+
+        if (CheckIrradiaciones.isChecked()) {
+            Irradiaciones = "1";
+        } else {
+            Irradiaciones = "0";
+        }
 
 
-                        if (CheckHipotension.isChecked()) {
-                            Hipotension = "1";
-                        }
-                        else {
-                            Hipotension = "0";
-                        }
+        if (CheckHemorragias.isChecked()) {
+            Hemorragias = "1";
+        } else {
+            Hemorragias = "0";
+        }
 
 
-
-                        if (CheckFiebreReumatica.isChecked()) {
-                            FiebreReumatica = "1";
-                        }
-                        else {
-                            FiebreReumatica = "0";
-                        }
+        if (CheckSinusitis.isChecked()) {
+            Sinusitis = "1";
+        } else {
+            Sinusitis = "0";
+        }
 
 
-                        if (CheckArtritis.isChecked()) {
-                            Artritis = "1";
-                        }
-                        else {
-                            Artritis = "0";
-                        }
+        if (CheckAccidentes.isChecked()) {
+            Accidentes = "1";
+        } else {
+            Accidentes = "0";
+        }
 
-                        if (CheckInfecciones.isChecked()) {
-                            Infecciones = "1";
-                        }
-                        else {
-                            Infecciones = "0";
-                        }
-
-                        if (CheckIrradiaciones.isChecked()) {
-                            Irradiaciones = "1";
-                        }
-                        else {
-                            Irradiaciones = "0";
-                        }
+        if (CheckEmbarazo.isChecked()) {
+            Embarazo = "1";
+        } else {
+            Embarazo = "0";
+        }
 
 
-                        if (CheckHemorragias.isChecked()) {
-                            Hemorragias = "1";
-                        }
-                        else {
-                            Hemorragias = "0";
-                        }
+        if (CheckHepatitis.isChecked()) {
+            Hepatitis = "1";
+        } else {
+            Hepatitis = "0";
+        }
 
-
-                        if (CheckSinusitis.isChecked()) {
-                            Sinusitis = "1";
-                        }
-                        else {
-                            Sinusitis = "0";
-                        }
-
-
-                       if (CheckAccidentes.isChecked()) {
-                            Accidentes = "1";
-                        }
-                        else {
-                            Accidentes = "0";
-                        }
-
-                        if (CheckEmbarazo.isChecked()) {
-                            Embarazo = "1";
-                        }
-                        else {
-                            Embarazo = "0";
-                        }
-
-
-                        if (CheckHepatitis.isChecked()) {
-                            Hepatitis = "1";
-                        }
-                        else {
-                            Hepatitis = "0";
-                        }
-
-                        if (CheckVih.isChecked()) {
-                            Vih = "1";
-                        }
-                        else {
-                            Vih = "0";
-                        }
-
+        if (CheckVih.isChecked()) {
+            Vih = "1";
+        } else {
+            Vih = "0";
+        }
     }
 
     class insertar extends AsyncTask<String, String, String> {
@@ -418,9 +393,6 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
             finish();
         }
     }
-
-
-
 
 }
 

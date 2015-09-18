@@ -250,7 +250,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="33dp" />
+            android:layout_marginBottom="33dp"
+            android:onClick="Inicio" />
 
     </RelativeLayout>
 
