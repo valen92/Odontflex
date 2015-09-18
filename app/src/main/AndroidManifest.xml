@@ -106,6 +106,10 @@
             android:name=".Odontologo"
             android:label="Consultorio" >
         </activity>
+        <activity
+            android:name=".DialogoObservaciones"
+            android:label="@string/title_activity_dialogo_observaciones" >
+        </activity>
     </application>
 
 </manifest>
