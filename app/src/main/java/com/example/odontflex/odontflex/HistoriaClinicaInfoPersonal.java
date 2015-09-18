@@ -81,7 +81,7 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
-        txtIdPaciente = (TextView)findViewById(R.id.txtIdPaciente);
+        txtIdPaciente = (TextView)findViewById(R.id.txtIdOdontologo);
         txtNomPaciente = (TextView)findViewById(R.id.txtNomOdontologo);
         txtApePaciente = (TextView)findViewById(R.id.txtApeOdontologo);
         txtFechaNacimiento = (TextView)findViewById(R.id.txtFechaNacimiento);

@@ -21,7 +21,8 @@ import android.widget.Toast;
 
 public class Odontologo extends AppCompatActivity {
 
-    String[] idOdontologo, nomOdontologo;
+    String[] idOdontologo, nomOdontologo, apeOdontologo, tarProOdontologo, fechaNacOdontologo,
+            dirOdontologo, telOdontologo;
     private SlidingPaneLayout mPanes;
     private static final int PARALLAX_SIZE = 30;
     private String[] mListItems;
@@ -55,6 +56,11 @@ public class Odontologo extends AppCompatActivity {
         Intent dato = getIntent();
         nomOdontologo = dato.getStringArrayExtra("nomOdontologo");
         idOdontologo = dato.getStringArrayExtra("idOdontologo");
+        apeOdontologo = dato.getStringArrayExtra("apeOdontologo");
+        tarProOdontologo = dato.getStringArrayExtra("tarProOdontologo");
+        fechaNacOdontologo = dato.getStringArrayExtra("fechaNacOdontologo");
+        dirOdontologo = dato.getStringArrayExtra("dirOdontologo");
+        telOdontologo = dato.getStringArrayExtra("telOdontologo");
         MAX_FILAS = nomOdontologo.length;
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
@@ -213,7 +219,7 @@ public class Odontologo extends AppCompatActivity {
             txtId.setTextAppearance(this, R.style.etiqueta);
             txtId.setLayoutParams(layoutId);
 
-            txtNombre.setText(nomOdontologo[i]);
+            txtNombre.setText(nomOdontologo[i] + " " + apeOdontologo[i]);
             txtNombre.setGravity(Gravity.CENTER_VERTICAL);
             txtNombre.setPadding(10, 0, 0, 0);
             txtNombre.setTextAppearance(this, R.style.etiqueta);
@@ -223,8 +229,18 @@ public class Odontologo extends AppCompatActivity {
             imgLupa.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
-                                               Toast.makeText(getApplicationContext(), "id: " +
-                                                       idOdontologo[posicion], Toast.LENGTH_LONG).show();
+                                               Intent odontologo = new Intent(getApplicationContext(),
+                                                       DetalleOdontologo.class);
+                                               odontologo.putExtra("idOdontologo", idOdontologo);
+                                               odontologo.putExtra("nomOdontologo", nomOdontologo);
+                                               odontologo.putExtra("apeOdontologo", apeOdontologo);
+                                               odontologo.putExtra("tarProOdontologo", tarProOdontologo);
+                                               odontologo.putExtra("fechaNacOdontologo", fechaNacOdontologo);
+                                               odontologo.putExtra("dirOdontologo", dirOdontologo);
+                                               odontologo.putExtra("telOdontologo", telOdontologo);
+                                               odontologo.putExtra("posicion", Integer.toString(posicion));
+                                               startActivity(odontologo);
+                                               finish();
                                            }
                                        }
             );

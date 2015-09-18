@@ -64,7 +64,8 @@ public class Consultorio extends AppCompatActivity {
     String SERVER_URL = "http://www.mustflex.com/Odontflex/login.php";
     static String json;
     JSONArray jsonO;
-    String [] nomPaciente, telPaciente, idOdontologo, nomOdontologo;
+    String [] nomPaciente, telPaciente, idOdontologo, nomOdontologo, apeOdontologo, tarProOdontologo, fechaNacOdontologo,
+        dirOdontologo, telOdontologo;
     ProgressBar progressBar;
 
 
@@ -327,11 +328,21 @@ public class Consultorio extends AppCompatActivity {
             }
             idOdontologo = new String[jsonO.length()];
             nomOdontologo = new String[jsonO.length()];
+            apeOdontologo = new String[jsonO.length()];
+            tarProOdontologo = new String[jsonO.length()];
+            fechaNacOdontologo = new String[jsonO.length()];
+            dirOdontologo = new String[jsonO.length()];
+            telOdontologo = new String[jsonO.length()];
 
             for(int i = 0; i < jsonO.length(); i++){
                 try {
                     idOdontologo[i] = jsonO.getJSONObject(i).getString("idOdontologo");
-                    nomOdontologo[i] = jsonO.getJSONObject(i).getString("nombreOdontologo") + " " + jsonO.getJSONObject(i).getString("apellidosOdontologo");
+                    nomOdontologo[i] = jsonO.getJSONObject(i).getString("nombreOdontologo");
+                    apeOdontologo[i] = jsonO.getJSONObject(i).getString("apellidosOdontologo");
+                    tarProOdontologo[i] = jsonO.getJSONObject(i).getString("tarjetaprofOdontologo");
+                    fechaNacOdontologo[i] = jsonO.getJSONObject(i).getString("fechanacOdontologo");
+                    dirOdontologo[i] = jsonO.getJSONObject(i).getString("direccionresOdontologo");
+                    telOdontologo[i] = jsonO.getJSONObject(i).getString("telefonoOdontologo");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -348,6 +359,11 @@ public class Consultorio extends AppCompatActivity {
                         Odontologo.class);
                 odontologo.putExtra("idOdontologo", idOdontologo);
                 odontologo.putExtra("nomOdontologo", nomOdontologo);
+                odontologo.putExtra("apeOdontologo", apeOdontologo);
+                odontologo.putExtra("tarProOdontologo", tarProOdontologo);
+                odontologo.putExtra("fechaNacOdontologo", fechaNacOdontologo);
+                odontologo.putExtra("dirOdontologo", dirOdontologo);
+                odontologo.putExtra("telOdontologo", telOdontologo);
                 startActivity(odontologo);
                 finish();
 
