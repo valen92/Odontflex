@@ -71,6 +71,14 @@
             android:layout_marginBottom="33dp"
             android:onClick="Inicio" />
 
+        <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_above="@+id/imageView3"
+            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
 
 

@@ -114,7 +114,10 @@ public class ListaCUPS extends AppCompatActivity {
                         finish();
                         break;
                     case 1:
-
+                        Intent consultorio = new Intent(getApplicationContext(),
+                                Consultorio.class);
+                        startActivity(consultorio);
+                        finish();
                         break;
                 }
 

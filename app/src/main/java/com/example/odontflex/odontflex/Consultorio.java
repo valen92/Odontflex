@@ -2,16 +2,38 @@ package com.example.odontflex.odontflex;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 public class Consultorio extends AppCompatActivity {
 
@@ -39,6 +61,13 @@ public class Consultorio extends AppCompatActivity {
             R.drawable.glyphicons_195_circle_info,
     };
 
+    String SERVER_URL = "http://www.mustflex.com/Odontflex/login.php";
+    static String json;
+    JSONArray jsonO;
+    String [] nomPaciente, telPaciente, idOdontologo, nomOdontologo;
+    ProgressBar progressBar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +77,8 @@ public class Consultorio extends AppCompatActivity {
 
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
         mPanes = (SlidingPaneLayout)findViewById(R.id.slidingPane);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
         mPanes.setParallaxDistance(PARALLAX_SIZE);
         ListView list = (ListView)findViewById(R.id.animalList);
         adapter = new ListViewAdapter(this,opciones,imgOpciones);
@@ -63,18 +94,10 @@ public class Consultorio extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        /*Intent cups = new Intent(getApplicationContext(),
-                                CUPS.class);
-                        startActivity(cups);
-                        finish();*/
-                        Toast.makeText(getApplicationContext(), "Pacientes", Toast.LENGTH_LONG).show();
+                        new paciente().execute();
                         break;
                     case 1:
-                       /* Intent acercade = new Intent(getApplicationContext(),
-                                Acercade.class);
-                        startActivity(acercade);
-                        finish();*/
-                        Toast.makeText(getApplicationContext(), "Odontologo", Toast.LENGTH_LONG).show();
+                        new odontologo().execute();
                         break;
                 }
 
@@ -93,7 +116,10 @@ public class Consultorio extends AppCompatActivity {
                         finish();
                         break;
                     case 1:
-
+                        Intent info = new Intent(getApplicationContext(),
+                                InfoGeneral.class);
+                        startActivity(info);
+                        finish();
                         break;
                 }
 
@@ -158,5 +184,177 @@ public class Consultorio extends AppCompatActivity {
                 MainActivity.class);
         startActivity(salir);
         finish();
+    }
+
+
+
+    class paciente extends AsyncTask<String, String, String> {
+
+        private Exception exception;
+
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        protected String doInBackground(String... urls) {
+            HttpClient peticion = new DefaultHttpClient();
+            HttpPost envio = new HttpPost(SERVER_URL);
+            ArrayList<NameValuePair> datos = new ArrayList<NameValuePair>(0);
+
+            datos.add(new BasicNameValuePair("op", "pacientes"));
+
+            try {
+                envio.setEntity(new UrlEncodedFormEntity(datos));
+                try {
+                    HttpResponse respuesta = peticion.execute(envio);
+                    HttpEntity resEntity = respuesta.getEntity();
+
+                    InputStream is = resEntity.getContent();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"),8);
+                    String dato = null;
+                    StringBuilder sb = new StringBuilder();
+
+                    while((dato = br.readLine()) != null){
+                        sb.append(dato + "\n");
+                    }
+
+                    is.close();
+
+                    json = sb.toString();
+
+                    Log.d("d", json);
+
+                } catch (ClientProtocolException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                jsonO = new JSONArray(json);
+                Log.d("ddd","Hola");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            nomPaciente = new String[jsonO.length()];
+            telPaciente = new String[jsonO.length()];
+
+            for(int i = 0; i < jsonO.length(); i++){
+                try {
+                    nomPaciente[i] = jsonO.getJSONObject(i).getString("nomPaciente") + " " + jsonO.getJSONObject(i).getString("apePaciente");
+                    telPaciente[i] = jsonO.getJSONObject(i).getString("telPaciente");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            return jsonO.toString();
+        }
+
+        protected void onPostExecute(String feed) {
+            progressBar.setVisibility(View.GONE);
+            if (nomPaciente.length>0){
+                Intent paciente = new Intent(getApplicationContext(),
+                        Paciente.class);
+                paciente.putExtra("nomPaciente", nomPaciente);
+                paciente.putExtra("telPaciente", telPaciente);
+                startActivity(paciente);
+                finish();
+
+            } else {
+                Toast.makeText(getApplicationContext(), "No se han ingresado pacientes, " +
+                        "al sistema", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
+
+    class odontologo extends AsyncTask<String, String, String> {
+
+        private Exception exception;
+
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        protected String doInBackground(String... urls) {
+            HttpClient peticion = new DefaultHttpClient();
+            HttpPost envio = new HttpPost(SERVER_URL);
+            ArrayList<NameValuePair> datos = new ArrayList<NameValuePair>(0);
+
+            datos.add(new BasicNameValuePair("op", "odontologo"));
+
+            try {
+                envio.setEntity(new UrlEncodedFormEntity(datos));
+                try {
+                    HttpResponse respuesta = peticion.execute(envio);
+                    HttpEntity resEntity = respuesta.getEntity();
+
+                    InputStream is = resEntity.getContent();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"),8);
+                    String dato = null;
+                    StringBuilder sb = new StringBuilder();
+
+                    while((dato = br.readLine()) != null){
+                        sb.append(dato + "\n");
+                    }
+
+                    is.close();
+
+                    json = sb.toString();
+
+                    Log.d("d", json);
+
+                } catch (ClientProtocolException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                jsonO = new JSONArray(json);
+                Log.d("ddd","Hola");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            idOdontologo = new String[jsonO.length()];
+            nomOdontologo = new String[jsonO.length()];
+
+            for(int i = 0; i < jsonO.length(); i++){
+                try {
+                    idOdontologo[i] = jsonO.getJSONObject(i).getString("idOdontologo");
+                    nomOdontologo[i] = jsonO.getJSONObject(i).getString("nombreOdontologo") + " " + jsonO.getJSONObject(i).getString("apellidosOdontologo");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            return jsonO.toString();
+        }
+
+        protected void onPostExecute(String feed) {
+            progressBar.setVisibility(View.GONE);
+            if (idOdontologo.length>0){
+                Intent odontologo = new Intent(getApplicationContext(),
+                        Odontologo.class);
+                odontologo.putExtra("idOdontologo", idOdontologo);
+                odontologo.putExtra("nomOdontologo", nomOdontologo);
+                startActivity(odontologo);
+                finish();
+
+            } else {
+                Toast.makeText(getApplicationContext(), "No se han encontrado resultados, " +
+                        "para la consulta", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }

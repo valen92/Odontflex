@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,7 +60,7 @@ public class CUPS extends AppCompatActivity {
     static String json;
     JSONArray jsonO;
     String [] codigoCups, nomCups;
-    String usuario, password;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,10 @@ public class CUPS extends AppCompatActivity {
         setContentView(R.layout.activity_cups);
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
+
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
 
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
         mPanes = (SlidingPaneLayout)findViewById(R.id.slidingPane);
@@ -85,7 +90,10 @@ public class CUPS extends AppCompatActivity {
                         finish();
                         break;
                     case 1:
-
+                        Intent consultorio = new Intent(getApplicationContext(),
+                                Consultorio.class);
+                        startActivity(consultorio);
+                        finish();
                         break;
                 }
 
@@ -170,6 +178,10 @@ public class CUPS extends AppCompatActivity {
 
         private Exception exception;
 
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
         protected String doInBackground(String... urls) {
             HttpClient peticion = new DefaultHttpClient();
             HttpPost envio = new HttpPost(SERVER_URL);
@@ -231,6 +243,7 @@ public class CUPS extends AppCompatActivity {
         }
 
         protected void onPostExecute(String feed) {
+            progressBar.setVisibility(View.GONE);
             if (codigoCups.length>0){
                 Intent listaCups = new Intent(getApplicationContext(),
                         ListaCUPS.class);
