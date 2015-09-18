@@ -117,7 +117,10 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-
+                        Intent consultorio = new Intent(getApplicationContext(),
+                                Consultorio.class);
+                        startActivity(consultorio);
+                        finish();
                         break;
                     case 1:
                         Intent infoGeneral = new Intent(getApplicationContext(),
