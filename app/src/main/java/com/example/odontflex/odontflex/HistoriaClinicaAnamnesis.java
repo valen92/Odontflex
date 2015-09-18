@@ -14,8 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -67,6 +69,12 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
     String idPaciente, TratamientoMed, IngesMedicamentos, EnfRespiratorias, EnfCardiacas, EnfGastrointestinales,
             Diabetes, Hipertension, Hipotension, FiebreReumatica, Artritis, Infecciones, Irradiaciones, Hemorragias,
             Sinusitis, Accidentes, Embarazo, Hepatitis, Vih;
+
+    Button btnCancelarObservacion, btnGuardarObservacion;
+
+    TextView txtObservaciones;
+
+    String observaciones;
 
 
     @Override
@@ -182,9 +190,26 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
     }
 
     public void mostrarDialogo(View v){
-        FragmentManager manager = getFragmentManager();
-        DialogoObservaciones dialogo = new DialogoObservaciones();
-        dialogo.show(manager,"Observaciones");
+        final Dialog dialog = new Dialog(HistoriaClinicaAnamnesis.this);
+        dialog.setContentView(R.layout.activity_dialogo_observaciones);
+        dialog.show();
+        btnCancelarObservacion = (Button) dialog.findViewById(R.id.btnCancelarObservacion);
+        btnGuardarObservacion = (Button) dialog.findViewById(R.id.btnGuardarObservacion);
+        txtObservaciones = (TextView) dialog.findViewById(R.id.txtObservacionesAnamnesis);
+        btnCancelarObservacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        btnGuardarObservacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                observaciones = txtObservaciones.getText().toString();
+                dialog.cancel();
+            }
+        });
+
         //dialogo.guardarObservacion
 
     }
@@ -352,7 +377,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
             datos.add(new BasicNameValuePair("txtaccidentes", Accidentes));
             datos.add(new BasicNameValuePair("txtembarazo", Embarazo));
             datos.add(new BasicNameValuePair("txtvih", Vih));
-            datos.add(new BasicNameValuePair("txtobs", ""));//observaciones vacio por ahora
+            datos.add(new BasicNameValuePair("txtobs", observaciones));//observaciones vacio por ahora
             datos.add(new BasicNameValuePair("txtidpaciente", idPaciente));
             datos.add(new BasicNameValuePair("txtsinusitis", Sinusitis));
 
