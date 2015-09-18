@@ -1,0 +1,77 @@
+<android.support.v4.widget.SlidingPaneLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slidingPane"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/animalList"
+        android:choiceMode="singleChoice"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragmentContainer">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/icono"
+            android:layout_marginLeft="56dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Odontflex"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="125dp"
+            android:id="@+id/textView"
+            android:textSize="40dp"
+            android:layout_alignParentTop="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Desarrollado por Mustflex"
+            android:textSize="13dp"
+            android:id="@+id/textView4"
+            android:layout_marginTop="77dp"
+            android:layout_marginLeft="94dp"/>
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="330dp"
+            android:id="@+id/listViewConsultorio"
+            android:layout_below="@+id/textView4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="85dp"
+            android:choiceMode="singleChoice"/>
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView3"
+            android:src="@drawable/home"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="33dp"
+            android:onClick="Inicio" />
+
+    </RelativeLayout>
+
+
+</android.support.v4.widget.SlidingPaneLayout>

@@ -54,4 +54,5 @@
     <string name="title_activity_historia_paciente_existe_notas_evo_resumen">
         HistoriaPacienteExisteNotasEvoResumen
     </string>
+    <string name="title_activity_consultorio">Consultorio</string>
 </resources>

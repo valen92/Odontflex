@@ -52,7 +52,7 @@
         <activity
             android:name=".HistoriaClinicaInfoPersonal"
             android:label="Historia Clinica"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".HistoriaClinicaAnamnesis"
@@ -93,6 +93,10 @@
         <activity
             android:name=".HistoriaPacienteExisteNotasEvoResumen"
             android:label="@string/title_activity_historia_paciente_existe_notas_evo_resumen" >
+        </activity>
+        <activity
+            android:name=".Consultorio"
+            android:label="@string/title_activity_consultorio" >
         </activity>
     </application>
 

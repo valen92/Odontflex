@@ -47,6 +47,11 @@ public class Menu_principal extends AppCompatActivity {
                         startActivity(inicio);
                         finish();
                         break;
+                    case 1: Intent consultorio = new Intent(getApplicationContext(),
+                            Consultorio.class);
+                        startActivity(consultorio);
+                        finish();
+                        break;
                     case 2: Intent infoGeneral = new Intent(getApplicationContext(),
                             InfoGeneral.class);
                         startActivity(infoGeneral);
