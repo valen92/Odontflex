@@ -1,5 +1,7 @@
 package com.example.odontflex.odontflex;
 
+import android.app.Dialog;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -179,12 +181,22 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
         finish();
     }
 
+    public void mostrarDialogo(View v){
+        FragmentManager manager = getFragmentManager();
+        DialogoObservaciones dialogo = new DialogoObservaciones();
+        dialogo.show(manager,"Observaciones:");
+
+    }
+
+
+
 
     public void Siguiente(View v) {
         onCheckboxClicked();
         new insertar().execute();
 
     }
+
 
 
     private void onCheckboxClicked() {
@@ -393,6 +405,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
             finish();
         }
     }
+
 
 }
 
