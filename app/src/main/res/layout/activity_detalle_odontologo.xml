@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Información Personal"
+            android:text="Detalle Odontologo"
             android:id="@+id/textView8"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -39,27 +39,16 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:text="Siguiente"
-            android:textColor="#ffffff"
-            android:id="@+id/button"
-            android:background="@drawable/button"
-            android:layout_alignBottom="@+id/imageView3"
-            android:layout_centerHorizontal="true"
-            android:onClick="Siguiente" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Identificación:"
             android:id="@+id/textView9"
+            android:layout_marginTop="32dp"
             android:layout_below="@+id/textView8"
-            android:layout_toLeftOf="@+id/button"
-            android:layout_toStartOf="@+id/button"
-            android:layout_marginTop="33dp" />
+            android:layout_alignLeft="@+id/textView15"
+            android:layout_alignStart="@+id/textView15" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -120,11 +109,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Ocupación:"
+            android:text="Tarjeta"
             android:id="@+id/textView15"
-            android:layout_below="@+id/txtDirOdontologo"
-            android:layout_alignLeft="@+id/textView14"
-            android:layout_alignStart="@+id/textView14"
+            android:layout_alignTop="@+id/txtTarProOdontologo"
+            android:layout_alignLeft="@+id/textView19"
+            android:layout_alignStart="@+id/textView19"
             android:layout_marginTop="10dp"/>
 
         <TextView
@@ -133,9 +122,9 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Teléfono:"
             android:id="@+id/textView16"
-            android:layout_below="@+id/textView15"
-            android:layout_alignLeft="@+id/textView15"
-            android:layout_alignStart="@+id/textView15"
+            android:layout_below="@+id/textView19"
+            android:layout_alignLeft="@+id/imageView4"
+            android:layout_alignStart="@+id/imageView4"
             android:layout_marginTop="10dp"/>
 
         <EditText
@@ -151,7 +140,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:ems="10"
             android:id="@+id/txtNomOdontologo"
             android:layout_above="@+id/textView11"
             android:layout_alignParentRight="true"
@@ -180,9 +168,8 @@
             android:layout_above="@+id/txtEdadPOdontologo"
             android:layout_alignLeft="@+id/txtApeOdontologo"
             android:layout_alignStart="@+id/txtApeOdontologo"
-            android:layout_toStartOf="@+id/imageView3"
-            android:layout_alignRight="@+id/imageView3"
-            android:layout_alignEnd="@+id/imageView3" />
+            android:layout_alignRight="@+id/txtApeOdontologo"
+            android:layout_alignEnd="@+id/txtApeOdontologo" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -193,8 +180,8 @@
             android:layout_above="@+id/textView14"
             android:layout_alignLeft="@+id/txtFechaNacimiento"
             android:layout_alignStart="@+id/txtFechaNacimiento"
-            android:layout_alignRight="@+id/btnCalendario"
-            android:layout_alignEnd="@+id/btnCalendario" />
+            android:layout_alignRight="@+id/txtApeOdontologo"
+            android:layout_alignEnd="@+id/txtApeOdontologo" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -212,9 +199,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtTarProOdontologo"
-            android:layout_alignBottom="@+id/textView15"
-            android:layout_alignRight="@+id/txtDirOdontologo"
-            android:layout_alignEnd="@+id/txtDirOdontologo"
+            android:layout_below="@+id/txtDirOdontologo"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignLeft="@+id/txtDirOdontologo"
             android:layout_alignStart="@+id/txtDirOdontologo" />
 
@@ -223,7 +210,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/txtTelPaciente"
+            android:id="@+id/txtTelOdontologo"
             android:layout_alignBottom="@+id/textView16"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -240,14 +227,28 @@
             android:layout_alignLeft="@+id/textView12"
             android:layout_alignStart="@+id/textView12" />
 
-        <ImageView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnCalendario"
-            android:src="@drawable/calendario"
-            android:layout_alignBottom="@+id/txtFechaNacimiento"
-            android:layout_alignRight="@+id/txtApeOdontologo"
-            android:layout_alignEnd="@+id/txtApeOdontologo" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Profesional: "
+            android:id="@+id/textView19"
+            android:layout_below="@+id/textView15"
+            android:layout_alignLeft="@+id/textView16"
+            android:layout_alignStart="@+id/textView16" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView4"
+            android:src="@drawable/atras"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="300dp"
+            android:layout_marginBottom="33dp"
+            android:onClick="Atras" />
+
     </RelativeLayout>
 
 

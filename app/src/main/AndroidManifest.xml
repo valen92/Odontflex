@@ -110,6 +110,10 @@
             android:name=".DialogoObservaciones"
             android:label="@string/title_activity_dialogo_observaciones" >
         </activity>
+        <activity
+            android:name=".DetalleOdontologo"
+            android:label="Consultorio" >
+        </activity>
     </application>
 
 </manifest>

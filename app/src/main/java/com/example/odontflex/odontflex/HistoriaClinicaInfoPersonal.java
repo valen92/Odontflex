@@ -1,7 +1,6 @@
 package com.example.odontflex.odontflex;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -15,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -84,12 +82,12 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
         actionBar.show();
 
         txtIdPaciente = (TextView)findViewById(R.id.txtIdPaciente);
-        txtNomPaciente = (TextView)findViewById(R.id.txtNomPaciente);
-        txtApePaciente = (TextView)findViewById(R.id.txtApePaciente);
+        txtNomPaciente = (TextView)findViewById(R.id.txtNomOdontologo);
+        txtApePaciente = (TextView)findViewById(R.id.txtApeOdontologo);
         txtFechaNacimiento = (TextView)findViewById(R.id.txtFechaNacimiento);
-        txtEdadPaciente = (TextView)findViewById(R.id.txtEdadPaciente);
-        txtDirPaciente = (TextView)findViewById(R.id.txtDirPaciente);
-        txtOcupacionPaciente = (TextView)findViewById(R.id.txtOcupacionPaciente);
+        txtEdadPaciente = (TextView)findViewById(R.id.txtEdadPOdontologo);
+        txtDirPaciente = (TextView)findViewById(R.id.txtDirOdontologo);
+        txtOcupacionPaciente = (TextView)findViewById(R.id.txtTarProOdontologo);
         txtTelPaciente = (TextView)findViewById(R.id.txtTelPaciente);
         btnCalendario = (ImageView)findViewById(R.id.btnCalendario);
 

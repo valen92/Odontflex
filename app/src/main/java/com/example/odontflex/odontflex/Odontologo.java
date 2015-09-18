@@ -2,6 +2,7 @@ package com.example.odontflex.odontflex;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Odontologo extends AppCompatActivity {
 
@@ -24,12 +27,13 @@ public class Odontologo extends AppCompatActivity {
     private String[] mListItems;
     ListViewAdapter adapter;
     ListView lvCups;
-    String[] opciones = new  String[]{
+    final int contador = 0;
+    String[] opciones = new String[]{
             "",
             "",
     };
 
-    int[] imgOpciones={
+    int[] imgOpciones = {
             R.drawable.glyphicons_029_notes_2,
             R.drawable.glyphicons_195_circle_info,
 
@@ -40,6 +44,7 @@ public class Odontologo extends AppCompatActivity {
     TableRow.LayoutParams layoutFila;
     TableRow.LayoutParams layoutId;
     TableRow.LayoutParams layoutTexto;
+    TableRow.LayoutParams layoutLupa;
 
     private int MAX_FILAS = 0;
 
@@ -55,9 +60,9 @@ public class Odontologo extends AppCompatActivity {
         actionBar.show();
 
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
-        mPanes = (SlidingPaneLayout)findViewById(R.id.slidingPane);
-        ListView list = (ListView)findViewById(R.id.animalList);
-        adapter = new ListViewAdapter(this,opciones,imgOpciones);
+        mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPane);
+        ListView list = (ListView) findViewById(R.id.animalList);
+        adapter = new ListViewAdapter(this, opciones, imgOpciones);
         list.setAdapter(adapter);
         list.setBackgroundColor(Color.rgb(178, 223, 219));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -81,12 +86,13 @@ public class Odontologo extends AppCompatActivity {
             }
         });
 
-        tabla = (TableLayout)findViewById(R.id.tabla);
-        cabecera = (TableLayout)findViewById(R.id.cabecera);
+        tabla = (TableLayout) findViewById(R.id.tabla);
+        cabecera = (TableLayout) findViewById(R.id.cabecera);
         layoutFila = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
                 TableRow.LayoutParams.WRAP_CONTENT);
-        layoutId = new TableRow.LayoutParams(220,TableRow.LayoutParams.WRAP_CONTENT);
-        layoutTexto = new TableRow.LayoutParams(420, TableRow.LayoutParams.WRAP_CONTENT);
+        layoutId = new TableRow.LayoutParams(220, TableRow.LayoutParams.WRAP_CONTENT);
+        layoutTexto = new TableRow.LayoutParams(390, TableRow.LayoutParams.WRAP_CONTENT);
+        layoutLupa = new TableRow.LayoutParams(30, TableRow.LayoutParams.WRAP_CONTENT);
         agregarCabecera();
         agregarFilasTabla();
     }
@@ -106,15 +112,15 @@ public class Odontologo extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        switch (id){
+        switch (id) {
             case R.id.opciones:
-                if (mPanes.closePane()){
+                if (mPanes.closePane()) {
                     closePane();
                 } else {
                     openPane();
                 }
                 break;
-            case  R.id.salir:
+            case R.id.salir:
                 Salir();
                 break;
         }
@@ -122,48 +128,50 @@ public class Odontologo extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void openPane(){
+    private void openPane() {
         mPanes.openPane();
     }
 
-    private void closePane(){
+    private void closePane() {
         mPanes.closePane();
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
     }
 
-    public void Inicio (View v){
+    public void Inicio(View v) {
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
         startActivity(inicio);
         finish();
     }
 
-    public void Salir (){
+    public void Salir() {
         Intent salir = new Intent(getApplicationContext(),
                 MainActivity.class);
         startActivity(salir);
         finish();
     }
 
-    public void Atras (View v){
+    public void Atras(View v) {
         Intent atras = new Intent(getApplicationContext(),
                 Consultorio.class);
         startActivity(atras);
         finish();
     }
 
-    public void agregarCabecera(){
+    public void agregarCabecera() {
         TableRow fila;
         TextView txtId;
         TextView txtNombre;
+        TextView txtLupa;
 
         fila = new TableRow(this);
         fila.setLayoutParams(layoutFila);
 
         txtId = new TextView(this);
         txtNombre = new TextView(this);
+        txtLupa = new TextView(this);
 
         txtId.setText("Identificacion");
         txtId.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -172,28 +180,33 @@ public class Odontologo extends AppCompatActivity {
 
         txtNombre.setText("Nombre");
         txtNombre.setGravity(Gravity.CENTER_HORIZONTAL);
-        txtNombre.setPadding(10,0,0,0);
+        txtNombre.setPadding(10, 0, 0, 0);
         txtNombre.setTextAppearance(this, R.style.etiqueta);
         txtNombre.setLayoutParams(layoutTexto);
 
+        txtLupa.setText("");
+
         fila.addView(txtId);
         fila.addView(txtNombre);
+        fila.addView(txtLupa);
         cabecera.addView(fila);
     }
 
-    public void agregarFilasTabla(){
+    public void agregarFilasTabla() {
 
         TableRow fila;
         TextView txtId;
         TextView txtNombre;
+        ImageView imgLupa;
 
-        for(int i = 0;i<MAX_FILAS;i++){
-            int posicion = i + 1;
+        for (int i = 0; i < MAX_FILAS; i++) {
+            final int posicion = i + 0;
             fila = new TableRow(this);
             fila.setLayoutParams(layoutFila);
 
             txtId = new TextView(this);
             txtNombre = new TextView(this);
+            imgLupa = new ImageView(this);
 
             txtId.setText(idOdontologo[i]);
             txtId.setGravity(Gravity.CENTER_VERTICAL);
@@ -202,12 +215,23 @@ public class Odontologo extends AppCompatActivity {
 
             txtNombre.setText(nomOdontologo[i]);
             txtNombre.setGravity(Gravity.CENTER_VERTICAL);
-            txtNombre.setPadding(10,0,0,0);
+            txtNombre.setPadding(10, 0, 0, 0);
             txtNombre.setTextAppearance(this, R.style.etiqueta);
             txtNombre.setLayoutParams(layoutTexto);
 
+            imgLupa.setImageResource(R.drawable.lupa);
+            imgLupa.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View v) {
+                                               Toast.makeText(getApplicationContext(), "id: " +
+                                                       idOdontologo[posicion], Toast.LENGTH_LONG).show();
+                                           }
+                                       }
+            );
+
             fila.addView(txtId);
             fila.addView(txtNombre);
+            fila.addView(imgLupa);
 
             tabla.addView(fila);
         }
