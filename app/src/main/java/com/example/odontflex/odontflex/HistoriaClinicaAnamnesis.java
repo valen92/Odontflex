@@ -74,7 +74,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
 
     TextView txtObservaciones;
 
-    String observaciones;
+    String observaciones ="";
 
 
     @Override
@@ -196,6 +196,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
         btnCancelarObservacion = (Button) dialog.findViewById(R.id.btnCancelarObservacion);
         btnGuardarObservacion = (Button) dialog.findViewById(R.id.btnGuardarObservacion);
         txtObservaciones = (TextView) dialog.findViewById(R.id.txtObservacionesAnamnesis);
+        txtObservaciones.setText(""+observaciones);
         btnCancelarObservacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -207,6 +208,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
             public void onClick(View view) {
                 observaciones = txtObservaciones.getText().toString();
                 dialog.cancel();
+                Toast.makeText(getApplicationContext(), "La observación se ha agregado con éxito", Toast.LENGTH_SHORT).show();
             }
         });
 
