@@ -98,6 +98,14 @@
             android:name=".Consultorio"
             android:label="@string/title_activity_consultorio" >
         </activity>
+        <activity
+            android:name=".Paciente"
+            android:label="Consultorio" >
+        </activity>
+        <activity
+            android:name=".Odontologo"
+            android:label="Consultorio" >
+        </activity>
     </application>
 
 </manifest>

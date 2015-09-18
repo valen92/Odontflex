@@ -55,4 +55,6 @@
         HistoriaPacienteExisteNotasEvoResumen
     </string>
     <string name="title_activity_consultorio">Consultorio</string>
+    <string name="title_activity_paciente">Paciente</string>
+    <string name="title_activity_odontologo">Odontologo</string>
 </resources>
