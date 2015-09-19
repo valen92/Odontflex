@@ -246,6 +246,13 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
             if (paciente.length>0){
                 Toast.makeText(getApplicationContext(), "Paciente encontrado ", Toast.LENGTH_LONG).show();
 
+                Intent existe = new Intent(getApplicationContext(),
+                        HistoriaPacienteExisteMenuPrincipal.class);
+                //existe.putExtra("idOdontologo", idOdontologo);
+                //existe.putExtra("idPaciente", idPaciente);
+                startActivity(existe);
+                finish();
+
             } else {
                 Intent infoPersonal = new Intent(getApplicationContext(),
                         HistoriaClinicaInfoPersonal.class);

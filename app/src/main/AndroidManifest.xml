@@ -80,7 +80,7 @@
         </activity>
         <activity
             android:name=".HistoriaPacienteExisteMenuPrincipal"
-            android:label="@string/title_activity_historia_paciente_existe_menu_principal" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".HistoriaPacienteExisteOdontogramaResumen"
