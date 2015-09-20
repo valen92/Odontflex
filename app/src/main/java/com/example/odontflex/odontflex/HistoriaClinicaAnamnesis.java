@@ -430,8 +430,8 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
         protected void onPostExecute(String feed) {
             Toast.makeText(getApplicationContext(), "Insertado con exito", Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
-                    HistoriaClinicaAnamnesis.class);
-            //inicio.putExtra("idOdontologo", usuarios[0]);
+                    HistoriaClinicaAlergiasHabitos.class);
+            inicio.putExtra("idPaciente", idPaciente);
             startActivity(inicio);
             finish();
         }
