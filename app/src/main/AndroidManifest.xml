@@ -60,7 +60,7 @@
         </activity>
         <activity
             android:name=".HistoriaClinicaAlergiasHabitos"
-            android:label="@string/title_activity_historia_clinica_alergias_habitos" >
+            android:label="Alergias - Habitos" >
         </activity>
         <activity
             android:name=".HistoriaClinicaExamenEstoma"
