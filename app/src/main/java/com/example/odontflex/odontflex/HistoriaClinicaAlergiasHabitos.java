@@ -326,7 +326,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
 
 
 
-    class insertar2 extends AsyncTask<String, String, String> {
+  class insertar2 extends AsyncTask<String, String, String> {
 
         private Exception exception;
 
@@ -384,7 +384,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
         protected void onPostExecute(String feed) {
             Toast.makeText(getApplicationContext(), "Insertado con exito alergias", Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
-                    HistoriaClinicaAlergiasHabitos.class);
+                    HistoriaClinicaExamenEstoma.class);
             inicio.putExtra("idPaciente", idPaciente);
             startActivity(inicio);
             finish();
