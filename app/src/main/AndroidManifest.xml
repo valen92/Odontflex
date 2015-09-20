@@ -65,7 +65,7 @@
         </activity>
         <activity
             android:name=".HistoriaClinicaExamenEstoma"
-            android:label="@string/title_activity_historia_clinica_examen_estoma" >
+            android:label="Exámen Estomatológico" >
         </activity>
         <activity
             android:name=".HistoriaClinicaExamenPerioDent"
