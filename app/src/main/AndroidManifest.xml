@@ -60,7 +60,8 @@
         </activity>
         <activity
             android:name=".HistoriaClinicaAlergiasHabitos"
-            android:label="Alergias - Habitos" >
+            android:label="Alergias - Habitos"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name=".HistoriaClinicaExamenEstoma"
@@ -106,10 +107,7 @@
             android:name=".Odontologo"
             android:label="Consultorio" >
         </activity>
-        <activity
-            android:name=".DialogoObservaciones"
-            android:label="@string/title_activity_dialogo_observaciones" >
-        </activity>
+
         <activity
             android:name=".DetalleOdontologo"
             android:label="Consultorio" >
