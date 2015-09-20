@@ -1,9 +1,212 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.odontflex.odontflex.HistoriaClinicaExamenEstoma">
+<android.support.v4.widget.SlidingPaneLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slidingPane"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-</RelativeLayout>
+    <ListView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/animalList"
+        android:choiceMode="singleChoice"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragmentContainer">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Exámen estomatológico"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/textView17"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ATM"
+            android:id="@+id/checkBoxATM"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_below="@+id/textView17"
+            android:layout_alignLeft="@+id/buttonObsAnamnesis"
+            android:layout_alignStart="@+id/buttonObsAnamnesis"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paladar"
+            android:id="@+id/checkBoxPaladar"
+            android:layout_marginTop="96dp"
+            android:layout_marginLeft="180dp"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Músculos"
+            android:id="@+id/checkBoxMusculos"
+            android:layout_below="@+id/checkBoxATM"
+            android:layout_alignLeft="@+id/checkBoxATM"
+            android:layout_alignStart="@+id/checkBoxATM"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Glándulas salivales "
+            android:id="@+id/checkBoxGlanSaliv"
+            android:layout_marginTop="128dp"
+            android:layout_marginLeft="180dp"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Piel"
+            android:id="@+id/checkBoxPiel"
+            android:layout_below="@+id/checkBoxMusculos"
+            android:layout_alignLeft="@+id/checkBoxMusculos"
+            android:layout_alignStart="@+id/checkBoxMusculos"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frenillos"
+            android:id="@+id/checkBoxFrenillos"
+            android:layout_below="@+id/checkBoxGlanSaliv"
+            android:layout_alignLeft="@+id/checkBoxGlanSaliv"
+            android:layout_alignStart="@+id/checkBoxGlanSaliv"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Labios"
+            android:id="@+id/checkBoxLabios"
+            android:layout_below="@+id/checkBoxPiel"
+            android:layout_alignLeft="@+id/checkBoxPiel"
+            android:layout_alignStart="@+id/checkBoxPiel"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lengua"
+            android:id="@+id/checkBoxLengua"
+            android:layout_below="@+id/checkBoxFrenillos"
+            android:layout_alignLeft="@+id/checkBoxFrenillos"
+            android:layout_alignStart="@+id/checkBoxFrenillos"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ganglios"
+            android:id="@+id/checkBoxGanglios"
+            android:layout_below="@+id/checkBoxLabios"
+            android:layout_alignLeft="@+id/checkBoxLabios"
+            android:layout_alignStart="@+id/checkBoxLabios"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Encías"
+            android:id="@+id/checkBoxEncias"
+            android:layout_below="@+id/checkBoxPiel"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="180dp"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carrillos"
+            android:id="@+id/checkBoxCarrillos"
+            android:layout_below="@+id/checkBoxGanglios"
+            android:layout_alignLeft="@+id/checkBoxGanglios"
+            android:layout_alignStart="@+id/checkBoxGanglios"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mucosas"
+            android:id="@+id/checkBoxMucosas"
+            android:layout_below="@+id/checkBoxEncias"
+            android:layout_alignLeft="@+id/checkBoxEncias"
+            android:layout_alignStart="@+id/checkBoxEncias"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Piso de boca"
+            android:id="@+id/checkBoxPisodeboca"
+            android:layout_below="@+id/checkBoxCarrillos"
+            android:layout_alignLeft="@+id/checkBoxCarrillos"
+            android:layout_alignStart="@+id/checkBoxCarrillos"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oclusión"
+            android:id="@+id/checkBoxOclusion"
+            android:layout_below="@+id/checkBoxMucosas"
+            android:layout_alignLeft="@+id/checkBoxMucosas"
+            android:layout_alignStart="@+id/checkBoxMucosas"
+            android:checked="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Observaciones"
+            android:textColor="#ffffff"
+            android:id="@+id/buttonObsExaestoma"
+            android:background="@drawable/button"
+            android:onClick="mostrarDialogo"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_below="@+id/checkBoxPisodeboca"
+            android:layout_alignLeft="@+id/textView17"
+            android:layout_alignStart="@+id/textView17" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Siguiente"
+            android:textColor="#ffffff"
+            android:id="@+id/button2"
+            android:background="@drawable/button"
+            android:onClick="Siguiente"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_alignRight="@+id/textView17"
+            android:layout_alignEnd="@+id/textView17" />
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView3"
+            android:src="@drawable/home"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="33dp"
+            android:onClick="Inicio" />
+
+
+
+
+    </RelativeLayout>
+
+
+</android.support.v4.widget.SlidingPaneLayout>
