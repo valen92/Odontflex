@@ -49,11 +49,13 @@ public class Menu_principal extends AppCompatActivity {
                         break;
                     case 1: Intent consultorio = new Intent(getApplicationContext(),
                             Consultorio.class);
+                        consultorio.putExtra("idOdontologo", idOdontologo);
                         startActivity(consultorio);
                         finish();
                         break;
                     case 2: Intent infoGeneral = new Intent(getApplicationContext(),
                             InfoGeneral.class);
+                        infoGeneral.putExtra("idOdontologo", idOdontologo);
                         startActivity(infoGeneral);
                         finish();
                         break;

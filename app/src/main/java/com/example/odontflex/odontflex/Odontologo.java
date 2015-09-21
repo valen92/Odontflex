@@ -48,12 +48,14 @@ public class Odontologo extends AppCompatActivity {
     TableRow.LayoutParams layoutLupa;
 
     private int MAX_FILAS = 0;
+    String idOdo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_odontologo);
         Intent dato = getIntent();
+        idOdo = dato.getStringExtra("idOdo");
         nomOdontologo = dato.getStringArrayExtra("nomOdontologo");
         idOdontologo = dato.getStringArrayExtra("idOdontologo");
         apeOdontologo = dato.getStringArrayExtra("apeOdontologo");
@@ -78,12 +80,14 @@ public class Odontologo extends AppCompatActivity {
                     case 0:
                         Intent historiaclinica = new Intent(getApplicationContext(),
                                 HistoriaClinicaPrincipal.class);
+                        historiaclinica.putExtra("idOdontologo", idOdo);
                         startActivity(historiaclinica);
                         finish();
                         break;
                     case 1:
                         Intent info = new Intent(getApplicationContext(),
                                 InfoGeneral.class);
+                        info.putExtra("idOdontologo", idOdo);
                         startActivity(info);
                         finish();
                         break;
@@ -148,6 +152,7 @@ public class Odontologo extends AppCompatActivity {
     public void Inicio(View v) {
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdo);
         startActivity(inicio);
         finish();
     }
@@ -162,6 +167,7 @@ public class Odontologo extends AppCompatActivity {
     public void Atras(View v) {
         Intent atras = new Intent(getApplicationContext(),
                 Consultorio.class);
+        atras.putExtra("idOdontologo", idOdo);
         startActivity(atras);
         finish();
     }
@@ -234,6 +240,7 @@ public class Odontologo extends AppCompatActivity {
                                                Intent odontologo = new Intent(getApplicationContext(),
                                                        DetalleOdontologo.class);
                                                odontologo.putExtra("idOdontologo", idOdontologo);
+                                               odontologo.putExtra("idOdo", idOdo);
                                                odontologo.putExtra("nomOdontologo", nomOdontologo);
                                                odontologo.putExtra("apeOdontologo", apeOdontologo);
                                                odontologo.putExtra("tarProOdontologo", tarProOdontologo);

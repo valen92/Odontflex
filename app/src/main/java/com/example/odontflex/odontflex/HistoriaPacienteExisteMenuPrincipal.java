@@ -17,12 +17,8 @@ import android.widget.Toast;
 public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
 
     private SlidingPaneLayout mPanes;
-    private static final int PARALLAX_SIZE = 30;
-    private String[] mListItems;
     ListViewAdapter adapter;
     ListViewAdapterButton adaptador;
-    int tipoCup=0;
-    ListView lvCups;
     String[] opciones = new  String[]{
             "",
             ""
@@ -170,6 +166,13 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
         Intent salir = new Intent(getApplicationContext(),
                 MainActivity.class);
         startActivity(salir);
+        finish();
+    }
+
+    public void Atras (View v){
+        Intent atras = new Intent(getApplicationContext(),
+                HistoriaClinicaPrincipal.class);
+        startActivity(atras);
         finish();
     }
 }

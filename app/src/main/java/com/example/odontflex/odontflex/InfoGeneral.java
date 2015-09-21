@@ -40,10 +40,14 @@ public class InfoGeneral extends ActionBarActivity {
             R.drawable.iconoconsultorio,
     };
 
+    String idOdontologo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_general);
+        Intent dato = getIntent();
+        idOdontologo = dato.getStringExtra("idOdontologo");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -66,12 +70,14 @@ public class InfoGeneral extends ActionBarActivity {
                     case 0:
                         Intent cups = new Intent(getApplicationContext(),
                                 CUPS.class);
+                        cups.putExtra("idOdontologo", idOdontologo);
                         startActivity(cups);
                         finish();
                         break;
                     case 1:
                         Intent acercade = new Intent(getApplicationContext(),
                                 Acercade.class);
+                        acercade.putExtra("idOdontologo", idOdontologo);
                         startActivity(acercade);
                         finish();
                         break;
@@ -88,12 +94,14 @@ public class InfoGeneral extends ActionBarActivity {
                     case 0:
                         Intent historiaclinica = new Intent(getApplicationContext(),
                                 HistoriaClinicaPrincipal.class);
+                        historiaclinica.putExtra("idOdontologo", idOdontologo);
                         startActivity(historiaclinica);
                         finish();
                         break;
                     case 1:
                         Intent consultorio = new Intent(getApplicationContext(),
                                 Consultorio.class);
+                        consultorio.putExtra("idOdontologo", idOdontologo);
                         startActivity(consultorio);
                         finish();
                         break;
@@ -151,6 +159,7 @@ public class InfoGeneral extends ActionBarActivity {
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }

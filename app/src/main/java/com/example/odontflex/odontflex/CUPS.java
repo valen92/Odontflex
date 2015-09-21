@@ -62,10 +62,14 @@ public class CUPS extends AppCompatActivity {
     String [] codigoCups, nomCups;
     ProgressBar progressBar;
 
+    String idOdontologo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cups);
+        Intent dato = getIntent();
+        idOdontologo = dato.getStringExtra("idOdontologo");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -86,12 +90,14 @@ public class CUPS extends AppCompatActivity {
                     case 0:
                         Intent historiaclinica = new Intent(getApplicationContext(),
                                 HistoriaClinicaPrincipal.class);
+                        historiaclinica.putExtra("idOdontologo", idOdontologo);
                         startActivity(historiaclinica);
                         finish();
                         break;
                     case 1:
                         Intent consultorio = new Intent(getApplicationContext(),
                                 Consultorio.class);
+                        consultorio.putExtra("idOdontologo", idOdontologo);
                         startActivity(consultorio);
                         finish();
                         break;
@@ -156,6 +162,7 @@ public class CUPS extends AppCompatActivity {
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }
@@ -170,6 +177,7 @@ public class CUPS extends AppCompatActivity {
     public void Atras (View v){
         Intent atras = new Intent(getApplicationContext(),
                 InfoGeneral.class);
+        atras.putExtra("idOdontologo", idOdontologo);
         startActivity(atras);
         finish();
     }
@@ -249,6 +257,7 @@ public class CUPS extends AppCompatActivity {
                         ListaCUPS.class);
                 listaCups.putExtra("codigoCups", codigoCups);
                 listaCups.putExtra("nomCups", nomCups);
+                listaCups.putExtra("idOdontologo", idOdontologo);
                 listaCups.putExtra("opcion", Integer.toString(tipoCup-1));
                 startActivity(listaCups);
                 finish();

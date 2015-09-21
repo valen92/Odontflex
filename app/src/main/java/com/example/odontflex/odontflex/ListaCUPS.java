@@ -82,6 +82,8 @@ public class ListaCUPS extends AppCompatActivity {
 
     private int MAX_FILAS = 0;
 
+    String idOdontologo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +92,7 @@ public class ListaCUPS extends AppCompatActivity {
         codigoCup = dato.getStringArrayExtra("codigoCups");
         nomCup = dato.getStringArrayExtra("nomCups");
         tipoCup = dato.getStringExtra("opcion");
+        idOdontologo = dato.getStringExtra("idOdontologo");
         MAX_FILAS = codigoCup.length;
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
@@ -110,12 +113,14 @@ public class ListaCUPS extends AppCompatActivity {
                     case 0:
                         Intent historiaclinica = new Intent(getApplicationContext(),
                                 HistoriaClinicaPrincipal.class);
+                        historiaclinica.putExtra("idOdontologo", idOdontologo);
                         startActivity(historiaclinica);
                         finish();
                         break;
                     case 1:
                         Intent consultorio = new Intent(getApplicationContext(),
                                 Consultorio.class);
+                        consultorio.putExtra("idOdontologo", idOdontologo);
                         startActivity(consultorio);
                         finish();
                         break;
@@ -179,6 +184,7 @@ public class ListaCUPS extends AppCompatActivity {
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }
@@ -193,6 +199,7 @@ public class ListaCUPS extends AppCompatActivity {
     public void Atras (View v){
         Intent atras = new Intent(getApplicationContext(),
                 CUPS.class);
+        atras.putExtra("idOdontologo", idOdontologo);
         startActivity(atras);
         finish();
     }

@@ -29,10 +29,14 @@ public class Acercade extends AppCompatActivity {
 
     };
 
+    String idOdontologo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acercade);
+        Intent dato = getIntent();
+        idOdontologo = dato.getStringExtra("idOdontologo");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -49,12 +53,14 @@ public class Acercade extends AppCompatActivity {
                     case 0:
                         Intent historiaclinica = new Intent(getApplicationContext(),
                                 HistoriaClinicaPrincipal.class);
+                        historiaclinica.putExtra("idOdontologo", idOdontologo);
                         startActivity(historiaclinica);
                         finish();
                         break;
                     case 1:
                         Intent consultorio = new Intent(getApplicationContext(),
                                 Consultorio.class);
+                        consultorio.putExtra("idOdontologo", idOdontologo);
                         startActivity(consultorio);
                         finish();
                         break;
@@ -111,6 +117,7 @@ public class Acercade extends AppCompatActivity {
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }
@@ -125,6 +132,7 @@ public class Acercade extends AppCompatActivity {
     public void Atras (View v){
         Intent atras = new Intent(getApplicationContext(),
                 InfoGeneral.class);
+        atras.putExtra("idOdontologo", idOdontologo);
         startActivity(atras);
         finish();
     }

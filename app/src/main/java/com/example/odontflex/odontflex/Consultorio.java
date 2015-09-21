@@ -67,12 +67,15 @@ public class Consultorio extends AppCompatActivity {
     String [] nomPaciente, telPaciente, idOdontologo, nomOdontologo, apeOdontologo, tarProOdontologo, fechaNacOdontologo,
         dirOdontologo, telOdontologo;
     ProgressBar progressBar;
+    String idOdo;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultorio);
+        Intent dato = getIntent();
+        idOdo = dato.getStringExtra("idOdontologo");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -113,12 +116,14 @@ public class Consultorio extends AppCompatActivity {
                     case 0:
                         Intent historiaclinica = new Intent(getApplicationContext(),
                                 HistoriaClinicaPrincipal.class);
+                        historiaclinica.putExtra("idOdontologo", idOdo);
                         startActivity(historiaclinica);
                         finish();
                         break;
                     case 1:
                         Intent info = new Intent(getApplicationContext(),
                                 InfoGeneral.class);
+                        info.putExtra("idOdontologo", idOdo);
                         startActivity(info);
                         finish();
                         break;
@@ -176,6 +181,7 @@ public class Consultorio extends AppCompatActivity {
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdo);
         startActivity(inicio);
         finish();
     }
@@ -358,6 +364,7 @@ public class Consultorio extends AppCompatActivity {
                 Intent odontologo = new Intent(getApplicationContext(),
                         Odontologo.class);
                 odontologo.putExtra("idOdontologo", idOdontologo);
+                odontologo.putExtra("idOdo", idOdo);
                 odontologo.putExtra("nomOdontologo", nomOdontologo);
                 odontologo.putExtra("apeOdontologo", apeOdontologo);
                 odontologo.putExtra("tarProOdontologo", tarProOdontologo);

@@ -45,6 +45,8 @@ public class DetalleOdontologo extends AppCompatActivity {
 
     int posicion;
 
+    String idOdo;
+
 
 
     @Override
@@ -52,6 +54,7 @@ public class DetalleOdontologo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_odontologo);
         Intent dato = getIntent();
+        idOdo = dato.getStringExtra("idOdo");
         nomOdontologo = dato.getStringArrayExtra("nomOdontologo");
         idOdontologo = dato.getStringArrayExtra("idOdontologo");
         apeOdontologo = dato.getStringArrayExtra("apeOdontologo");
@@ -92,12 +95,14 @@ public class DetalleOdontologo extends AppCompatActivity {
                     case 0:
                         Intent historiaclinica = new Intent(getApplicationContext(),
                                 HistoriaClinicaPrincipal.class);
+                        historiaclinica.putExtra("idOdontologo", idOdo);
                         startActivity(historiaclinica);
                         finish();
                         break;
                     case 1:
                         Intent info = new Intent(getApplicationContext(),
                                 InfoGeneral.class);
+                        info.putExtra("idOdontologo", idOdo);
                         startActivity(info);
                         finish();
                         break;
@@ -152,6 +157,7 @@ public class DetalleOdontologo extends AppCompatActivity {
     public void Inicio(View v) {
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdo);
         startActivity(inicio);
         finish();
     }
@@ -173,6 +179,7 @@ public class DetalleOdontologo extends AppCompatActivity {
         odontologo.putExtra("fechaNacOdontologo", fechaNacOdontologo);
         odontologo.putExtra("dirOdontologo", dirOdontologo);
         odontologo.putExtra("telOdontologo", telOdontologo);
+        odontologo.putExtra("idOdo", idOdo);
         startActivity(odontologo);
         finish();
     }

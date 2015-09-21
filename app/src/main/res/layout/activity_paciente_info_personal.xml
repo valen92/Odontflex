@@ -167,7 +167,9 @@
             android:id="@+id/txtFechaNacimiento"
             android:layout_above="@+id/txtEdadPOdontologo"
             android:layout_alignLeft="@+id/txtApeOdontologo"
-            android:layout_alignStart="@+id/txtApeOdontologo" />
+            android:layout_alignStart="@+id/txtApeOdontologo"
+            android:layout_toLeftOf="@+id/btnCalendario"
+            android:layout_toStartOf="@+id/btnCalendario" />
 
         <EditText
             android:layout_width="wrap_content"
