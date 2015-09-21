@@ -1,6 +1,8 @@
 package com.example.odontflex.odontflex;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ public class ListViewAdapterButton extends BaseAdapter {
     int[] imagenes1, imagenes2;
     LayoutInflater inflater;
     String idPaciente;
+    String opcion = "";
 
     public ListViewAdapterButton(Context context, String[] titulos, int[] imagenes1, int[] imagenes2, String idPaciente) {
         this.context = context;
@@ -41,7 +44,7 @@ public class ListViewAdapterButton extends BaseAdapter {
         return 0;
     }
 
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
 
         // Declare Variables
         TextView txtTitle;
@@ -65,7 +68,14 @@ public class ListViewAdapterButton extends BaseAdapter {
         imgButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "boton 1: "+ position + " " + idPaciente, Toast.LENGTH_LONG).show();
+                switch (position) {
+                    case 0:
+                        Intent infoPersonal = new Intent(context,
+                                PacienteInfoPersonal.class);
+                        infoPersonal.putExtra("idPaciente", idPaciente);
+                        context.startActivity(infoPersonal);
+                        break;
+                }
             }
         });
 

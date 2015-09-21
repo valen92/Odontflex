@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
 
@@ -113,6 +114,7 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
 
             }
         });
+
     }
 
     @Override

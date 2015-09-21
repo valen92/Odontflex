@@ -113,7 +113,8 @@
         </activity>
         <activity
             android:name=".PacienteInfoPersonal"
-            android:label="Historia Clinica" >
+            android:label="Historia Clinica"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
     </application>
 
