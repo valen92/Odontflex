@@ -59,4 +59,5 @@
     <string name="title_activity_odontologo">Odontologo</string>
     <string name="title_activity_dialogo_observaciones">DialogoObservaciones</string>
     <string name="title_activity_dettale_odontologo">DettaleOdontologo</string>
+    <string name="title_activity_paciente_info_personal">PacienteInfoPersonal</string>
 </resources>

@@ -44,7 +44,7 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
     String SERVER_URL = "http://www.mustflex.com/Odontflex/login.php";
     static String json;
     JSONArray jsonO;
-    String [] paciente;
+    String [] paciente, nomPaciente;
 
     private SlidingPaneLayout mPanes;
     private static final int PARALLAX_SIZE = 30;
@@ -228,10 +228,13 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
                 e.printStackTrace();
             }
             paciente = new String[jsonO.length()];
+            nomPaciente = new String[jsonO.length()];
 
             for(int i = 0; i < jsonO.length(); i++){
                 try {
                     paciente[i] = jsonO.getJSONObject(i).getString("idPaciente");
+                    nomPaciente[i] = jsonO.getJSONObject(i).getString("nomPaciente") + " " +
+                            jsonO.getJSONObject(i).getString("apePaciente");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -244,12 +247,10 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
         protected void onPostExecute(String feed) {
             progressBar.setVisibility(View.GONE);
             if (paciente.length>0){
-                Toast.makeText(getApplicationContext(), "Paciente encontrado ", Toast.LENGTH_LONG).show();
-
                 Intent existe = new Intent(getApplicationContext(),
                         HistoriaPacienteExisteMenuPrincipal.class);
-                //existe.putExtra("idOdontologo", idOdontologo);
-                //existe.putExtra("idPaciente", idPaciente);
+                existe.putExtra("nomPaciente", nomPaciente[0]);
+                existe.putExtra("idPaciente", idPaciente);
                 startActivity(existe);
                 finish();
 

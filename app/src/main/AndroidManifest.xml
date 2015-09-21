@@ -60,24 +60,24 @@
         </activity>
         <activity
             android:name=".HistoriaClinicaAlergiasHabitos"
-            android:label="Alergias - Habitos"
-            android:windowSoftInputMode="adjustPan">
+            android:label="Historia Clinica" >
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".HistoriaClinicaExamenEstoma"
-            android:label="Exámen Estomatológico" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".HistoriaClinicaExamenPerioDent"
-            android:label="@string/title_activity_historia_clinica_examen_perio_dent" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".HistoriaClinicaOdontograma"
-            android:label="@string/title_activity_historia_clinica_odontograma" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".HistoriaClinicaObservaciones"
-            android:label="@string/title_activity_historia_clinica_observaciones" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".HistoriaPacienteExisteMenuPrincipal"
@@ -85,15 +85,15 @@
         </activity>
         <activity
             android:name=".HistoriaPacienteExisteOdontogramaResumen"
-            android:label="@string/title_activity_historia_paciente_existe_odontograma_resumen" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".HistoriaClinicaNotasEvo"
-            android:label="@string/title_activity_historia_clinica_notas_evo" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".HistoriaPacienteExisteNotasEvoResumen"
-            android:label="@string/title_activity_historia_paciente_existe_notas_evo_resumen" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".Consultorio"
@@ -107,10 +107,13 @@
             android:name=".Odontologo"
             android:label="Consultorio" >
         </activity>
-
         <activity
             android:name=".DetalleOdontologo"
             android:label="Consultorio" >
+        </activity>
+        <activity
+            android:name=".PacienteInfoPersonal"
+            android:label="Historia Clinica" >
         </activity>
     </application>
 

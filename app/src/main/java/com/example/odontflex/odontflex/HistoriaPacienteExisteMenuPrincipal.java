@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
 
@@ -36,8 +37,8 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
     };
 
     int[] imgOpciones={
-            R.drawable.glyphicons_029_notes_2,
-            R.drawable.iconoconsultorio
+            R.drawable.iconoconsultorio,
+            R.drawable.glyphicons_195_circle_info
 
     };
 
@@ -63,20 +64,33 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
 
     };
 
+    String idPaciente, nomPaciente;
+
+    TextView txtNomPaciente, txtIdPaciente;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historia_paciente_existe_menu_principal);
+        Intent dato = getIntent();
+        nomPaciente = dato.getStringExtra("nomPaciente");
+        idPaciente = dato.getStringExtra("idPaciente");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
+
+        txtNomPaciente = (TextView)findViewById(R.id.txtNomPaciente);
+        txtIdPaciente = (TextView)findViewById(R.id.txtIdPaciente);
+        txtNomPaciente.setText("" + nomPaciente);
+        txtIdPaciente.setText("" + idPaciente);
 
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
         mPanes = (SlidingPaneLayout)findViewById(R.id.slidingPane);
         ListView list = (ListView)findViewById(R.id.animalList);
         adapter = new ListViewAdapter(this,opciones,imgOpciones);
         final ListView listaFr = (ListView) findViewById(R.id.listView);
-        adaptador = new ListViewAdapterButton(this,menu,img1, img2);
+        adaptador = new ListViewAdapterButton(this,menu,img1, img2, idPaciente);
         listaFr.setAdapter(adaptador);
+        listaFr.setItemsCanFocus(false);
         list.setAdapter(adapter);
         list.setBackgroundColor(Color.rgb(178, 223, 219));
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -84,15 +98,15 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        Intent historiaclinica = new Intent(getApplicationContext(),
-                                HistoriaClinicaPrincipal.class);
-                        startActivity(historiaclinica);
-                        finish();
-                        break;
-                    case 1:
                         Intent consultorio = new Intent(getApplicationContext(),
                                 Consultorio.class);
                         startActivity(consultorio);
+                        finish();
+                        break;
+                    case 1:
+                        Intent info = new Intent(getApplicationContext(),
+                                InfoGeneral.class);
+                        startActivity(info);
                         finish();
                         break;
                 }
@@ -116,10 +130,44 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.opciones:
+                if (mPanes.closePane()){
+                    closePane();
+                } else {
+                    openPane();
+                }
+                break;
+            case  R.id.salir:
+                Salir();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openPane(){
+        mPanes.openPane();
+    }
+
+    private void closePane(){
+        mPanes.closePane();
+    }
+
+    public void onBackPressed(){
+    }
+
+    public void Inicio (View v){
+        Intent inicio = new Intent(getApplicationContext(),
+                Menu_principal.class);
+        startActivity(inicio);
+        finish();
+    }
+
+    public void Salir (){
+        Intent salir = new Intent(getApplicationContext(),
+                MainActivity.class);
+        startActivity(salir);
+        finish();
     }
 }

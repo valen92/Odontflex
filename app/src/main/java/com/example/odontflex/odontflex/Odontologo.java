@@ -226,6 +226,8 @@ public class Odontologo extends AppCompatActivity {
             txtNombre.setLayoutParams(layoutTexto);
 
             imgLupa.setImageResource(R.drawable.lupa);
+            imgLupa.getLayoutParams().height = 15;
+            imgLupa.getLayoutParams().width = 15;
             imgLupa.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {

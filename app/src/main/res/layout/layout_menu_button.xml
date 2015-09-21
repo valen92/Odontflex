@@ -27,8 +27,8 @@
         android:layout_height="15dp"
         android:id="@+id/imgbutton2"
         android:src="@mipmap/ic_launcher"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
         android:layout_alignTop="@+id/layout_menu_text"
         android:layout_toRightOf="@+id/layout_menu_text"
         android:layout_toEndOf="@+id/layout_menu_text" />
