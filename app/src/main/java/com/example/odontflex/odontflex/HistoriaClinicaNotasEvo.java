@@ -1,6 +1,7 @@
 package com.example.odontflex.odontflex;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -71,6 +73,8 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
 
     };
 
+    Button btnSi, btnNo;
+
     String minutos = "";
 
     ImageView btnCalendario, btnHora;
@@ -120,10 +124,33 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        Intent consultorio = new Intent(getApplicationContext(),
-                                Consultorio.class);
-                        startActivity(consultorio);
-                        finish();
+
+                        final Dialog dialog = new Dialog(HistoriaClinicaNotasEvo.this);
+                        dialog.setContentView(R.layout.dialogo_dejar_actividad);
+                        dialog.show();
+                        btnSi = (Button) dialog.findViewById(R.id.btnSi);
+                        btnNo = (Button) dialog.findViewById(R.id.btnNo);
+                        btnNo.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.cancel();
+                            }
+                        });
+                        btnSi.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                //consulta para eliminar
+                                Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
+
+                                Intent consultorio = new Intent(getApplicationContext(),
+                                        Consultorio.class);
+                                startActivity(consultorio);
+                                finish();
+                                dialog.cancel();
+
+                            }
+                        });
+
                         break;
                     case 1:
                         Intent infoGeneral = new Intent(getApplicationContext(),
@@ -137,6 +164,32 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
 
 
         });
+
+    }
+
+    public void salirDialogo(){
+        final Dialog dialog = new Dialog(HistoriaClinicaNotasEvo.this);
+        dialog.setContentView(R.layout.dialogo_dejar_actividad);
+        dialog.show();
+        btnSi = (Button) dialog.findViewById(R.id.btnSi);
+        btnNo = (Button) dialog.findViewById(R.id.btnNo);
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        btnSi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //consulta para eliminar
+                Toast.makeText(getApplicationContext(), "dd", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
+
+            }
+        });
+
+
 
     }
 

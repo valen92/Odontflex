@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="¿Desea salir sin guardar?"
+        android:id="@+id/textView25" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="Si"
+        android:textColor="#ffffff"
+        android:id="@+id/btnSi"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:layout_below="@+id/textView25"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="No"
+        android:textColor="#ffffff"
+        android:id="@+id/btnNo"
+
+        android:background="@drawable/button"
+        android:layout_alignTop="@+id/btnSi"
+        android:layout_alignRight="@+id/textView25"
+        android:layout_alignEnd="@+id/textView25" />
+
+</RelativeLayout>
