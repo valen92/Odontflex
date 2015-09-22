@@ -6,6 +6,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="20"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="¿Desea salir sin guardar?"
         android:id="@+id/textView25" />
@@ -17,6 +18,7 @@
         android:textColor="#ffffff"
         android:id="@+id/btnSi"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
         android:background="@drawable/button"
         android:layout_below="@+id/textView25"
         android:layout_alignParentLeft="true"
@@ -29,10 +31,8 @@
         android:text="No"
         android:textColor="#ffffff"
         android:id="@+id/btnNo"
-
         android:background="@drawable/button"
-        android:layout_alignTop="@+id/btnSi"
-        android:layout_alignRight="@+id/textView25"
-        android:layout_alignEnd="@+id/textView25" />
+        android:layout_marginTop="42dp"
+        android:layout_marginLeft="130dp" />
 
 </RelativeLayout>
