@@ -3,6 +3,7 @@ package com.example.odontflex.odontflex;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.NetworkOnMainThreadException;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -114,18 +115,27 @@ public class MainActivity extends ActionBarActivity {
                     e1.printStackTrace();
                 } catch (IOException e1) {
                     e1.printStackTrace();
+                } catch (NetworkOnMainThreadException e){
+                    Log.d("ddd", "Hola");
+
                 }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-
             try {
-                jsonO = new JSONArray(json);
-                Log.d("ddd","Hola");
+                    jsonO = new JSONArray(json);
+                    Log.d("ddd", "Hola");
             } catch (JSONException e) {
                 e.printStackTrace();
+            }catch (NullPointerException e){
+                Log.d("ddd", "Hola");
+
             }
-            usuarios = new String[jsonO.length()];
+            try {
+                usuarios = new String[jsonO.length()];
+            } catch (NullPointerException e) {
+                Log.d("ddd", "Hola");
+            }
 
             for(int i = 0; i < jsonO.length(); i++){
                 try {

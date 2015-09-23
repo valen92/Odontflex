@@ -92,12 +92,15 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
                     case 0:
                         Intent consultorio = new Intent(getApplicationContext(),
                                 Consultorio.class);
+
+                        consultorio.putExtra("idOdontologo", idOdontologo);
                         startActivity(consultorio);
                         finish();
                         break;
                     case 1:
                         Intent infoGeneral = new Intent(getApplicationContext(),
                                 InfoGeneral.class);
+                        infoGeneral.putExtra("idOdontologo", idOdontologo);
                         startActivity(infoGeneral);
                         finish();
                         break;
@@ -157,6 +160,7 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
                Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }
@@ -251,6 +255,7 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
                         HistoriaPacienteExisteMenuPrincipal.class);
                 existe.putExtra("nomPaciente", nomPaciente[0]);
                 existe.putExtra("idPaciente", idPaciente);
+                existe.putExtra("idOdontologo", idOdontologo);
                 startActivity(existe);
                 finish();
 

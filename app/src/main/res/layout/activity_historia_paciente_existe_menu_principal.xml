@@ -66,9 +66,7 @@
             android:id="@+id/txtNomPaciente"
             android:layout_alignBottom="@+id/textView20"
             android:layout_alignRight="@+id/imgEnfermedades"
-            android:layout_alignEnd="@+id/imgEnfermedades"
-            android:layout_alignLeft="@+id/progressBar"
-            android:layout_alignStart="@+id/progressBar" />
+            android:layout_alignEnd="@+id/imgEnfermedades" />
 
         <TextView
             android:layout_width="wrap_content"

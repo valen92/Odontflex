@@ -116,6 +116,10 @@
             android:label="Historia Clinica"
             android:windowSoftInputMode="adjustPan" >
         </activity>
+        <activity
+            android:name=".InfoPersonalVer"
+            android:label="Historia Clinica" >
+        </activity>
     </application>
 
 </manifest>

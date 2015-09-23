@@ -61,7 +61,7 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
 
     };
 
-    String idPaciente, nomPaciente;
+    String idPaciente, nomPaciente, idOdontologo;
 
     TextView txtNomPaciente, txtIdPaciente;
 
@@ -72,6 +72,7 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
         Intent dato = getIntent();
         nomPaciente = dato.getStringExtra("nomPaciente");
         idPaciente = dato.getStringExtra("idPaciente");
+        idOdontologo = dato.getStringExtra("idOdontologo");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -85,7 +86,7 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
         ListView list = (ListView)findViewById(R.id.animalList);
         adapter = new ListViewAdapter(this,opciones,imgOpciones);
         final ListView listaFr = (ListView) findViewById(R.id.listView);
-        adaptador = new ListViewAdapterButton(this,menu,img1, img2, idPaciente);
+        adaptador = new ListViewAdapterButton(this,menu,img1, img2, idPaciente, idOdontologo);
         listaFr.setAdapter(adaptador);
         listaFr.setItemsCanFocus(false);
         list.setAdapter(adapter);
@@ -97,12 +98,14 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
                     case 0:
                         Intent consultorio = new Intent(getApplicationContext(),
                                 Consultorio.class);
+                        consultorio.putExtra("idOdontologo", idOdontologo);
                         startActivity(consultorio);
                         finish();
                         break;
                     case 1:
                         Intent info = new Intent(getApplicationContext(),
                                 InfoGeneral.class);
+                        info.putExtra("idOdontologo", idOdontologo);
                         startActivity(info);
                         finish();
                         break;
@@ -158,6 +161,7 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }
@@ -172,6 +176,7 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
     public void Atras (View v){
         Intent atras = new Intent(getApplicationContext(),
                 HistoriaClinicaPrincipal.class);
+        atras.putExtra("idOdontologo", idOdontologo);
         startActivity(atras);
         finish();
     }
