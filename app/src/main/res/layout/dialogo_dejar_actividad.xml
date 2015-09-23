@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="¿Desea salir sin guardar?"
@@ -32,7 +32,17 @@
         android:textColor="#ffffff"
         android:id="@+id/btnNo"
         android:background="@drawable/button"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="48dp"
         android:layout_marginLeft="130dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textView26"
+        android:text=""
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="110dp"
+         />
 
 </RelativeLayout>
