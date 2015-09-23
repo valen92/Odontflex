@@ -139,7 +139,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
                         btnSi.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                //consulta para eliminar
+                                new borrarDatos().execute();
                                 Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
 
                                 Intent consultorio = new Intent(getApplicationContext(),
@@ -153,10 +153,33 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
 
                         break;
                     case 1:
-                        Intent infoGeneral = new Intent(getApplicationContext(),
-                                InfoGeneral.class);
-                        startActivity(infoGeneral);
-                        finish();
+
+                        final Dialog dialog1 = new Dialog(HistoriaClinicaNotasEvo.this);
+                        dialog1.setContentView(R.layout.dialogo_dejar_actividad);
+                        dialog1.show();
+                        btnSi = (Button) dialog1.findViewById(R.id.btnSi);
+                        btnNo = (Button) dialog1.findViewById(R.id.btnNo);
+                        btnNo.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog1.cancel();
+                            }
+                        });
+                        btnSi.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                new borrarDatos().execute();
+                                Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
+
+                                Intent infoGeneral = new Intent(getApplicationContext(),
+                                        InfoGeneral.class);
+                                startActivity(infoGeneral);
+                                finish();
+                                dialog1.cancel();
+                            }
+                        });
+
+
                         break;
                 }
 
@@ -363,6 +386,67 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
         }
     }
 
+    class borrarDatos extends AsyncTask<String, String, String> {
+
+        private Exception exception;
+
+        protected String doInBackground(String... urls) {
+            HttpClient peticion = new DefaultHttpClient();
+            HttpPost envio = new HttpPost(SERVER_URL);
+            ArrayList<NameValuePair> datos = new ArrayList<NameValuePair>(0);
+
+            datos.add(new BasicNameValuePair("op", "borradoDatos"));
+            datos.add(new BasicNameValuePair("txtactividad", "notasEvoluicon"));
+            datos.add(new BasicNameValuePair("txtidpaciente", idPaciente));
+
+
+
+            try {
+                envio.setEntity(new UrlEncodedFormEntity(datos));
+                try {
+                    HttpResponse respuesta = peticion.execute(envio);
+                    HttpEntity resEntity = respuesta.getEntity();
+
+                    InputStream is = resEntity.getContent();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    String dato = null;
+                    StringBuilder sb = new StringBuilder();
+
+                    while((dato = br.readLine()) != null){
+                        sb.append(dato);
+                    }
+
+                    is.close();
+
+                    json = sb.toString();
+
+                    Log.d("d", json);
+
+                } catch (ClientProtocolException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                jsonO = new JSONArray(json);
+                Log.d("ddd","Hola");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        protected void onPostExecute(String feed) {
+            Toast.makeText(getApplicationContext(), "Insertado con exito", Toast.LENGTH_LONG).show();
+
+        }
+    }
 
 
 }
