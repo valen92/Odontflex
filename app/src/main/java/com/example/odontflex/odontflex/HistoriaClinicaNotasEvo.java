@@ -170,7 +170,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
                             public void onClick(View view) {
                                 new borrarDatos().execute();
                                 Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
-
+                                new borrarDatos().execute();
                                 Intent infoGeneral = new Intent(getApplicationContext(),
                                         InfoGeneral.class);
                                 startActivity(infoGeneral);
@@ -190,31 +190,6 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
 
     }
 
-    public void salirDialogo(){
-        final Dialog dialog = new Dialog(HistoriaClinicaNotasEvo.this);
-        dialog.setContentView(R.layout.dialogo_dejar_actividad);
-        dialog.show();
-        btnSi = (Button) dialog.findViewById(R.id.btnSi);
-        btnNo = (Button) dialog.findViewById(R.id.btnNo);
-        btnNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.cancel();
-            }
-        });
-        btnSi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //consulta para eliminar
-                Toast.makeText(getApplicationContext(), "dd", Toast.LENGTH_SHORT).show();
-                dialog.cancel();
-
-            }
-        });
-
-
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -396,7 +371,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
             ArrayList<NameValuePair> datos = new ArrayList<NameValuePair>(0);
 
             datos.add(new BasicNameValuePair("op", "borradoDatos"));
-            datos.add(new BasicNameValuePair("txtactividad", "notasEvoluicon"));
+            datos.add(new BasicNameValuePair("txtactividad", "notasEvolucion"));
             datos.add(new BasicNameValuePair("txtidpaciente", idPaciente));
 
 
@@ -443,7 +418,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
         }
 
         protected void onPostExecute(String feed) {
-            Toast.makeText(getApplicationContext(), "Insertado con exito", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "eliminado con exito", Toast.LENGTH_LONG).show();
 
         }
     }

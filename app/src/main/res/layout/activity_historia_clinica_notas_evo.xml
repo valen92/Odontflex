@@ -20,6 +20,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Notas de Evolución"
             android:id="@+id/textViewnotas"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -30,26 +32,28 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Fecha:"
             android:id="@+id/textView22"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginLeft="20dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
 
         <EditText
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:inputType="date"
             android:ems="10"
             android:id="@+id/editTextfecha"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="27dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="57dp"
             />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btncalendarionotas"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="10dp"
             android:layout_alignTop="@+id/editTextfecha"
             android:layout_toRightOf="@+id/editTextfecha"
             android:layout_toEndOf="@+id/editTextfecha"
@@ -60,31 +64,30 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Hora:"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="20dp"
             android:id="@+id/textView23"
             android:layout_below="@+id/editTextfecha"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:inputType="time"
             android:ems="10"
             android:id="@+id/editTextHora"
-            android:layout_below="@+id/btncalendarionotas"
-            android:layout_toRightOf="@+id/textView22"
-            android:layout_alignRight="@+id/editTextfecha"
-            android:layout_alignEnd="@+id/editTextfecha" />
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="84dp"
+             />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnhoranotas"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_below="@+id/textView22"
-            android:layout_toRightOf="@+id/editTextfecha"
-            android:layout_toEndOf="@+id/editTextfecha"
+            android:layout_marginLeft="214dp"
             android:src="@drawable/hora" />
 
         <TextView
@@ -93,21 +96,20 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Detalle:"
             android:id="@+id/textView24"
-            android:layout_below="@+id/editTextHora"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="32dp" />
+            android:layout_marginTop="173dp"
+            android:layout_marginLeft="20dp"
+             />
 
         <EditText
 
             android:id="@+id/txtDetalleNotas"
-            android:layout_width="fill_parent"
+            android:layout_width="340dp"
             android:layout_height="150dp"
             android:lines="4"
-            android:layout_marginTop="160dp"
             android:maxLength="500"
             android:inputType="textCapSentences|textMultiLine|textAutoCorrect|textAutoComplete"
-            />
+            android:layout_marginTop="230dp"
+            android:layout_marginLeft="20dp"/>
 
         <Button
             android:layout_width="wrap_content"
