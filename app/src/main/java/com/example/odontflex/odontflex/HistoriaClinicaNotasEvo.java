@@ -79,7 +79,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
 
     ImageView btnCalendario, btnHora;
 
-    String idPaciente, strdetalle, strhora, strfecha;
+    String idPaciente,idOdontologo, strdetalle, strhora, strfecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +89,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
 
 
         idPaciente = dato.getStringExtra("idPaciente");
+        idOdontologo = dato.getStringExtra("idOdontologo");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -144,6 +145,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
 
                                 Intent consultorio = new Intent(getApplicationContext(),
                                         Consultorio.class);
+                                consultorio.putExtra("idOdontologo", idOdontologo);
                                 startActivity(consultorio);
                                 finish();
                                 dialog.cancel();
@@ -173,6 +175,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
                                 new borrarDatos().execute();
                                 Intent infoGeneral = new Intent(getApplicationContext(),
                                         InfoGeneral.class);
+                                infoGeneral.putExtra("idOdontologo", idOdontologo);
                                 startActivity(infoGeneral);
                                 finish();
                                 dialog1.cancel();
