@@ -182,7 +182,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:text="Siguiente"
+            android:text="Volver"
             android:textColor="#ffffff"
             android:id="@+id/button2"
             android:background="@drawable/button"
