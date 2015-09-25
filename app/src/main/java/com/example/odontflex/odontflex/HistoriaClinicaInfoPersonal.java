@@ -96,6 +96,7 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
         txtIdPaciente.setEnabled(false);
         txtIdPaciente.setText("" + idPaciente);
         txtFechaNacimiento.setEnabled(false);
+        txtEdadPaciente.setEnabled(false);
         txtFechaNacimiento.setText("" + anio + "/" + mes + "/" + dia);
 
         btnCalendario.setOnClickListener(new View.OnClickListener() {
