@@ -78,7 +78,6 @@
             android:text="Placa blanda"
             android:id="@+id/checkBoxPlacablanda"
             android:layout_below="@+id/textView27"
-            android:layout_toStartOf="@+id/button2"
             android:layout_marginTop="15dp"
             android:checked="false"
             android:layout_alignRight="@+id/checkBoxFracturas"
@@ -220,7 +219,7 @@
             android:textColor="#ffffff"
             android:id="@+id/button6"
             android:background="@drawable/button"
-            android:onClick="Siguiente"
+            android:onClick="Actualizar"
             android:layout_alignTop="@+id/button2"
             android:layout_alignRight="@+id/checkBoxBolsas"
             android:layout_alignEnd="@+id/checkBoxBolsas" />
