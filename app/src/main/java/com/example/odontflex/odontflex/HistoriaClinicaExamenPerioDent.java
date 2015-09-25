@@ -222,6 +222,7 @@ public class HistoriaClinicaExamenPerioDent extends AppCompatActivity {
     public void Inicio(View v) {
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }

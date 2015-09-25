@@ -1,12 +1,232 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.odontflex.odontflex.PeriodontalDentalEditar">
+<android.support.v4.widget.SlidingPaneLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slidingPane"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ListView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/animalList"
+        android:choiceMode="singleChoice"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragmentContainer">
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Exámen Periodontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/textView27"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Exámen Dental"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="160dp"
+            android:id="@+id/textView28"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Observaciones"
+            android:textColor="#ffffff"
+            android:id="@+id/buttonObsExaPerio"
+            android:background="@drawable/button"
+            android:onClick="mostrarDialogo"
+            android:layout_alignLeft="@+id/checkBoxTrauma"
+            android:layout_alignStart="@+id/checkBoxTrauma"
+            android:layout_marginTop="370dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Volver"
+            android:textColor="#ffffff"
+            android:id="@+id/button2"
+            android:background="@drawable/button"
+            android:onClick="Siguiente"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_alignRight="@+id/textView28"
+            android:layout_alignEnd="@+id/textView28" />
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView3"
+            android:src="@drawable/home"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="33dp"
+            android:onClick="Inicio" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Placa blanda"
+            android:id="@+id/checkBoxPlacablanda"
+            android:layout_below="@+id/textView27"
+            android:layout_toStartOf="@+id/button2"
+            android:layout_marginTop="15dp"
+            android:checked="false"
+            android:layout_alignRight="@+id/checkBoxFracturas"
+            android:layout_alignEnd="@+id/checkBoxFracturas" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bolsas"
+            android:id="@+id/checkBoxBolsas"
+            android:layout_alignTop="@+id/checkBoxPlacablanda"
+            android:layout_toRightOf="@+id/textView27"
+            android:layout_toEndOf="@+id/textView27"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Placa calcificada"
+            android:id="@+id/checkBoxPlacacalcificada"
+            android:layout_below="@+id/checkBoxPlacablanda"
+            android:layout_alignLeft="@+id/checkBoxPlacablanda"
+            android:layout_alignStart="@+id/checkBoxPlacablanda"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retracciones gingivales"
+            android:id="@+id/checkBoxRetracgin"
+            android:layout_below="@+id/checkBoxBolsas"
+            android:layout_alignLeft="@+id/checkBoxBolsas"
+            android:layout_alignStart="@+id/checkBoxBolsas"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Supernumerarios"
+            android:id="@+id/checkBoxSupenum"
+            android:layout_below="@+id/textView28"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="12dp"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abrasión"
+            android:id="@+id/checkBoxAbrasion"
+            android:layout_alignTop="@+id/checkBoxSupenum"
+            android:layout_alignLeft="@+id/checkBoxRetracgin"
+            android:layout_alignStart="@+id/checkBoxRetracgin"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manchas"
+            android:id="@+id/checkBoxManchas"
+            android:layout_below="@+id/checkBoxSupenum"
+            android:layout_marginLeft="35dp"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patología Pulpar"
+            android:id="@+id/checkBoxPatolopulpar"
+            android:layout_alignTop="@+id/checkBoxManchas"
+            android:layout_alignLeft="@+id/checkBoxAbrasion"
+            android:layout_alignStart="@+id/checkBoxAbrasion"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fracturas"
+            android:id="@+id/checkBoxFracturas"
+            android:layout_below="@+id/checkBoxManchas"
+            android:layout_alignLeft="@+id/checkBoxSupenum"
+            android:layout_alignStart="@+id/checkBoxSupenum"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atricción"
+            android:id="@+id/checkBoxAtriccion"
+            android:layout_alignTop="@+id/checkBoxFracturas"
+            android:layout_alignLeft="@+id/checkBoxPatolopulpar"
+            android:layout_alignStart="@+id/checkBoxPatolopulpar"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Erosión"
+            android:id="@+id/checkBoxErosion"
+            android:layout_below="@+id/checkBoxFracturas"
+            android:layout_alignLeft="@+id/checkBoxFracturas"
+            android:layout_alignStart="@+id/checkBoxFracturas"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Malformaciones"
+            android:id="@+id/checkBoxMalformaciones"
+            android:layout_alignTop="@+id/checkBoxErosion"
+            android:layout_alignLeft="@+id/checkBoxAtriccion"
+            android:layout_alignStart="@+id/checkBoxAtriccion"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trauma"
+            android:id="@+id/checkBoxTrauma"
+            android:layout_below="@+id/checkBoxErosion"
+            android:layout_alignLeft="@+id/checkBoxErosion"
+            android:layout_alignStart="@+id/checkBoxErosion"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rotaciones"
+            android:id="@+id/checkBoxRotaciones"
+            android:layout_alignTop="@+id/checkBoxTrauma"
+            android:layout_alignLeft="@+id/checkBoxMalformaciones"
+            android:layout_alignStart="@+id/checkBoxMalformaciones"
+            android:checked="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Guardar"
+            android:textColor="#ffffff"
+            android:id="@+id/button6"
+            android:background="@drawable/button"
+            android:onClick="Siguiente"
+            android:layout_alignTop="@+id/button2"
+            android:layout_alignRight="@+id/checkBoxBolsas"
+            android:layout_alignEnd="@+id/checkBoxBolsas" />
+
+
+    </RelativeLayout>
+
+
+</android.support.v4.widget.SlidingPaneLayout>
