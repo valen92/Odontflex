@@ -96,6 +96,9 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
         txtcalendario  = (TextView)findViewById(R.id.editTextfecha);
         txtdetalle  = (TextView)findViewById(R.id.txtDetalleNotas);
 
+        txtcalendario.setEnabled(false);
+        txthora.setEnabled(false);
+
         btnCalendario = (ImageView)findViewById(R.id.btncalendarionotas);
         btnHora = (ImageView)findViewById(R.id.btnhoranotas);
 
@@ -280,7 +283,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
                     minutos = "0"+minutos;
                 }
 
-                txthora.setText( selectedHour + ":" + minutos);
+                txthora.setText( selectedHour + ":" + minutos + ":00");
             }
         }, hour, minute, true);//Yes 24 hour time
         mTimePicker.show();

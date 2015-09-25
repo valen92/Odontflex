@@ -89,7 +89,8 @@
         </activity>
         <activity
             android:name=".HistoriaClinicaNotasEvo"
-            android:label="Historia Clinica" >
+            android:label="Historia Clinica"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name=".HistoriaPacienteExisteNotasEvoResumen"
@@ -159,7 +160,8 @@
         </activity>
         <activity
             android:name=".NotaEvolucionCrear"
-            android:label="Historia Clinica" >
+            android:label="Historia Clinica"
+            android:windowSoftInputMode="adjustPan">
         </activity>
     </application>
 

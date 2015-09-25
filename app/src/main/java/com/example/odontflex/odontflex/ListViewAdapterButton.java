@@ -49,7 +49,7 @@ public class ListViewAdapterButton extends BaseAdapter {
         ocupacion, telefono, edad;
     //Arrays anamnesis
     String [] anamnesisInfo, obsAnamnesis, alergias, habitos, otrosHabitos, estomatologicoInfo, obsEstomatologico,
-        periodontal, dental, obsDental;
+        periodontal, dental, obsDental, fecha, hora, detalle;
 
     public ListViewAdapterButton(Context context, String[] titulos, int[] imagenes1, int[] imagenes2,
                                  String idPaciente, String idOdontologo, String nomPaciente) {
@@ -122,6 +122,10 @@ public class ListViewAdapterButton extends BaseAdapter {
                         opcion="1";
                         new periodontaldental().execute();
                         break;
+                    case 5:
+                        opcion="1";
+                        new notasevolucion().execute();
+                        break;
                 }
             }
         });
@@ -149,6 +153,10 @@ public class ListViewAdapterButton extends BaseAdapter {
                     case 4:
                         opcion="2";
                         new periodontaldental().execute();
+                        break;
+                    case 5:
+                        opcion="2";
+                        new notasevolucion().execute();
                         break;
                 }
             }
@@ -688,6 +696,103 @@ public class ListViewAdapterButton extends BaseAdapter {
                     existe.putExtra("periodontal", periodontal[0]);
                     existe.putExtra("dental", dental[0]);
                     existe.putExtra("obsDental", obsDental[0]);
+                    existe.putExtra("idOdontologo", idOdontologo);
+                    context.startActivity(existe);
+                }
+
+            } else {
+                Toast.makeText(context, "Se ha presentadoun error al hacer la consulta", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    class notasevolucion extends AsyncTask<String, String, String> {
+
+        private Exception exception;
+
+        protected String doInBackground(String... urls) {
+            HttpClient peticion = new DefaultHttpClient();
+            HttpPost envio = new HttpPost(SERVER_URL);
+            ArrayList<NameValuePair> datos = new ArrayList<NameValuePair>(0);
+
+            datos.add(new BasicNameValuePair("op", "vernotaevolucion"));
+            datos.add(new BasicNameValuePair("txtIdPaciente", idPaciente));
+
+            try {
+                envio.setEntity(new UrlEncodedFormEntity(datos));
+                try {
+                    HttpResponse respuesta = peticion.execute(envio);
+                    HttpEntity resEntity = respuesta.getEntity();
+
+                    InputStream is = resEntity.getContent();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    String dato = null;
+                    StringBuilder sb = new StringBuilder();
+
+                    while((dato = br.readLine()) != null){
+                        sb.append(dato);
+                    }
+
+                    is.close();
+
+                    json = sb.toString();
+
+                    Log.d("d", json);
+
+                } catch (ClientProtocolException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                jsonO = new JSONArray(json);
+                Log.d("ddd","Hola");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            fecha = new String[jsonO.length()];
+            hora = new String[jsonO.length()];
+            detalle = new String[jsonO.length()];
+
+            for(int i = 0; i < jsonO.length(); i++){
+                try {
+
+
+                    fecha[i] = jsonO.getJSONObject(i).getString("fechaNotaEvolucion");
+                    hora[i] = jsonO.getJSONObject(i).getString("horaNotaEvolucion") ;
+                    detalle[i] = jsonO.getJSONObject(i).getString("detalleNotaEvolucion");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            return jsonO.toString();
+        }
+
+        protected void onPostExecute(String feed) {
+            if (fecha.length>0){
+                if(opcion=="1") {
+                    Intent existe = new Intent(context,
+                            NotaEvolucionVer.class);
+                    existe.putExtra("idPaciente", idPaciente);
+                    existe.putExtra("nomPaciente", nomPaciente);
+                    existe.putExtra("fecha", fecha);
+                    existe.putExtra("hora", hora);
+                    existe.putExtra("detalle", detalle);
+                    existe.putExtra("idOdontologo", idOdontologo);
+                    Log.d("prueba", fecha[0]);
+                    context.startActivity(existe);
+                }
+                else {
+                    Intent existe = new Intent(context,
+                            NotaEvolucionCrear.class);
+                    existe.putExtra("idPaciente", idPaciente);
+                    existe.putExtra("nomPaciente", nomPaciente);
                     existe.putExtra("idOdontologo", idOdontologo);
                     context.startActivity(existe);
                 }
