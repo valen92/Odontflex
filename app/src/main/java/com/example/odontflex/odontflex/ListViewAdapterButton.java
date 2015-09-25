@@ -39,21 +39,26 @@ public class ListViewAdapterButton extends BaseAdapter {
     String[] titulos;
     int[] imagenes1, imagenes2;
     LayoutInflater inflater;
-    String idPaciente, idOdontologo;
+    String idPaciente, idOdontologo, nomPaciente;
     String opcion = "";
     String SERVER_URL = "http://www.mustflex.com/Odontflex/login.php";
     static String json;
     JSONArray jsonO;
+    //Arrays info personal
     String [] paciente, nombre, apellido, nacimiento, direccion,
         ocupacion, telefono, edad;
+    //Arrays anamnesis
+    String [] anamnesisInfo, obsAnamnesis;
 
-    public ListViewAdapterButton(Context context, String[] titulos, int[] imagenes1, int[] imagenes2, String idPaciente, String idOdontologo) {
+    public ListViewAdapterButton(Context context, String[] titulos, int[] imagenes1, int[] imagenes2,
+                                 String idPaciente, String idOdontologo, String nomPaciente) {
         this.context = context;
         this.titulos = titulos;
         this.imagenes1 = imagenes1;
         this.imagenes2 = imagenes2;
         this.idPaciente = idPaciente;
         this.idOdontologo = idOdontologo;
+        this.nomPaciente = nomPaciente;
     }
 
     @Override
@@ -99,6 +104,10 @@ public class ListViewAdapterButton extends BaseAdapter {
                     case 0:
                         opcion="1";
                         new paciente().execute();
+                        break;
+                    case 1:
+                        opcion="1";
+                        new anamnesis().execute();
                         break;
                 }
             }
@@ -208,6 +217,120 @@ public class ListViewAdapterButton extends BaseAdapter {
                     existe.putExtra("ocuPaciente", ocupacion[0]);
                     existe.putExtra("telPaciente", telefono[0]);
                     existe.putExtra("edadPaciente", edad[0]);
+                    existe.putExtra("idOdontologo", idOdontologo);
+                    context.startActivity(existe);
+                }
+                else {
+                    Intent existe = new Intent(context,
+                            PacienteInfoPersonal.class);
+                    existe.putExtra("idPaciente", idPaciente);
+                    existe.putExtra("nomPaciente", nombre[0]);
+                    existe.putExtra("apePaciente", apellido[0]);
+                    existe.putExtra("fechanacPaciente", nacimiento[0]);
+                    existe.putExtra("dirPaciente", direccion[0]);
+                    existe.putExtra("ocuPaciente", ocupacion[0]);
+                    existe.putExtra("telPaciente", telefono[0]);
+                    existe.putExtra("edadPaciente", edad[0]);
+                    existe.putExtra("idOdontologo", idOdontologo);
+                    context.startActivity(existe);
+                }
+
+            } else {
+                Toast.makeText(context, "Se ha presentadoun error al hacer la consulta", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    class anamnesis extends AsyncTask<String, String, String> {
+
+        private Exception exception;
+
+        protected String doInBackground(String... urls) {
+            HttpClient peticion = new DefaultHttpClient();
+            HttpPost envio = new HttpPost(SERVER_URL);
+            ArrayList<NameValuePair> datos = new ArrayList<NameValuePair>(0);
+
+            datos.add(new BasicNameValuePair("op", "veranamnesis"));
+            datos.add(new BasicNameValuePair("txtIdPaciente", idPaciente));
+
+            try {
+                envio.setEntity(new UrlEncodedFormEntity(datos));
+                try {
+                    HttpResponse respuesta = peticion.execute(envio);
+                    HttpEntity resEntity = respuesta.getEntity();
+
+                    InputStream is = resEntity.getContent();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    String dato = null;
+                    StringBuilder sb = new StringBuilder();
+
+                    while((dato = br.readLine()) != null){
+                        sb.append(dato);
+                    }
+
+                    is.close();
+
+                    json = sb.toString();
+
+                    Log.d("d", json);
+
+                } catch (ClientProtocolException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                jsonO = new JSONArray(json);
+                Log.d("ddd","Hola");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            anamnesisInfo = new String[jsonO.length()];
+            obsAnamnesis = new String[jsonO.length()];
+
+            for(int i = 0; i < jsonO.length(); i++){
+                try {
+                    anamnesisInfo[i] = jsonO.getJSONObject(i).getString("ttomedicosAnamnesis") +
+                            jsonO.getJSONObject(i).getString("ingesmedAnamnesis") +
+                            jsonO.getJSONObject(i).getString("respiratoriasAnamnesis") +
+                            jsonO.getJSONObject(i).getString("cardiacasAnamnesis") +
+                            jsonO.getJSONObject(i).getString("hipertensionAnamnesis") +
+                            jsonO.getJSONObject(i).getString("gastroAnamnesis") +
+                            jsonO.getJSONObject(i).getString("diabetesAnamnesis") +
+                            jsonO.getJSONObject(i).getString("hipotensionAnamnesis") +
+                            jsonO.getJSONObject(i).getString("hepatitisAnamnesis") +
+                            jsonO.getJSONObject(i).getString("reumaticaAnamnesis") +
+                            jsonO.getJSONObject(i).getString("artritisAnamnesis") +
+                            jsonO.getJSONObject(i).getString("infeccionesAnamnesis") +
+                            jsonO.getJSONObject(i).getString("irradiacionesAnamnesis") +
+                            jsonO.getJSONObject(i).getString("hemorragiasAnamnesis") +
+                            jsonO.getJSONObject(i).getString("accidentesAnamnesis") +
+                            jsonO.getJSONObject(i).getString("embarazoAnamnesis") +
+                            jsonO.getJSONObject(i).getString("vihAnamnesis") +
+                            jsonO.getJSONObject(i).getString("sinusitisAnamnesis");
+                    obsAnamnesis[i] = jsonO.getJSONObject(i).getString("obsAnamnesis");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            return jsonO.toString();
+        }
+
+        protected void onPostExecute(String feed) {
+            if (anamnesisInfo.length>0){
+                if(opcion=="1") {
+                    Intent existe = new Intent(context,
+                            AnamnesisVer.class);
+                    existe.putExtra("idPaciente", idPaciente);
+                    existe.putExtra("nomPaciente", nomPaciente);
+                    existe.putExtra("anamnesisInfo", anamnesisInfo[0]);
+                    existe.putExtra("obsAnamnesis", obsAnamnesis[0]);
                     existe.putExtra("idOdontologo", idOdontologo);
                     context.startActivity(existe);
                 }

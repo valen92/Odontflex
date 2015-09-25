@@ -61,4 +61,5 @@
     <string name="title_activity_dettale_odontologo">DettaleOdontologo</string>
     <string name="title_activity_paciente_info_personal">PacienteInfoPersonal</string>
     <string name="title_activity_info_personal_ver">InfoPersonalVer</string>
+    <string name="title_activity_anamnesis_ver">AnamnesisVer</string>
 </resources>

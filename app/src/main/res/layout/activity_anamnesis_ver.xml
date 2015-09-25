@@ -1,0 +1,259 @@
+<android.support.v4.widget.SlidingPaneLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slidingPane"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/animalList"
+        android:choiceMode="singleChoice"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragmentContainer">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Anamnesis"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/textView17"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tratamiento médico"
+            android:id="@+id/CheckTratamientoMed"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/textView17"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingestión medicamentos"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/CheckIngesMedicamentos"
+            android:layout_below="@+id/CheckTratamientoMed"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enf respiratorias"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/CheckEnfRespiratorias"
+            android:layout_below="@+id/CheckIngesMedicamentos"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enf. cardiacas"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/CheckEnfCardiacas"
+            android:layout_below="@+id/CheckEnfRespiratorias"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enf. gastrointestinales"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/CheckEnfGastrointestinales"
+            android:layout_below="@+id/CheckEnfCardiacas"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diabetes"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/CheckDiabetes"
+            android:layout_below="@+id/CheckEnfGastrointestinales"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hipertensión"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/CheckHipertension"
+            android:layout_below="@+id/CheckDiabetes"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hipotensión"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/CheckHipotension"
+            android:layout_below="@+id/CheckHipertension"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fiebre reumática"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/CheckFiebreReumatica"
+            android:layout_below="@+id/CheckHipotension"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Artritis"
+            android:layout_marginRight="20dp"
+            android:id="@+id/CheckArtritis"
+            android:layout_above="@+id/CheckInfecciones"
+            android:layout_toLeftOf="@+id/imageView3"
+            android:layout_toStartOf="@+id/imageView3"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Infecciones"
+            android:id="@+id/CheckInfecciones"
+            android:layout_above="@+id/CheckEnfRespiratorias"
+            android:layout_alignLeft="@+id/CheckArtritis"
+            android:layout_alignStart="@+id/CheckArtritis"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Irradiaciones"
+            android:id="@+id/CheckIrradiaciones"
+            android:layout_below="@+id/CheckInfecciones"
+            android:layout_alignLeft="@+id/CheckInfecciones"
+            android:layout_alignStart="@+id/CheckInfecciones"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hemorragias"
+            android:id="@+id/CheckHemorragias"
+            android:layout_above="@+id/CheckEnfGastrointestinales"
+            android:layout_alignLeft="@+id/CheckIrradiaciones"
+            android:layout_alignStart="@+id/CheckIrradiaciones"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sinusitis"
+            android:id="@+id/CheckSinusitis"
+            android:layout_above="@+id/CheckDiabetes"
+            android:layout_alignLeft="@+id/CheckHemorragias"
+            android:layout_alignStart="@+id/CheckHemorragias"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accidentes"
+            android:id="@+id/CheckAccidentes"
+            android:layout_below="@+id/CheckSinusitis"
+            android:layout_alignLeft="@+id/CheckSinusitis"
+            android:layout_alignStart="@+id/CheckSinusitis"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Embarazo"
+            android:id="@+id/CheckEmbarazo"
+            android:layout_above="@+id/CheckHipotension"
+            android:layout_alignLeft="@+id/CheckAccidentes"
+            android:layout_alignStart="@+id/CheckAccidentes"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hepatitis"
+            android:id="@+id/CheckHepatitis"
+            android:layout_above="@+id/CheckFiebreReumatica"
+            android:layout_alignLeft="@+id/CheckEmbarazo"
+            android:layout_alignStart="@+id/CheckEmbarazo"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIH"
+            android:id="@+id/CheckVih"
+            android:layout_alignBottom="@+id/CheckFiebreReumatica"
+            android:layout_alignLeft="@+id/CheckHepatitis"
+            android:layout_alignStart="@+id/CheckHepatitis"
+            android:checked="false"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Observaciones"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            android:id="@+id/buttonObsAnamnesis"
+            android:background="@drawable/button"
+            android:layout_below="@+id/CheckFiebreReumatica"
+            android:layout_alignRight="@+id/CheckEnfRespiratorias"
+            android:layout_alignEnd="@+id/CheckEnfRespiratorias"
+            android:onClick="mostrarDialogo" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Volver"
+            android:textColor="#ffffff"
+            android:id="@+id/button2"
+            android:background="@drawable/button"
+            android:onClick="Siguiente"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_centerHorizontal="true" />
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView3"
+            android:src="@drawable/home"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="33dp"
+            android:onClick="Inicio" />
+
+    </RelativeLayout>
+
+
+</android.support.v4.widget.SlidingPaneLayout>

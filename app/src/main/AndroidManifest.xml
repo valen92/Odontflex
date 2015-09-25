@@ -120,6 +120,10 @@
             android:name=".InfoPersonalVer"
             android:label="Historia Clinica" >
         </activity>
+        <activity
+            android:name=".AnamnesisVer"
+            android:label="Historia Clinica" >
+        </activity>
     </application>
 
 </manifest>

@@ -86,7 +86,7 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
         ListView list = (ListView)findViewById(R.id.animalList);
         adapter = new ListViewAdapter(this,opciones,imgOpciones);
         final ListView listaFr = (ListView) findViewById(R.id.listView);
-        adaptador = new ListViewAdapterButton(this,menu,img1, img2, idPaciente, idOdontologo);
+        adaptador = new ListViewAdapterButton(this,menu,img1, img2, idPaciente, idOdontologo, nomPaciente);
         listaFr.setAdapter(adaptador);
         listaFr.setItemsCanFocus(false);
         list.setAdapter(adapter);
