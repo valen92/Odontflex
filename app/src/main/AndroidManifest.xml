@@ -139,11 +139,19 @@
         </activity>
         <activity
             android:name=".EstomatologicoVer"
-            android:label="@string/title_activity_estomatologico_ver" >
+            android:label="Historia Clinica" >
         </activity>
         <activity
             android:name=".EstomatologicoEditar"
-            android:label="@string/title_activity_estomatologico_editar" >
+            android:label="Historia Clinica" >
+        </activity>
+        <activity
+            android:name=".PeriodontalDentalVer"
+            android:label="Historia Clinica" >
+        </activity>
+        <activity
+            android:name=".PeriodontalDentalEditar"
+            android:label="Historia Clinica" >
         </activity>
     </application>
 

@@ -67,4 +67,6 @@
     <string name="title_activity_alergias_habitos_editar">AlergiasHabitosEditar</string>
     <string name="title_activity_estomatologico_ver">EstomatologicoVer</string>
     <string name="title_activity_estomatologico_editar">EstomatologicoEditar</string>
+    <string name="title_activity_periodontal_dental_ver">PeriodontalDentalVer</string>
+    <string name="title_activity_periodontal_dental_editar">PeriodontalDentalEditar</string>
 </resources>
