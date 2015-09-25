@@ -555,8 +555,8 @@ public class ListViewAdapterButton extends BaseAdapter {
                             EstomatologicoVer.class);
                     existe.putExtra("idPaciente", idPaciente);
                     existe.putExtra("nomPaciente", nomPaciente);
-                    existe.putExtra("anamnesisInfo", estomatologicoInfo[0]);
-                    existe.putExtra("obsAnamnesis", obsEstomatologico[0]);
+                    existe.putExtra("EstomaInfo", estomatologicoInfo[0]);
+                    existe.putExtra("obsEstoma", obsEstomatologico[0]);
                     existe.putExtra("idOdontologo", idOdontologo);
                     context.startActivity(existe);
                 }
@@ -565,8 +565,8 @@ public class ListViewAdapterButton extends BaseAdapter {
                             EstomatologicoEditar.class);
                     existe.putExtra("idPaciente", idPaciente);
                     existe.putExtra("nomPaciente", nomPaciente);
-                    existe.putExtra("anamnesisInfo", estomatologicoInfo[0]);
-                    existe.putExtra("obsAnamnesis", obsEstomatologico[0]);
+                    existe.putExtra("EstomaInfo", estomatologicoInfo[0]);
+                    existe.putExtra("obsEstoma", obsEstomatologico[0]);
                     existe.putExtra("idOdontologo", idOdontologo);
                     context.startActivity(existe);
                 }
