@@ -390,7 +390,8 @@ public class ListViewAdapterButton extends BaseAdapter {
                     HttpEntity resEntity = respuesta.getEntity();
 
                     InputStream is = resEntity.getContent();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    BufferedReader br = new BufferedReader(new InputStreamReader(
+                            is, "UTF-8"), 8);
                     String dato = null;
                     StringBuilder sb = new StringBuilder();
 

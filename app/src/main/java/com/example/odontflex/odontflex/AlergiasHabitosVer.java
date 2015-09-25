@@ -39,7 +39,7 @@ public class AlergiasHabitosVer extends AppCompatActivity {
     Button btnSi,btnNo;
     TextView txtAlergias, txtOtros;
 
-    String alergias="", otros="", Cepillado="", Seda="",idPaciente="",idOdontologo;
+    String alergias="", otros="", Cepillado="", Seda="",idPaciente="",idOdontologo, habitos, nomPaciente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,11 @@ public class AlergiasHabitosVer extends AppCompatActivity {
         setContentView(R.layout.activity_alergias_habitos_ver);
         Intent dato = getIntent();
         idPaciente = dato.getStringExtra("idPaciente");
+        idOdontologo = dato.getStringExtra("idOdontologo");
+        nomPaciente = dato.getStringExtra("nomPaciente");
+        alergias = dato.getStringExtra("alergias");
+        otros = dato.getStringExtra("otrosHabitos");
+        habitos = dato.getStringExtra("habitos");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -55,9 +60,18 @@ public class AlergiasHabitosVer extends AppCompatActivity {
         CheckSeda1vez = (CheckBox) findViewById(R.id.checkBoxSeda1vez);
         CheckSeda2veces = (CheckBox) findViewById(R.id.checkBoxSeda2veces);
 
+        CheckCepillado1vez.setEnabled(false);
+        CheckCepillado2veces.setEnabled(false);
+        CheckSeda1vez.setEnabled(false);
+        CheckSeda2veces.setEnabled(false);
+
         txtAlergias = (TextView) findViewById(R.id.txtAlergias);
         txtOtros = (TextView) findViewById(R.id.txtOtrosHabitos);
 
+        txtAlergias.setText(""+alergias);
+        txtOtros.setText(""+otros);
+
+        Valores();
 
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
         mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPane);
@@ -142,10 +156,39 @@ public class AlergiasHabitosVer extends AppCompatActivity {
         finish();
     }
 
+    public void Siguiente(View v) {
+        Intent volver = new Intent(getApplicationContext(),
+                HistoriaPacienteExisteMenuPrincipal.class);
+        volver.putExtra("idPaciente", idPaciente);
+        volver.putExtra("nomPaciente", nomPaciente);
+        volver.putExtra("idOdontologo", idOdontologo);
+        startActivity(volver);
+        finish();
+    }
+
     public void Salir() {
         Intent salir = new Intent(getApplicationContext(),
                 MainActivity.class);
         startActivity(salir);
         finish();
+    }
+
+    public void Valores(){
+        switch (habitos.substring(0,1)){
+            case "1":
+                CheckCepillado1vez.setChecked(true);
+                break;
+            case "2":
+                CheckCepillado2veces.setChecked(true);
+                break;
+        }
+        switch (habitos.substring(1)){
+            case "1":
+                CheckSeda1vez.setChecked(true);
+                break;
+            case "2":
+                CheckSeda2veces.setChecked(true);
+                break;
+        }
     }
 }

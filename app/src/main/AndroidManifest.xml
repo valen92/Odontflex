@@ -134,7 +134,8 @@
         </activity>
         <activity
             android:name=".AlergiasHabitosEditar"
-            android:label="Historia Clinica" >
+            android:label="Historia Clinica"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".EstomatologicoVer"

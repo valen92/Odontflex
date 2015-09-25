@@ -20,14 +20,15 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Alergias"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:id="@+id/textView17"
             />
         <EditText
             android:id="@+id/txtAlergias"
             android:layout_width="340dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="60dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="80dp"
+            android:textColor="#000000"
             android:layout_marginLeft="20dp"
             android:gravity="top|left"
             android:lines="4"
@@ -40,7 +41,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Habitos de higiene oral"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="165dp"
+            android:layout_marginTop="175dp"
             android:id="@+id/textView18"/>
 
         <TextView
@@ -70,7 +71,7 @@
             android:text="1 vez al día"
             android:id="@+id/checkBoxSeda1vez"
             android:layout_marginLeft="120dp"
-            android:layout_marginTop="238dp"
+            android:layout_marginTop="250dp"
             android:checked="false" />
 
         <CheckBox
@@ -79,7 +80,7 @@
             android:text="1 vez al día"
             android:id="@+id/checkBoxCepillado1vez"
             android:layout_marginLeft="120dp"
-            android:layout_marginTop="207dp"
+            android:layout_marginTop="217dp"
             android:checked="false" />
 
         <CheckBox
@@ -87,7 +88,7 @@
             android:layout_height="wrap_content"
             android:text="2 o más"
             android:id="@+id/checkBoxCepillado2veces"
-            android:layout_marginTop="207dp"
+            android:layout_marginTop="217dp"
             android:layout_marginLeft="240dp"
             android:checked="false" />
 
@@ -96,27 +97,28 @@
             android:layout_height="wrap_content"
             android:text="2 o más"
             android:id="@+id/checkBoxSeda2veces"
-            android:layout_marginTop="238dp"
+            android:layout_marginTop="250dp"
             android:layout_marginLeft="240dp"
             android:checked="false" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="22sp"
             android:text="Otros"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="48dp"
             android:layout_below="@+id/textView20"
-            />
+            android:id="@+id/textView30" />
 
         <EditText
             android:id="@+id/txtOtrosHabitos"
             android:layout_width="340dp"
-            android:layout_height="100dp"
+            android:layout_height="95dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="310dp"
+            android:layout_marginTop="335dp"
+            android:textColor="#000000"
             android:gravity="top|left"
             android:lines="4"
             android:maxLength="500"
@@ -124,13 +126,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:text="Siguiente"
+            android:text="Volver"
             android:textColor="#ffffff"
             android:id="@+id/buttonSiguienteHabitos"
             android:background="@drawable/button"
-            android:layout_marginLeft="140dp"
-            android:layout_marginTop="440dp"
-            android:onClick="Siguiente" />
+            android:onClick="Siguiente"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_toRightOf="@+id/textView30"
+            android:layout_toEndOf="@+id/textView30" />
 
         <ImageView
             android:layout_width="35dp"
@@ -144,6 +147,20 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="33dp"
             android:onClick="Inicio" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Guardar"
+            android:textColor="#ffffff"
+            android:id="@+id/button5"
+            android:background="@drawable/button"
+            android:onClick="Actualizar"
+            android:layout_alignTop="@+id/buttonSiguienteHabitos"
+            android:layout_toRightOf="@+id/buttonSiguienteHabitos"
+            android:layout_toEndOf="@+id/buttonSiguienteHabitos"
+            android:layout_marginLeft="36dp"
+            android:layout_marginStart="36dp" />
     </RelativeLayout>
 
 

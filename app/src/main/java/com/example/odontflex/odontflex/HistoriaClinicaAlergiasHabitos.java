@@ -75,6 +75,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
         setContentView(R.layout.activity_historia_clinica_alergias_habitos);
         Intent dato = getIntent();
         idPaciente = dato.getStringExtra("idPaciente");
+        idOdontologo = dato.getStringExtra("idOdontologo");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -283,6 +284,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
     public void Inicio(View v) {
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }
@@ -296,8 +298,6 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
 
 
     public void Siguiente(View v) {
-
-
         alergias = txtAlergias.getText().toString();
         otros = txtOtros.getText().toString();
 
