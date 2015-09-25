@@ -210,6 +210,12 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
                 mes = Integer.toString(month1 + 1);
                 dia = Integer.toString(day2);
                 txtFechaNacimiento.setText("" + anio + "/" + mes + "/" + dia);
+                int calcularedad, anioint;
+                anioint = Integer.parseInt(anio.toString());
+                Calendar c = Calendar.getInstance();
+                int Year = c.get(Calendar.YEAR);
+                calcularedad = Year-anioint;
+                txtEdadPaciente.setText(""+calcularedad);
 
             }
         },
