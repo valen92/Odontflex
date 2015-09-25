@@ -37,6 +37,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class PacienteInfoPersonal extends AppCompatActivity {
 
@@ -214,6 +215,11 @@ public class PacienteInfoPersonal extends AppCompatActivity {
     }
 
     public void fecha() {
+        Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+
         DatePickerDialog myDatePiccker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -222,10 +228,18 @@ public class PacienteInfoPersonal extends AppCompatActivity {
                 mes = Integer.toString(month1 + 1);
                 dia = Integer.toString(day2);
                 txtFechaNacimiento.setText("" + anio + "/" + mes + "/" + dia);
+                int calcularedad, anioint;
+                anioint = Integer.parseInt(anio.toString());
+                Calendar c = Calendar.getInstance();
+                int Year = c.get(Calendar.YEAR);
+                calcularedad = Year-anioint;
+                txtEdadPaciente.setText(""+calcularedad);
+                txtApePaciente.setEnabled(false);
+
 
             }
         },
-                2015, 04, 13);
+                mYear, mMonth, mDay);
         myDatePiccker.show();
     }
 

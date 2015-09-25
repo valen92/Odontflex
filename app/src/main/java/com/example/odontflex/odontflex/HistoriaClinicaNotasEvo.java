@@ -254,6 +254,11 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
     }
 
     public void obtenerFecha() {
+        Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+
         DatePickerDialog myDatePiccker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -263,9 +268,10 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
                 dia = Integer.toString(day2);
                 txtcalendario.setText("" + anio + "/" + mes + "/" + dia);
 
+
             }
         },
-                2015, 04, 13);
+                mYear, mMonth, mDay);
         myDatePiccker.show();
     }
 
