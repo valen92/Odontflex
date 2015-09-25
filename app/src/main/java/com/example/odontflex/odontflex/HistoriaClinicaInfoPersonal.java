@@ -68,7 +68,7 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
 
     };
 
-    String idPaciente, idOdontologo, nomPaciente, apePaciente, fechaNacimiento, edadPaciente,
+    String idPaciente, idOdontologo, nomPaciente, apePaciente, fechaNacimiento, edadPaciente, nomPaciente1,
     dirPaciente, ocupacionPaciente, telPaciente;
 
     @Override
@@ -77,6 +77,7 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
         setContentView(R.layout.activity_historia_clinica_info_personal);
         Intent dato = getIntent();
         idOdontologo = dato.getStringExtra("idOdontologo");
+        nomPaciente1 = dato.getStringExtra("nomPaciente");
         idPaciente = dato.getStringExtra("idPaciente");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
@@ -290,6 +291,7 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
                     HistoriaClinicaAnamnesis.class);
                         inicio.putExtra("idPaciente", idPaciente);
             inicio.putExtra("idOdontologo", idOdontologo);
+            inicio.putExtra("nomPaciente", nomPaciente1);
             startActivity(inicio);
             finish();
         }

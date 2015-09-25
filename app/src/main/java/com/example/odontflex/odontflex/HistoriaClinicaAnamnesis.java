@@ -68,7 +68,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
 
     String idPaciente, TratamientoMed, IngesMedicamentos, EnfRespiratorias, EnfCardiacas, EnfGastrointestinales,
             Diabetes, Hipertension, Hipotension, FiebreReumatica, Artritis, Infecciones, Irradiaciones, Hemorragias,
-            Sinusitis, Accidentes, Embarazo, Hepatitis, Vih, idOdontologo;
+            Sinusitis, Accidentes, Embarazo, Hepatitis, Vih, idOdontologo, nomPaciente;
 
     Button btnCancelarObservacion, btnGuardarObservacion, btnSi, btnNo;
 
@@ -84,6 +84,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
         Intent dato = getIntent();
         idPaciente = dato.getStringExtra("idPaciente");
         idOdontologo = dato.getStringExtra("idOdontologo");
+        nomPaciente = dato.getStringExtra("nomPaciente");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -478,6 +479,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
                     HistoriaClinicaAlergiasHabitos.class);
             inicio.putExtra("idOdontologo", idOdontologo);
             inicio.putExtra("idPaciente", idPaciente);
+            inicio.putExtra("nomPaciente", nomPaciente);
             startActivity(inicio);
             finish();
         }

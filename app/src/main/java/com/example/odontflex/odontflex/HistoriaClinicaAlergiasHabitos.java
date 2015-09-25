@@ -68,7 +68,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
     Button btnSi,btnNo;
     TextView txtAlergias, txtOtros;
 
-    String alergias="", otros="", Cepillado="", Seda="",idPaciente="",idOdontologo;
+    String alergias="", otros="", Cepillado="", Seda="",idPaciente="",idOdontologo, nomPaciente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +76,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
         Intent dato = getIntent();
         idPaciente = dato.getStringExtra("idPaciente");
         idOdontologo = dato.getStringExtra("idOdontologo");
+        nomPaciente = dato.getStringExtra("nomPaciente");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -433,6 +434,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
                     HistoriaClinicaExamenEstoma.class);
             inicio.putExtra("idOdontologo", idOdontologo);
             inicio.putExtra("idPaciente", idPaciente);
+            inicio.putExtra("nomPaciente", nomPaciente);
             startActivity(inicio);
             finish();
         }

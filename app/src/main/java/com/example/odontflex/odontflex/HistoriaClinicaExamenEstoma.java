@@ -66,7 +66,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
 
     String idPaciente,idOdontologo, ATM, Musculos, Piel, Labios, Ganglios,
             Carrillo, Pisoboca, Paladar, Glandsalivales, Frenillos, Lengua, Encias, Mucosas,
-            Oclusion;
+            Oclusion, nomPaciente;
 
     Button btnCancelarObservacion, btnGuardarObservacion, btnSi, btnNo;
 
@@ -81,6 +81,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
         Intent dato = getIntent();
         idPaciente = dato.getStringExtra("idPaciente");
         idOdontologo = dato.getStringExtra("idOdontologo");
+        nomPaciente = dato.getStringExtra("nomPaciente");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -220,6 +221,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
     public void Inicio(View v) {
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }
@@ -441,6 +443,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
                     HistoriaClinicaExamenPerioDent.class);
             inicio.putExtra("idOdontologo", idOdontologo);
             inicio.putExtra("idPaciente", idPaciente);
+            inicio.putExtra("nomPaciente", nomPaciente);
             startActivity(inicio);
             finish();
         }

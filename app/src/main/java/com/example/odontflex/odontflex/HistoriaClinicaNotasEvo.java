@@ -79,17 +79,16 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
 
     ImageView btnCalendario, btnHora;
 
-    String idPaciente,idOdontologo, strdetalle, strhora, strfecha;
+    String idPaciente,idOdontologo, strdetalle, strhora, strfecha, nomPaciente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historia_clinica_notas_evo);
         Intent dato = getIntent();
-
-
         idPaciente = dato.getStringExtra("idPaciente");
         idOdontologo = dato.getStringExtra("idOdontologo");
+        nomPaciente = dato.getStringExtra("nomPaciente");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -239,6 +238,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }
@@ -360,7 +360,13 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
 
         protected void onPostExecute(String feed) {
             Toast.makeText(getApplicationContext(), "Insertado con exito", Toast.LENGTH_LONG).show();
-
+            Intent inicio = new Intent(getApplicationContext(),
+                    HistoriaPacienteExisteMenuPrincipal.class);
+            inicio.putExtra("idOdontologo", idOdontologo);
+            inicio.putExtra("idPaciente", idPaciente);
+            inicio.putExtra("nomPaciente", nomPaciente);
+            startActivity(inicio);
+            finish();
         }
     }
 

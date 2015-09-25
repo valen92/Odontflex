@@ -66,7 +66,7 @@ public class HistoriaClinicaExamenPerioDent extends AppCompatActivity {
 
     String idPaciente,idOdontologo,placablanda, bolsas, placacalcificada, retraccionesgingivales,
             supenumerarios, abrasion, manchas, patologiapulpar, fracturas, atriccion,
-            erosion, malformaciones, trauma, rotaciones;
+            erosion, malformaciones, trauma, rotaciones, nomPaciente;
 
     Button btnCancelarObservacion, btnGuardarObservacion, btnSi, btnNo;;
 
@@ -81,6 +81,7 @@ public class HistoriaClinicaExamenPerioDent extends AppCompatActivity {
         Intent dato = getIntent();
         idPaciente = dato.getStringExtra("idPaciente");
         idOdontologo = dato.getStringExtra("idOdontologo");
+        nomPaciente = dato.getStringExtra("nomPaciente");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -509,6 +510,7 @@ public class HistoriaClinicaExamenPerioDent extends AppCompatActivity {
                     HistoriaClinicaNotasEvo.class);
             inicio.putExtra("idOdontologo", idOdontologo);
             inicio.putExtra("idPaciente", idPaciente);
+            inicio.putExtra("nomPaciente", nomPaciente);
             startActivity(inicio);
             finish();
         }
