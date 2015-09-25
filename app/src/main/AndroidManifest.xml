@@ -128,6 +128,14 @@
             android:name=".AnamnesisEditar"
             android:label="Historia Clinica" >
         </activity>
+        <activity
+            android:name=".AlergiasHabitosVer"
+            android:label="Historia Clinica" >
+        </activity>
+        <activity
+            android:name=".AlergiasHabitosEditar"
+            android:label="Historia Clinica" >
+        </activity>
     </application>
 
 </manifest>

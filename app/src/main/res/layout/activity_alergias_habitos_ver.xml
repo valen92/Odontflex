@@ -1,0 +1,150 @@
+<android.support.v4.widget.SlidingPaneLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/slidingPane"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:id="@+id/animalList"
+        android:choiceMode="singleChoice"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragmentContainer">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Alergias"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/textView17"
+            />
+        <TextView
+            android:id="@+id/txtAlergias"
+            android:layout_width="340dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="top|left"
+            android:lines="4"
+            android:maxLength="500"
+            android:inputType="textCapSentences|textMultiLine|textAutoCorrect|textAutoComplete" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Habitos de higiene oral"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="165dp"
+            android:id="@+id/textView18"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Cepillado"
+            android:id="@+id/textView20"
+            android:layout_below="@+id/textView18"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Seda dental"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/textView21"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/textView20"
+            />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 vez al día"
+            android:id="@+id/checkBoxSeda1vez"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="238dp"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 vez al día"
+            android:id="@+id/checkBoxCepillado1vez"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="207dp"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 o más"
+            android:id="@+id/checkBoxCepillado2veces"
+            android:layout_marginTop="207dp"
+            android:layout_marginLeft="240dp"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 o más"
+            android:id="@+id/checkBoxSeda2veces"
+            android:layout_marginTop="238dp"
+            android:layout_marginLeft="240dp"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="22sp"
+            android:text="Otros"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="48dp"
+            android:layout_below="@+id/textView20"
+            />
+
+        <TextView
+            android:id="@+id/txtOtrosHabitos"
+            android:layout_width="340dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="310dp"
+            android:gravity="top|left"
+            android:lines="4"
+            android:maxLength="500"
+            android:inputType="textCapSentences|textMultiLine|textAutoCorrect|textAutoComplete" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Siguiente"
+            android:textColor="#ffffff"
+            android:id="@+id/buttonSiguienteHabitos"
+            android:background="@drawable/button"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="440dp"
+            android:onClick="Siguiente" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView3"
+            android:src="@drawable/home"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="33dp"
+            android:onClick="Inicio" />
+    </RelativeLayout>
+
+
+</android.support.v4.widget.SlidingPaneLayout>
