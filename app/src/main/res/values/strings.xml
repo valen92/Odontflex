@@ -69,4 +69,6 @@
     <string name="title_activity_estomatologico_editar">EstomatologicoEditar</string>
     <string name="title_activity_periodontal_dental_ver">PeriodontalDentalVer</string>
     <string name="title_activity_periodontal_dental_editar">PeriodontalDentalEditar</string>
+    <string name="title_activity_nota_evolucion_ver">NotaEvolucionVer</string>
+    <string name="title_activity_nota_evolucion_crear">NotaEvolucionCrear</string>
 </resources>
