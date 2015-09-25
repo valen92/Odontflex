@@ -65,4 +65,6 @@
     <string name="title_activity_anamnesis_editar">AnamnesisEditar</string>
     <string name="title_activity_alergias_habitos_ver">AlergiasHabitosVer</string>
     <string name="title_activity_alergias_habitos_editar">AlergiasHabitosEditar</string>
+    <string name="title_activity_estomatologico_ver">EstomatologicoVer</string>
+    <string name="title_activity_estomatologico_editar">EstomatologicoEditar</string>
 </resources>

@@ -136,6 +136,14 @@
             android:name=".AlergiasHabitosEditar"
             android:label="Historia Clinica" >
         </activity>
+        <activity
+            android:name=".EstomatologicoVer"
+            android:label="@string/title_activity_estomatologico_ver" >
+        </activity>
+        <activity
+            android:name=".EstomatologicoEditar"
+            android:label="@string/title_activity_estomatologico_editar" >
+        </activity>
     </application>
 
 </manifest>

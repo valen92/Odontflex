@@ -48,7 +48,7 @@ public class ListViewAdapterButton extends BaseAdapter {
     String [] paciente, nombre, apellido, nacimiento, direccion,
         ocupacion, telefono, edad;
     //Arrays anamnesis
-    String [] anamnesisInfo, obsAnamnesis, alergias, habitos, otrosHabitos;
+    String [] anamnesisInfo, obsAnamnesis, alergias, habitos, otrosHabitos, estomatologicoInfo, obsEstomatologico;
 
     public ListViewAdapterButton(Context context, String[] titulos, int[] imagenes1, int[] imagenes2,
                                  String idPaciente, String idOdontologo, String nomPaciente) {
@@ -113,6 +113,10 @@ public class ListViewAdapterButton extends BaseAdapter {
                         opcion="1";
                         new alergiashabitos().execute();
                         break;
+                    case 3:
+                        opcion="1";
+                        new estomatologico().execute();
+                        break;
                 }
             }
         });
@@ -132,6 +136,10 @@ public class ListViewAdapterButton extends BaseAdapter {
                     case 2:
                         opcion="2";
                         new alergiashabitos().execute();
+                        break;
+                    case 3:
+                        opcion="2";
+                        new estomatologico().execute();
                         break;
                 }
             }
@@ -460,4 +468,113 @@ public class ListViewAdapterButton extends BaseAdapter {
             }
         }
     }
+
+    class estomatologico extends AsyncTask<String, String, String> {
+
+        private Exception exception;
+
+        protected String doInBackground(String... urls) {
+            HttpClient peticion = new DefaultHttpClient();
+            HttpPost envio = new HttpPost(SERVER_URL);
+            ArrayList<NameValuePair> datos = new ArrayList<NameValuePair>(0);
+
+            datos.add(new BasicNameValuePair("op", "verestomatologico"));
+            datos.add(new BasicNameValuePair("txtIdPaciente", idPaciente));
+
+            try {
+                envio.setEntity(new UrlEncodedFormEntity(datos));
+                try {
+                    HttpResponse respuesta = peticion.execute(envio);
+                    HttpEntity resEntity = respuesta.getEntity();
+
+                    InputStream is = resEntity.getContent();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    String dato = null;
+                    StringBuilder sb = new StringBuilder();
+
+                    while((dato = br.readLine()) != null){
+                        sb.append(dato);
+                    }
+
+                    is.close();
+
+                    json = sb.toString();
+
+                    Log.d("d", json);
+
+                } catch (ClientProtocolException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                jsonO = new JSONArray(json);
+                Log.d("ddd","Hola");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            estomatologicoInfo = new String[jsonO.length()];
+            obsEstomatologico = new String[jsonO.length()];
+
+            for(int i = 0; i < jsonO.length(); i++){
+                try {
+
+
+                    estomatologicoInfo[i] = jsonO.getJSONObject(i).getString("atmEstomatologico") +
+                            jsonO.getJSONObject(i).getString("musculosEstomatologico") +
+                            jsonO.getJSONObject(i).getString("pielEstomatologico") +
+                            jsonO.getJSONObject(i).getString("labiosEstomatologico") +
+                            jsonO.getJSONObject(i).getString("gangliosEstomatologico") +
+                            jsonO.getJSONObject(i).getString("carrillosEstomatologico") +
+                            jsonO.getJSONObject(i).getString("pisoEstomatologico") +
+                            jsonO.getJSONObject(i).getString("paladarEstomatologico") +
+                            jsonO.getJSONObject(i).getString("salivalesEstomatologico") +
+                            jsonO.getJSONObject(i).getString("frenillosEstomatologico") +
+                            jsonO.getJSONObject(i).getString("lenguaEstomatologico") +
+                            jsonO.getJSONObject(i).getString("enciasEstomatologico") +
+                            jsonO.getJSONObject(i).getString("mucosasEstomatologico") +
+                            jsonO.getJSONObject(i).getString("oclusionEstomatologico");
+                            obsEstomatologico[i] = jsonO.getJSONObject(i).getString("obsEstomatologico");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            return jsonO.toString();
+        }
+
+        protected void onPostExecute(String feed) {
+            if (estomatologicoInfo.length>0){
+                if(opcion=="1") {
+                    Intent existe = new Intent(context,
+                            EstomatologicoVer.class);
+                    existe.putExtra("idPaciente", idPaciente);
+                    existe.putExtra("nomPaciente", nomPaciente);
+                    existe.putExtra("anamnesisInfo", estomatologicoInfo[0]);
+                    existe.putExtra("obsAnamnesis", obsEstomatologico[0]);
+                    existe.putExtra("idOdontologo", idOdontologo);
+                    context.startActivity(existe);
+                }
+                else {
+                    Intent existe = new Intent(context,
+                            EstomatologicoEditar.class);
+                    existe.putExtra("idPaciente", idPaciente);
+                    existe.putExtra("nomPaciente", nomPaciente);
+                    existe.putExtra("anamnesisInfo", estomatologicoInfo[0]);
+                    existe.putExtra("obsAnamnesis", obsEstomatologico[0]);
+                    existe.putExtra("idOdontologo", idOdontologo);
+                    context.startActivity(existe);
+                }
+
+            } else {
+                Toast.makeText(context, "Se ha presentadoun error al hacer la consulta", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }
