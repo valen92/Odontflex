@@ -124,6 +124,10 @@
             android:name=".AnamnesisVer"
             android:label="Historia Clinica" >
         </activity>
+        <activity
+            android:name=".AnamnesisEditar"
+            android:label="Historia Clinica" >
+        </activity>
     </application>
 
 </manifest>

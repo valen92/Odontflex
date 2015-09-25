@@ -121,6 +121,10 @@ public class ListViewAdapterButton extends BaseAdapter {
                         opcion="2";
                         new paciente().execute();
                         break;
+                    case 1:
+                        opcion="2";
+                        new anamnesis().execute();
+                        break;
                 }
             }
         });
@@ -336,15 +340,11 @@ public class ListViewAdapterButton extends BaseAdapter {
                 }
                 else {
                     Intent existe = new Intent(context,
-                            PacienteInfoPersonal.class);
+                            AnamnesisEditar.class);
                     existe.putExtra("idPaciente", idPaciente);
-                    existe.putExtra("nomPaciente", nombre[0]);
-                    existe.putExtra("apePaciente", apellido[0]);
-                    existe.putExtra("fechanacPaciente", nacimiento[0]);
-                    existe.putExtra("dirPaciente", direccion[0]);
-                    existe.putExtra("ocuPaciente", ocupacion[0]);
-                    existe.putExtra("telPaciente", telefono[0]);
-                    existe.putExtra("edadPaciente", edad[0]);
+                    existe.putExtra("nomPaciente", nomPaciente);
+                    existe.putExtra("anamnesisInfo", anamnesisInfo[0]);
+                    existe.putExtra("obsAnamnesis", obsAnamnesis[0]);
                     existe.putExtra("idOdontologo", idOdontologo);
                     context.startActivity(existe);
                 }

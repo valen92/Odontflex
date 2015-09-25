@@ -3,10 +3,12 @@ package com.example.odontflex.odontflex;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +19,31 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AnamnesisVer extends AppCompatActivity {
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
+public class AnamnesisEditar extends AppCompatActivity {
+
+    String SERVER_URL = "http://www.mustflex.com/Odontflex/login.php";
+    static String json;
+    JSONArray jsonO;
+
     private SlidingPaneLayout mPanes;
     private static final int PARALLAX_SIZE = 30;
     private String[] mListItems;
@@ -48,11 +74,10 @@ public class AnamnesisVer extends AppCompatActivity {
 
     String observaciones ="";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anamnesis_ver);
+        setContentView(R.layout.activity_anamnesis_editar);
         Intent dato = getIntent();
         idPaciente = dato.getStringExtra("idPaciente");
         idOdontologo = dato.getStringExtra("idOdontologo");
@@ -80,25 +105,6 @@ public class AnamnesisVer extends AppCompatActivity {
         CheckEmbarazo = (CheckBox) findViewById(R.id.CheckEmbarazo);
         CheckHepatitis = (CheckBox) findViewById(R.id.CheckHepatitis);
         CheckVih = (CheckBox) findViewById(R.id.CheckVih);
-
-        CheckTratamientoMed.setEnabled(false);
-        CheckIngesMedicamentos.setEnabled(false);
-        CheckEnfRespiratorias.setEnabled(false);
-        CheckEnfCardiacas.setEnabled(false);
-        CheckEnfGastrointestinales.setEnabled(false);
-        CheckDiabetes.setEnabled(false);
-        CheckHipertension.setEnabled(false);
-        CheckHipotension.setEnabled(false);
-        CheckFiebreReumatica.setEnabled(false);
-        CheckArtritis.setEnabled(false);
-        CheckInfecciones.setEnabled(false);
-        CheckIrradiaciones.setEnabled(false);
-        CheckHemorragias.setEnabled(false);
-        CheckSinusitis.setEnabled(false);
-        CheckAccidentes.setEnabled(false);
-        CheckEmbarazo.setEnabled(false);
-        CheckHepatitis.setEnabled(false);
-        CheckVih.setEnabled(false);
 
         TratamientoMed=anamnesisInfo.substring(0,1);
         IngesMedicamentos=anamnesisInfo.substring(1,2);
@@ -140,7 +146,7 @@ public class AnamnesisVer extends AppCompatActivity {
                         break;
                     case 1:
                         Intent infoGeneral = new Intent(getApplicationContext(),
-                                  InfoGeneral.class);
+                                InfoGeneral.class);
                         infoGeneral.putExtra("idOdontologo", idOdontologo);
                         startActivity(infoGeneral);
                         finish();
@@ -156,7 +162,7 @@ public class AnamnesisVer extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_anamnesis_ver, menu);
+        getMenuInflater().inflate(R.menu.menu_anamnesis_editar, menu);
         return true;
     }
 
@@ -214,16 +220,25 @@ public class AnamnesisVer extends AppCompatActivity {
     }
 
     public void mostrarDialogo(View v){
-        final Dialog dialog = new Dialog(AnamnesisVer.this);
-        dialog.setContentView(R.layout.activity_dialogo_verobservaciones);
+        final Dialog dialog = new Dialog(AnamnesisEditar.this);
+        dialog.setContentView(R.layout.activity_dialogo_observaciones);
         dialog.show();
         btnCancelarObservacion = (Button) dialog.findViewById(R.id.btnCancelarObservacion);
+        btnGuardarObservacion = (Button) dialog.findViewById(R.id.btnGuardarObservacion);
         txtObservaciones = (TextView) dialog.findViewById(R.id.txtObservacionesAnamnesis);
         txtObservaciones.setText("" + observaciones);
         btnCancelarObservacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.cancel();
+            }
+        });
+        btnGuardarObservacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                observaciones = txtObservaciones.getText().toString();
+                dialog.cancel();
+                Toast.makeText(getApplicationContext(), "La observación se ha editado con éxito", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -397,6 +412,214 @@ public class AnamnesisVer extends AppCompatActivity {
             case "1":
                 CheckSinusitis.setChecked(true);
                 break;
+        }
+    }
+
+    public void Actualizar(View v) {
+        onCheckboxClicked();
+        new actualizar().execute();
+
+    }
+
+    private void onCheckboxClicked() {
+        if (CheckTratamientoMed.isChecked()) {
+            TratamientoMed = "1";
+
+        } else {
+            TratamientoMed = "0";
+        }
+
+
+        if (CheckIngesMedicamentos.isChecked()) {
+            IngesMedicamentos = "1";
+
+        } else {
+            IngesMedicamentos = "0";
+        }
+
+
+        if (CheckEnfRespiratorias.isChecked()) {
+            EnfRespiratorias = "1";
+        } else {
+            EnfRespiratorias = "0";
+        }
+
+
+        if (CheckEnfCardiacas.isChecked()) {
+            EnfCardiacas = "1";
+        } else {
+            EnfCardiacas = "0";
+        }
+
+
+        if (CheckEnfGastrointestinales.isChecked()) {
+            EnfGastrointestinales = "1";
+        } else {
+            EnfGastrointestinales = "0";
+        }
+
+
+        if (CheckDiabetes.isChecked()) {
+            Diabetes = "1";
+        } else {
+            Diabetes = "0";
+        }
+
+
+        if (CheckHipertension.isChecked()) {
+            Hipertension = "1";
+        } else {
+            Hipertension = "0";
+        }
+
+
+        if (CheckHipotension.isChecked()) {
+            Hipotension = "1";
+        } else {
+            Hipotension = "0";
+        }
+
+
+        if (CheckFiebreReumatica.isChecked()) {
+            FiebreReumatica = "1";
+        } else {
+            FiebreReumatica = "0";
+        }
+
+
+        if (CheckArtritis.isChecked()) {
+            Artritis = "1";
+        } else {
+            Artritis = "0";
+        }
+
+        if (CheckInfecciones.isChecked()) {
+            Infecciones = "1";
+        } else {
+            Infecciones = "0";
+        }
+
+        if (CheckIrradiaciones.isChecked()) {
+            Irradiaciones = "1";
+        } else {
+            Irradiaciones = "0";
+        }
+
+
+        if (CheckHemorragias.isChecked()) {
+            Hemorragias = "1";
+        } else {
+            Hemorragias = "0";
+        }
+
+
+        if (CheckSinusitis.isChecked()) {
+            Sinusitis = "1";
+        } else {
+            Sinusitis = "0";
+        }
+
+
+        if (CheckAccidentes.isChecked()) {
+            Accidentes = "1";
+        } else {
+            Accidentes = "0";
+        }
+
+        if (CheckEmbarazo.isChecked()) {
+            Embarazo = "1";
+        } else {
+            Embarazo = "0";
+        }
+
+
+        if (CheckHepatitis.isChecked()) {
+            Hepatitis = "1";
+        } else {
+            Hepatitis = "0";
+        }
+
+        if (CheckVih.isChecked()) {
+            Vih = "1";
+        } else {
+            Vih = "0";
+        }
+    }
+
+    class actualizar extends AsyncTask<String, String, String> {
+
+        private Exception exception;
+
+        protected String doInBackground(String... urls) {
+            HttpClient peticion = new DefaultHttpClient();
+            HttpPost envio = new HttpPost(SERVER_URL);
+            ArrayList<NameValuePair> datos = new ArrayList<NameValuePair>(0);
+
+            datos.add(new BasicNameValuePair("op", "actualizarAanamnesis"));
+            datos.add(new BasicNameValuePair("txtttomedicos", TratamientoMed));
+            datos.add(new BasicNameValuePair("txtIdingesmed", IngesMedicamentos));
+            datos.add(new BasicNameValuePair("txtrespiratorias", EnfRespiratorias));
+            datos.add(new BasicNameValuePair("txtcardiacas", EnfCardiacas));
+            datos.add(new BasicNameValuePair("txthipertension", Hipertension));
+            datos.add(new BasicNameValuePair("txtgastro", EnfGastrointestinales));
+            datos.add(new BasicNameValuePair("txtdiabetes", Diabetes));
+            datos.add(new BasicNameValuePair("txthipotension", Hipotension));
+            datos.add(new BasicNameValuePair("txthepatitis", Hepatitis));
+            datos.add(new BasicNameValuePair("txtreumatica", FiebreReumatica));
+            datos.add(new BasicNameValuePair("txtartritis", Artritis));
+            datos.add(new BasicNameValuePair("txtinfecciones", Infecciones));
+            datos.add(new BasicNameValuePair("txtirradiaciones", Irradiaciones));
+            datos.add(new BasicNameValuePair("txthemorragias", Hemorragias));
+            datos.add(new BasicNameValuePair("txtaccidentes", Accidentes));
+            datos.add(new BasicNameValuePair("txtembarazo", Embarazo));
+            datos.add(new BasicNameValuePair("txtvih", Vih));
+            datos.add(new BasicNameValuePair("txtobs", observaciones));//observaciones vacio por ahora
+            datos.add(new BasicNameValuePair("txtidpaciente", idPaciente));
+            datos.add(new BasicNameValuePair("txtsinusitis", Sinusitis));
+
+            try {
+                envio.setEntity(new UrlEncodedFormEntity(datos));
+                try {
+                    HttpResponse respuesta = peticion.execute(envio);
+                    HttpEntity resEntity = respuesta.getEntity();
+
+                    InputStream is = resEntity.getContent();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                    String dato = null;
+                    StringBuilder sb = new StringBuilder();
+
+                    while((dato = br.readLine()) != null){
+                        sb.append(dato);
+                    }
+
+                    is.close();
+
+                    json = sb.toString();
+
+                    Log.d("d", json);
+
+                } catch (ClientProtocolException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                jsonO = new JSONArray(json);
+                Log.d("ddd","Hola");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        protected void onPostExecute(String feed) {
+            Toast.makeText(getApplicationContext(), "Actualizado con exito", Toast.LENGTH_LONG).show();
         }
     }
 }
