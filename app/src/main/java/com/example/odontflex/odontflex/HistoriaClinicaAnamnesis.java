@@ -68,7 +68,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
 
     String idPaciente, TratamientoMed, IngesMedicamentos, EnfRespiratorias, EnfCardiacas, EnfGastrointestinales,
             Diabetes, Hipertension, Hipotension, FiebreReumatica, Artritis, Infecciones, Irradiaciones, Hemorragias,
-            Sinusitis, Accidentes, Embarazo, Hepatitis, Vih;
+            Sinusitis, Accidentes, Embarazo, Hepatitis, Vih, idOdontologo;
 
     Button btnCancelarObservacion, btnGuardarObservacion, btnSi, btnNo;
 
@@ -83,6 +83,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
         setContentView(R.layout.activity_historia_clinica_anamnesis);
         Intent dato = getIntent();
         idPaciente = dato.getStringExtra("idPaciente");
+        idOdontologo = dato.getStringExtra("idOdontologo");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -136,6 +137,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
 
                                 Intent consultorio = new Intent(getApplicationContext(),
                                         Consultorio.class);
+                                consultorio.putExtra("idOdontologo", idOdontologo);
                                 startActivity(consultorio);
                                 finish();
                                 dialog.cancel();
@@ -163,6 +165,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
                                 new borrarDatos().execute();
                                 Intent infoGeneral = new Intent(getApplicationContext(),
                                         InfoGeneral.class);
+                                infoGeneral.putExtra("idOdontologo", idOdontologo);
                                 startActivity(infoGeneral);
                                 finish();
                                 dialog1.cancel();
@@ -472,6 +475,7 @@ public class HistoriaClinicaAnamnesis extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Insertado con exito", Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
                     HistoriaClinicaAlergiasHabitos.class);
+            inicio.putExtra("idOdontologo", idOdontologo);
             inicio.putExtra("idPaciente", idPaciente);
             startActivity(inicio);
             finish();

@@ -68,7 +68,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
     Button btnSi,btnNo;
     TextView txtAlergias, txtOtros;
 
-    String alergias="", otros="", Cepillado="", Seda="",idPaciente="";
+    String alergias="", otros="", Cepillado="", Seda="",idPaciente="",idOdontologo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +117,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
 
                                 Intent consultorio = new Intent(getApplicationContext(),
                                         Consultorio.class);
+                                consultorio.putExtra("idOdontologo", idOdontologo);
                                 startActivity(consultorio);
                                 finish();
                                 dialog.cancel();
@@ -144,6 +145,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
                                 new borrarDatos().execute();
                                 Intent infoGeneral = new Intent(getApplicationContext(),
                                         InfoGeneral.class);
+                                infoGeneral.putExtra("idOdontologo", idOdontologo);
                                 startActivity(infoGeneral);
                                 finish();
                                 dialog1.cancel();
@@ -429,6 +431,7 @@ public class HistoriaClinicaAlergiasHabitos extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Insertado con exito alergias", Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
                     HistoriaClinicaExamenEstoma.class);
+            inicio.putExtra("idOdontologo", idOdontologo);
             inicio.putExtra("idPaciente", idPaciente);
             startActivity(inicio);
             finish();

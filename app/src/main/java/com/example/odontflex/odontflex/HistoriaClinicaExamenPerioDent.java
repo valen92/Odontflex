@@ -64,7 +64,7 @@ public class HistoriaClinicaExamenPerioDent extends AppCompatActivity {
             Checksupenumerarios, Checkabrasion, Checkmanchas, Checkpatologiapulpar, Checkfracturas, Checkatriccion,
             Checkerosion, Checkmalformaciones, Checktrauma, Checkrotaciones;
 
-    String idPaciente,placablanda, bolsas, placacalcificada, retraccionesgingivales,
+    String idPaciente,idOdontologo,placablanda, bolsas, placacalcificada, retraccionesgingivales,
             supenumerarios, abrasion, manchas, patologiapulpar, fracturas, atriccion,
             erosion, malformaciones, trauma, rotaciones;
 
@@ -80,6 +80,7 @@ public class HistoriaClinicaExamenPerioDent extends AppCompatActivity {
         setContentView(R.layout.activity_historia_clinica_examen_perio_dent);
         Intent dato = getIntent();
         idPaciente = dato.getStringExtra("idPaciente");
+        idOdontologo = dato.getStringExtra("idOdontologo");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -130,6 +131,7 @@ public class HistoriaClinicaExamenPerioDent extends AppCompatActivity {
 
                                 Intent consultorio = new Intent(getApplicationContext(),
                                         Consultorio.class);
+                                consultorio.putExtra("idOdontologo", idOdontologo);
                                 startActivity(consultorio);
                                 finish();
                                 dialog.cancel();
@@ -159,6 +161,7 @@ public class HistoriaClinicaExamenPerioDent extends AppCompatActivity {
                                 new borrarDatos().execute();
                                 Intent infoGeneral = new Intent(getApplicationContext(),
                                         InfoGeneral.class);
+                                infoGeneral.putExtra("idOdontologo", idOdontologo);
                                 startActivity(infoGeneral);
                                 finish();
                                 dialog1.cancel();
@@ -503,6 +506,7 @@ public class HistoriaClinicaExamenPerioDent extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Insertado con exito dental", Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
                     HistoriaClinicaNotasEvo.class);
+            inicio.putExtra("idOdontologo", idOdontologo);
             inicio.putExtra("idPaciente", idPaciente);
             startActivity(inicio);
             finish();

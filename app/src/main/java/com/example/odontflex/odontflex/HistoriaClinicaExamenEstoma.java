@@ -64,7 +64,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
             CheckGanglios, CheckCarrillo, CheckPisoboca, CheckPaladar, CheckGlandsali,
             CheckFrenillos, CheckLengua, CheckEncias, CheckMucosas, CheckOclusion;
 
-    String idPaciente, ATM, Musculos, Piel, Labios, Ganglios,
+    String idPaciente,idOdontologo, ATM, Musculos, Piel, Labios, Ganglios,
             Carrillo, Pisoboca, Paladar, Glandsalivales, Frenillos, Lengua, Encias, Mucosas,
             Oclusion;
 
@@ -80,6 +80,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
         setContentView(R.layout.activity_historia_clinica_examen_estoma);
         Intent dato = getIntent();
         idPaciente = dato.getStringExtra("idPaciente");
+        idOdontologo = dato.getStringExtra("idOdontologo");
         ActionBar actionBar = getSupportActionBar();
         actionBar.show();
 
@@ -129,6 +130,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
 
                                 Intent consultorio = new Intent(getApplicationContext(),
                                         Consultorio.class);
+                                consultorio.putExtra("idOdontologo", idOdontologo);
                                 startActivity(consultorio);
                                 finish();
                                 dialog.cancel();
@@ -157,6 +159,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
                                 new borrarDatos().execute();
                                 Intent infoGeneral = new Intent(getApplicationContext(),
                                         InfoGeneral.class);
+                                infoGeneral.putExtra("idOdontologo", idOdontologo);
                                 startActivity(infoGeneral);
                                 finish();
                                 dialog1.cancel();
@@ -436,6 +439,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Insertado con exito estomatologico", Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
                     HistoriaClinicaExamenPerioDent.class);
+            inicio.putExtra("idOdontologo", idOdontologo);
             inicio.putExtra("idPaciente", idPaciente);
             startActivity(inicio);
             finish();

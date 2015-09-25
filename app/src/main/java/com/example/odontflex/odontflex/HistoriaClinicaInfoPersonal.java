@@ -117,12 +117,14 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
                     case 0:
                         Intent consultorio = new Intent(getApplicationContext(),
                                 Consultorio.class);
+                        consultorio.putExtra("idOdontologo", idOdontologo);
                         startActivity(consultorio);
                         finish();
                         break;
                     case 1:
                         Intent infoGeneral = new Intent(getApplicationContext(),
                                 InfoGeneral.class);
+                        infoGeneral.putExtra("idOdontologo", idOdontologo);
                         startActivity(infoGeneral);
                         finish();
                         break;
@@ -180,6 +182,7 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
     public void Inicio (View v){
         Intent inicio = new Intent(getApplicationContext(),
                 Menu_principal.class);
+        inicio.putExtra("idOdontologo", idOdontologo);
         startActivity(inicio);
         finish();
     }
@@ -285,7 +288,8 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Insertado con exito", Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
                     HistoriaClinicaAnamnesis.class);
-            inicio.putExtra("idPaciente", idPaciente);
+                        inicio.putExtra("idPaciente", idPaciente);
+            inicio.putExtra("idOdontologo", idOdontologo);
             startActivity(inicio);
             finish();
         }
