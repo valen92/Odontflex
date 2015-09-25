@@ -143,7 +143,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 new borrarDatos().execute();
-                                Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
 
                                 Intent consultorio = new Intent(getApplicationContext(),
                                         Consultorio.class);
@@ -173,7 +173,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 new borrarDatos().execute();
-                                Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
                                 new borrarDatos().execute();
                                 Intent infoGeneral = new Intent(getApplicationContext(),
                                         InfoGeneral.class);
@@ -368,7 +368,7 @@ public class HistoriaClinicaNotasEvo extends AppCompatActivity {
         }
 
         protected void onPostExecute(String feed) {
-            Toast.makeText(getApplicationContext(), "Insertado con exito", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "NP: "+nomPaciente, Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
                     HistoriaPacienteExisteMenuPrincipal.class);
             inicio.putExtra("idOdontologo", idOdontologo);

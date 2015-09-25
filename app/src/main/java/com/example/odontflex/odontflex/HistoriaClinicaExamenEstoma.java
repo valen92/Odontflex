@@ -127,7 +127,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 new borrarDatos().execute();
-                                Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
 
                                 Intent consultorio = new Intent(getApplicationContext(),
                                         Consultorio.class);
@@ -156,7 +156,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 new borrarDatos().execute();
-                                Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), "Salio", Toast.LENGTH_SHORT).show();
                                 new borrarDatos().execute();
                                 Intent infoGeneral = new Intent(getApplicationContext(),
                                         InfoGeneral.class);
@@ -252,7 +252,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
             public void onClick(View view) {
                 observaciones = txtObservaciones.getText().toString();
                 dialog.cancel();
-                Toast.makeText(getApplicationContext(), "La observación se ha agregado con éxito", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "La observación se ha agregado con éxito", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -438,7 +438,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
         }
 
         protected void onPostExecute(String feed) {
-            Toast.makeText(getApplicationContext(), "Insertado con exito estomatologico", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "NP: "+nomPaciente, Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
                     HistoriaClinicaExamenPerioDent.class);
             inicio.putExtra("idOdontologo", idOdontologo);
@@ -506,7 +506,7 @@ public class HistoriaClinicaExamenEstoma extends AppCompatActivity {
         }
 
         protected void onPostExecute(String feed) {
-            Toast.makeText(getApplicationContext(), "eliminado con exito", Toast.LENGTH_LONG).show();
+           // Toast.makeText(getApplicationContext(), "eliminado con exito", Toast.LENGTH_LONG).show();
 
         }
     }

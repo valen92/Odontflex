@@ -263,7 +263,7 @@ public class HistoriaClinicaPrincipal extends ActionBarActivity {
                 Intent infoPersonal = new Intent(getApplicationContext(),
                         HistoriaClinicaInfoPersonal.class);
                 infoPersonal.putExtra("idOdontologo", idOdontologo);
-                infoPersonal.putExtra("nomPaciente", nomPaciente);
+
                 infoPersonal.putExtra("idPaciente", idPaciente);
                 startActivity(infoPersonal);
                 finish();

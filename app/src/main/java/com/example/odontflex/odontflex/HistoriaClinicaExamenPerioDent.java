@@ -505,7 +505,7 @@ public class HistoriaClinicaExamenPerioDent extends AppCompatActivity {
         }
 
         protected void onPostExecute(String feed) {
-            Toast.makeText(getApplicationContext(), "Insertado con exito dental", Toast.LENGTH_LONG).show();
+           // Toast.makeText(getApplicationContext(), "NP: "+nomPaciente, Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
                     HistoriaClinicaNotasEvo.class);
             inicio.putExtra("idOdontologo", idOdontologo);

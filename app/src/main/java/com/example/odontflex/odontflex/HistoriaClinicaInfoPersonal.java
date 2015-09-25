@@ -299,12 +299,12 @@ public class HistoriaClinicaInfoPersonal extends AppCompatActivity {
         }
 
         protected void onPostExecute(String feed) {
-            Toast.makeText(getApplicationContext(), "Insertado con exito", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "NP: "+nomPaciente, Toast.LENGTH_LONG).show();
             Intent inicio = new Intent(getApplicationContext(),
                     HistoriaClinicaAnamnesis.class);
                         inicio.putExtra("idPaciente", idPaciente);
             inicio.putExtra("idOdontologo", idOdontologo);
-            inicio.putExtra("nomPaciente", nomPaciente1);
+            inicio.putExtra("nomPaciente", nomPaciente+" "+apePaciente);
             startActivity(inicio);
             finish();
         }
