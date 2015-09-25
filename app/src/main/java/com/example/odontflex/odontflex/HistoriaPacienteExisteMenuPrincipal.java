@@ -29,7 +29,6 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
             "Alergias - Hábitos",
             "Exámen Estomatológico",
             "Examen Periodontal - Dental",
-            "Odontograma",
             "Nota de evolucion"
     };
 
@@ -45,13 +44,11 @@ public class HistoriaPacienteExisteMenuPrincipal extends AppCompatActivity {
             R.drawable.lupa,
             R.drawable.lupa,
             R.drawable.lupa,
-            R.drawable.lupa,
             R.drawable.lupa
 
     };
 
     int[] img2={
-            R.drawable.editar,
             R.drawable.editar,
             R.drawable.editar,
             R.drawable.editar,
