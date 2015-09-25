@@ -48,7 +48,7 @@ public class ListViewAdapterButton extends BaseAdapter {
     String [] paciente, nombre, apellido, nacimiento, direccion,
         ocupacion, telefono, edad;
     //Arrays anamnesis
-    String [] anamnesisInfo, obsAnamnesis;
+    String [] anamnesisInfo, obsAnamnesis, alergias, habitos, otrosHabitos;
 
     public ListViewAdapterButton(Context context, String[] titulos, int[] imagenes1, int[] imagenes2,
                                  String idPaciente, String idOdontologo, String nomPaciente) {
@@ -109,6 +109,10 @@ public class ListViewAdapterButton extends BaseAdapter {
                         opcion="1";
                         new anamnesis().execute();
                         break;
+                    case 2:
+                        opcion="1";
+                        new alergiashabitos().execute();
+                        break;
                 }
             }
         });
@@ -124,6 +128,10 @@ public class ListViewAdapterButton extends BaseAdapter {
                     case 1:
                         opcion="2";
                         new anamnesis().execute();
+                        break;
+                    case 2:
+                        opcion="2";
+                        new alergiashabitos().execute();
                         break;
                 }
             }
@@ -403,30 +411,16 @@ public class ListViewAdapterButton extends BaseAdapter {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            anamnesisInfo = new String[jsonO.length()];
-            obsAnamnesis = new String[jsonO.length()];
+            alergias = new String[jsonO.length()];
+            habitos = new String[jsonO.length()];
+            otrosHabitos = new String[jsonO.length()];
 
             for(int i = 0; i < jsonO.length(); i++){
                 try {
-                    anamnesisInfo[i] = jsonO.getJSONObject(i).getString("ttomedicosAnamnesis") +
-                            jsonO.getJSONObject(i).getString("ingesmedAnamnesis") +
-                            jsonO.getJSONObject(i).getString("respiratoriasAnamnesis") +
-                            jsonO.getJSONObject(i).getString("cardiacasAnamnesis") +
-                            jsonO.getJSONObject(i).getString("hipertensionAnamnesis") +
-                            jsonO.getJSONObject(i).getString("gastroAnamnesis") +
-                            jsonO.getJSONObject(i).getString("diabetesAnamnesis") +
-                            jsonO.getJSONObject(i).getString("hipotensionAnamnesis") +
-                            jsonO.getJSONObject(i).getString("hepatitisAnamnesis") +
-                            jsonO.getJSONObject(i).getString("reumaticaAnamnesis") +
-                            jsonO.getJSONObject(i).getString("artritisAnamnesis") +
-                            jsonO.getJSONObject(i).getString("infeccionesAnamnesis") +
-                            jsonO.getJSONObject(i).getString("irradiacionesAnamnesis") +
-                            jsonO.getJSONObject(i).getString("hemorragiasAnamnesis") +
-                            jsonO.getJSONObject(i).getString("accidentesAnamnesis") +
-                            jsonO.getJSONObject(i).getString("embarazoAnamnesis") +
-                            jsonO.getJSONObject(i).getString("vihAnamnesis") +
-                            jsonO.getJSONObject(i).getString("sinusitisAnamnesis");
-                    obsAnamnesis[i] = jsonO.getJSONObject(i).getString("obsAnamnesis");
+                    alergias[i] = jsonO.getJSONObject(i).getString("descripcionAlergias");
+                    otrosHabitos[i] = jsonO.getJSONObject(i).getString("otrosHabitos");
+                    habitos[i] = jsonO.getJSONObject(i).getString("cepilladoHabitos")+
+                            jsonO.getJSONObject(i).getString("sedaHabitos");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -437,24 +431,26 @@ public class ListViewAdapterButton extends BaseAdapter {
         }
 
         protected void onPostExecute(String feed) {
-            if (anamnesisInfo.length>0){
+            if (alergias.length>0){
                 if(opcion=="1") {
                     Intent existe = new Intent(context,
-                            AnamnesisVer.class);
+                            AlergiasHabitosVer.class);
                     existe.putExtra("idPaciente", idPaciente);
                     existe.putExtra("nomPaciente", nomPaciente);
-                    existe.putExtra("anamnesisInfo", anamnesisInfo[0]);
-                    existe.putExtra("obsAnamnesis", obsAnamnesis[0]);
+                    existe.putExtra("alergias", alergias[0]);
+                    existe.putExtra("otrosHabitos", otrosHabitos[0]);
+                    existe.putExtra("habitos", habitos[0]);
                     existe.putExtra("idOdontologo", idOdontologo);
                     context.startActivity(existe);
                 }
                 else {
                     Intent existe = new Intent(context,
-                            AnamnesisEditar.class);
+                            AlergiasHabitosEditar.class);
                     existe.putExtra("idPaciente", idPaciente);
                     existe.putExtra("nomPaciente", nomPaciente);
-                    existe.putExtra("anamnesisInfo", anamnesisInfo[0]);
-                    existe.putExtra("obsAnamnesis", obsAnamnesis[0]);
+                    existe.putExtra("alergias", alergias[0]);
+                    existe.putExtra("otrosHabitos", otrosHabitos[0]);
+                    existe.putExtra("habitos", habitos[0]);
                     existe.putExtra("idOdontologo", idOdontologo);
                     context.startActivity(existe);
                 }
